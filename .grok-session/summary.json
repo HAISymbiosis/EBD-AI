@@ -1,0 +1,23 @@
+{
+  "info": {
+    "id": "01a0ac99-8e59-7441-9d61-a9124ffce4c6",
+    "cwd": "/home/ubuntu/github"
+  },
+  "agent_id": "ag1.2852e9d9a55d46bf8f9af30a84453047",
+  "attempt_id": "at1.2449624039fa4e1ea1e62b78080edae2",
+  "session_summary": "Unsynced EBD-AI GitHub fork of ex-fuzzy",
+  "created_at": "2026-09-16T23:42:19.793397035Z",
+  "updated_at": "2026-09-16T23:57:05.630255501Z",
+  "num_messages": 155,
+  "num_chat_messages": 84,
+  "current_model_id": "grok-4.6",
+  "next_trace_turn": 2,
+  "chat_format_version": 1,
+  "request_id": "e4d0db16-d346-4524-9c04-f809a70b6c30",
+  "grok_home": "/home/ubuntu/.grok",
+  "last_active_at": "2026-09-16T23:57:05.630255501Z",
+  "generated_title": "Unsynced EBD-AI GitHub fork of ex-fuzzy",
+  "agent_name": "grok-build-plan",
+  "sandbox_profile": "off",
+  "reasoning_effort": "high"
+}
