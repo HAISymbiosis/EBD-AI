@@ -1,0 +1,75 @@
+=== dest refs ===
+b7050714183b881cd3a86d490ed8d76152b827e1	HEAD
+51f324a6517232ec5c1a0c8e50189d51fc2cb64e	refs/heads/chore/public-repository-cleanup
+2e5aab0b6ac3f2a9c521fe22f297715ab07eeb9e	refs/heads/chore/repository-sanitization
+c7351c1e89b7b7e439c6dce61a0d67096b247268	refs/heads/feat/evox-gpu-support
+a320e3cb6cc8f880ab351f953500e9e0dabcdcfa	refs/heads/fix/categorical-detection-and-partition-validation
+0c0da3b716ba63699b1967eca5405e16a76ffd02	refs/heads/fix/pattern-stability-empty-pie
+a34f077f193ed1c1fb9bbe47a6511277f404d3d4	refs/heads/fix/python39-pymoo-install
+d10f6d838b25b34eec758f8fcde94b3acc6de96a	refs/heads/frc-association-rules
+28a1687eeebff5f6470910b1012776f6cb3bab3f	refs/heads/gh-pages
+b7050714183b881cd3a86d490ed8d76152b827e1	refs/heads/main
+4390ab0194e66ab46b2c7999efb044a6dd905e0c	refs/heads/speed-ups
+2adae47e4b3a2167534c93fa574349a463855143	refs/tags/Stable
+45c7f9e4d775907914991b8564598bf74c638ee8	refs/tags/archive/regression
+8607b5b22cf317f8a1b7c667b0a66ca42c730ab5	refs/tags/v3.0.0
+1460b64050e4e271b240bd9f0e203239ea98e3f4	refs/tags/v3.0.0^{}
+508737d3db60e5b7a8493248e7470a8960877f0f	refs/tags/v3.1.0
+a190821ea9dae5ec2c98d5b849b8a46bdb753509	refs/tags/v3.1.0^{}
+=== clone into workspace ===
+Cloning into 'EBD-AI'...
+=== local branches ===
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/chore/public-repository-cleanup
+  remotes/origin/chore/repository-sanitization
+  remotes/origin/feat/evox-gpu-support
+  remotes/origin/fix/categorical-detection-and-partition-validation
+  remotes/origin/fix/pattern-stability-empty-pie
+  remotes/origin/fix/python39-pymoo-install
+  remotes/origin/frc-association-rules
+  remotes/origin/gh-pages
+  remotes/origin/main
+  remotes/origin/speed-ups
+=== tags ===
+Stable
+archive/regression
+v3.0.0
+v3.1.0
+=== docs present ===
+total 32
+drwxrwxr-x  4 ubuntu ubuntu 4096 Sep 16 23:56 .
+drwxrwxr-x 10 ubuntu ubuntu 4096 Sep 16 23:56 ..
+-rw-rw-r--  1 ubuntu ubuntu 1368 Sep 16 23:56 Makefile
+-rw-rw-r--  1 ubuntu ubuntu 1082 Sep 16 23:56 command_build.sh
+-rw-rw-r--  1 ubuntu ubuntu 2283 Sep 16 23:56 make.bat
+drwxrwxr-x  2 ubuntu ubuntu 4096 Sep 16 23:56 performance
+-rw-rw-r--  1 ubuntu ubuntu 1009 Sep 16 23:56 requirements.txt
+drwxrwxr-x  7 ubuntu ubuntu 4096 Sep 16 23:56 source
+-rw-rw-r-- 1 ubuntu ubuntu   861 Sep 16 23:56 .readthedocs.yaml
+-rw-rw-r-- 1 ubuntu ubuntu 35184 Sep 16 23:56 LICENSE
+-rw-rw-r-- 1 ubuntu ubuntu 16670 Sep 16 23:56 README.md
+
+docs/source:
+total 172
+drwxrwxr-x 7 ubuntu ubuntu  4096 Sep 16 23:56 .
+drwxrwxr-x 4 ubuntu ubuntu  4096 Sep 16 23:56 ..
+drwxrwxr-x 2 ubuntu ubuntu  4096 Sep 16 23:56 _static
+drwxrwxr-x 2 ubuntu ubuntu  4096 Sep 16 23:56 api
+-rw-rw-r-- 1 ubuntu ubuntu 20101 Sep 16 23:56 changelog.rst
+-rw-rw-r-- 1 ubuntu ubuntu  2269 Sep 16 23:56 classifiers.rst
+-rw-rw-r-- 1 ubuntu ubuntu  5385 Sep 16 23:56 conf.py
+-rw-rw-r-- 1 ubuntu ubuntu  8351 Sep 16 23:56 contributing.rst
+-rw-rw-r-- 1 ubuntu ubuntu 12249 Sep 16 23:56 evox_backend.rst
+drwxrwxr-x 2 ubuntu ubuntu  4096 Sep 16 23:56 examples
+-rw-rw-r-- 1 ubuntu ubuntu  1165 Sep 16 23:56 extending.rst
+-rw-rw-r-- 1 ubuntu ubuntu 10079 Sep 16 23:56 getting-started.rst
+-rw-rw-r-- 1 ubuntu ubuntu  1554 Sep 16 23:56 gt2.rst
+drwxrwxr-x 2 ubuntu ubuntu  4096 Sep 16 23:56 images
+=== try pages ===
+http_code=401
+{
+  "message": "Requires authentication",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}

@@ -1,0 +1,16 @@
+auth.json type dict
+top keys: ['https://auth.x.ai::b1a00492-073a-47ea-816f-4c329264a828']
+  https://auth.x.ai::b1a00492-073a-47ea-816f-4c329264a828 keys: ['auth_mode', 'coding_data_retention_opt_out', 'create_time', 'email', 'expires_at', 'first_name', 'key', 'last_name', 'oidc_client_id', 'oidc_issuer', 'principal_id', 'principal_type', 'profile_image_asset_id', 'refresh_token', 'team_id', 'user_id']
+
+settings_cache type dict
+settings keys: ['payload', 'signature']
+/home/ubuntu/.grok/memory/github-d21ab5d7
+/home/ubuntu/.grok/docs/user-guide/07-mcp-servers.md
+agents
+manifest.json
+personas
+roles
+skills
+workflows
+fish
+opencode

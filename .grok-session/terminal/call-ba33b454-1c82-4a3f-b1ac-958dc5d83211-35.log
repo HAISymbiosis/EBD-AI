@@ -1,0 +1,77 @@
+cloning mirror of Fuminides/ex-fuzzy...
+Cloning into bare repository 'ex-fuzzy.git'...
+--- refs ---
+  51f324a6517232ec5c1a0c8e50189d51fc2cb64e refs/heads/chore/public-repository-cleanup
+  2e5aab0b6ac3f2a9c521fe22f297715ab07eeb9e refs/heads/chore/repository-sanitization
+  c7351c1e89b7b7e439c6dce61a0d67096b247268 refs/heads/feat/evox-gpu-support
+  a320e3cb6cc8f880ab351f953500e9e0dabcdcfa refs/heads/fix/categorical-detection-and-partition-validation
+  0c0da3b716ba63699b1967eca5405e16a76ffd02 refs/heads/fix/pattern-stability-empty-pie
+  a34f077f193ed1c1fb9bbe47a6511277f404d3d4 refs/heads/fix/python39-pymoo-install
+  d10f6d838b25b34eec758f8fcde94b3acc6de96a refs/heads/frc-association-rules
+  28a1687eeebff5f6470910b1012776f6cb3bab3f refs/heads/gh-pages
+  b7050714183b881cd3a86d490ed8d76152b827e1 refs/heads/main
+  4390ab0194e66ab46b2c7999efb044a6dd905e0c refs/heads/speed-ups
+  6e115d925c51b2b11def23c1b801b841320e8342 refs/pull/10/head
+  d6aa85e84fb823eb7690d64b746d9e3e625bc009 refs/pull/12/head
+  581f2c5eda17ea03b21827f4ac7510372e1de78c refs/pull/14/head
+  13ce5869742b2f50042813329a858a343a2066d3 refs/pull/15/head
+  69206c121626eeb52ce3f98cc4a142ec29dbd7f0 refs/pull/16/head
+  c962c618c209c80df412b0143be265059e456929 refs/pull/17/head
+  06b403c1c1ef4751df9602e2aaf271a1b1379b97 refs/pull/18/head
+  f2f1960adc1144e7185cb4c51906981b61aea667 refs/pull/2/head
+  0856d2ba72c2892d421206610690712cf9f6376e refs/pull/20/head
+  a181cb02fef762a90593fe16a63ed3e8f1d7feb1 refs/pull/21/head
+  db63eddaba805904d6754d521bb1ba9a8bf566a9 refs/pull/22/head
+  05835897a3397b8ca719b8b37101ecc7dd0109b8 refs/pull/23/head
+  51f324a6517232ec5c1a0c8e50189d51fc2cb64e refs/pull/24/head
+  0c0da3b716ba63699b1967eca5405e16a76ffd02 refs/pull/25/head
+  f09f01d8bde51c7af3e3f76e2991ef5164232750 refs/pull/3/head
+  9abb02c935d127e8b6bff1e1708666227164e543 refs/pull/5/head
+  3ff83354fd4229caa6af3029b1e7dbedf33e7e7f refs/pull/6/head
+  55c31e5ea130e8121de02578cf78228f59decb1c refs/pull/7/head
+  eaac62ccba5726a91bb1d292ca8d533053b566ac refs/pull/8/head
+  c18da53059f5c2f1be65d01925511f10f165f5fd refs/pull/9/head
+  2adae47e4b3a2167534c93fa574349a463855143 refs/tags/Stable
+  45c7f9e4d775907914991b8564598bf74c638ee8 refs/tags/archive/regression
+  8607b5b22cf317f8a1b7c667b0a66ca42c730ab5 refs/tags/v3.0.0
+  508737d3db60e5b7a8493248e7470a8960877f0f refs/tags/v3.1.0
+--- remotes ---
+origin	git@github.com:Fuminides/ex-fuzzy.git (fetch)
+origin	git@github.com:Fuminides/ex-fuzzy.git (push)
+Pushing mirror (all branches, tags, notes) to Mybotstaff/EBD-AI...
+To github.com:Mybotstaff/EBD-AI.git
+ * [new branch]      chore/public-repository-cleanup -> chore/public-repository-cleanup
+ * [new branch]      chore/repository-sanitization -> chore/repository-sanitization
+ * [new branch]      feat/evox-gpu-support -> feat/evox-gpu-support
+ * [new branch]      fix/categorical-detection-and-partition-validation -> fix/categorical-detection-and-partition-validation
+ * [new branch]      fix/pattern-stability-empty-pie -> fix/pattern-stability-empty-pie
+ * [new branch]      fix/python39-pymoo-install -> fix/python39-pymoo-install
+ * [new branch]      frc-association-rules -> frc-association-rules
+ * [new branch]      gh-pages -> gh-pages
+ * [new branch]      main -> main
+ * [new branch]      speed-ups -> speed-ups
+ * [new tag]         Stable -> Stable
+ * [new tag]         archive/regression -> archive/regression
+ * [new tag]         v3.0.0 -> v3.0.0
+ * [new tag]         v3.1.0 -> v3.1.0
+ ! [remote rejected] refs/pull/10/head -> refs/pull/10/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/12/head -> refs/pull/12/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/14/head -> refs/pull/14/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/15/head -> refs/pull/15/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/16/head -> refs/pull/16/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/17/head -> refs/pull/17/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/18/head -> refs/pull/18/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/2/head -> refs/pull/2/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/20/head -> refs/pull/20/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/21/head -> refs/pull/21/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/22/head -> refs/pull/22/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/23/head -> refs/pull/23/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/24/head -> refs/pull/24/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/25/head -> refs/pull/25/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/3/head -> refs/pull/3/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/5/head -> refs/pull/5/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/6/head -> refs/pull/6/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/7/head -> refs/pull/7/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/8/head -> refs/pull/8/head (deny updating a hidden ref)
+ ! [remote rejected] refs/pull/9/head -> refs/pull/9/head (deny updating a hidden ref)
+error: failed to push some refs to 'github.com:Mybotstaff/EBD-AI.git'

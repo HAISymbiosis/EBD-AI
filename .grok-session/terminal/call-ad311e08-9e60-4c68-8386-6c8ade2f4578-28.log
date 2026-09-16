@@ -1,0 +1,30 @@
+settings type dict
+settings keys ['leader_mode', 'max_upload_file_bytes', 'max_upload_untracked_bytes', 'max_supplemental_files', 'non_git_workspace_capture', 'login_shell_capture', 'turn_transient_retry', 'uncharged_401_park', 'release_channel', 'loc_tracking', 'memory_enabled', 'memory_v2', 'memory_search_max_results', 'memory_search_min_score', 'memory_initial_injection_enabled', 'memory_initial_injection_min_score', 'memory_embedding_model', 'memory_embedding_dimensions', 'pruning_enabled', 'pruning_keep_last_n_turns', 'pruning_soft_trim_threshold', 'flush_enabled', 'flush_soft_threshold_tokens', 'flush_idle_timeout_secs', 'flush_semantic_dedup_threshold', 'memory_temporal_decay_enabled', 'memory_temporal_decay_half_life_days', 'memory_mmr_enabled', 'memory_mmr_lambda', 'memory_watcher_enabled', 'dream_enabled', 'dream_min_hours', 'dream_min_sessions', 'dream_check_interval_secs', 'subscription_watch_interval_secs', 'writeback_enabled', 'oauth2_issuer', 'oauth2_client_id', 'grok_oauth_enabled', 'lsp_tools_enabled', 'folder_trust_enabled', 'write_file_enabled', 'active_agent_messages_enabled', 'file_toolset', 'inference_idle_timeout_secs', 'subagent_rate_limit_max_attempts', 'repo_status_in_system_prompt', 'mcp_startup_timeout_secs', 'max_mcp_output_bytes', 'session_registry_enabled', 'doom_loop_recovery', 'worktree_auto_gc', 'todo_gate_enabled', 'todo_gate_max_fires_per_prompt', 'length_salvage_budget', 'auto_wake_enabled', 'cursor_skills_enabled', 'cursor_rules_enabled', 'cursor_agents_enabled', 'claude_skills_enabled', 'claude_rules_enabled', 'claude_agents_enabled', 'cursor_mcps_enabled', 'cursor_hooks_enabled', 'claude_mcps_enabled', 'claude_hooks_enabled', 'cursor_sessions_enabled', 'claude_sessions_enabled', 'codex_sessions_enabled', 'goal_enabled', 'goal_classifier_enabled', 'goal_planner_enabled', 'goal_summary_enabled', 'goal_verifier_count', 'goal_classifier_max_runs', 'workflows_enabled', 'managed_mcps_enabled', 'managed_mcp_gateway_tools_enabled', 'external_otel_disabled', 'external_otel_content_gates_locked']
+KEY non_git_workspace_capture bool len 5
+KEY flush_soft_threshold_tokens NoneType len 4
+KEY oauth2_issuer NoneType len 4
+KEY oauth2_client_id NoneType len 4
+KEY grok_oauth_enabled NoneType len 4
+KEY mcp_startup_timeout_secs NoneType len 4
+KEY max_mcp_output_bytes NoneType len 4
+KEY cursor_mcps_enabled NoneType len 4
+KEY claude_mcps_enabled NoneType len 4
+KEY managed_mcps_enabled NoneType len 4
+KEY managed_mcp_gateway_tools_enabled bool len 4
+KEY non_git_warning bool len 5
+KEY plugin_cta bool len 4
+identity keys <class 'str'>
+64
+  70123 systemd-inhibit --what=idle --who=grok --why=agent turn in progress sleep infinity
+  70181 /bin/bash -O extglob -c snap=$(command cat <&3); builtin shopt -s extglob 2>/dev/null; builtin shopt -s expand_aliases 2>/dev/null; builtin eval -- "$snap"; builtin export GROK_AGENT=1; builtin export PWD="$(builtin pwd)"; unalias find 2>/dev/null || true; find() { local __grok_bin=''; [ -x "$__grok_bin" ] || __grok_bin=$(command -v bfs 2>/dev/null) || __grok_bin=''; if [ -z "$__grok_bin" ]; then command find "$@"; return; fi; if [[ -z ${ZSH_VERSION-} ]] && (( BASH_SUBSHELL > 0 )); then exec -a find "$__grok_bin" "$@"; else (exec -a find "$__grok_bin" "$@"); fi; }; __grok_shadow_find=1; unalias grep 2>/dev/null || true; grep() { local __grok_bin=''; [ -x "$__grok_bin" ] || __grok_bin=$(command -v ugrep 2>/dev/null) || __grok_bin=''; if [ -z "$__grok_bin" ]; then command grep "$@"; return; fi; if [[ -z ${ZSH_VERSION-} ]] && (( BASH_SUBSHELL > 0 )); then exec -a grep "$__grok_bin" -G --ignore-files --hidden -I --exclude-dir=.git --exclude-dir=.svn --exclude-dir=.hg --exclude-dir=.bzr --exclude-dir=.jj --exclude-dir=.sl "$@"; else (exec -a grep "$__grok_bin" -G --ignore-files --hidden -I --exclude-dir=.git --exclude-dir=.svn --exclude-dir=.hg --exclude-dir=.bzr --exclude-dir=.jj --exclude-dir=.sl "$@"); fi; }; __grok_shadow_grep=1; __grok_user_cmd="$1"; builtin declare +x __grok_user_cmd 2>/dev/null; builtin set --; builtin eval "$__grok_user_cmd" 2>&1 -- python3 - <<'PY' import json p='/home/ubuntu/.grok/settings_cache.json' with open(p) as f:     s=json.load(f) payload=json.loads(s['payload']) settings=payload.get('settings', {}) print('settings type', type(settings).__name__) if isinstance(settings, dict):     print('settings keys', list(settings.keys())[:80])     for k,v in settings.items():         lk=str(k).lower()         if any(x in lk for x in ['mcp','git','plugin','connector','oauth','token','server']):             print('KEY', k, type(v).__name__, end=' ')             if isinstance(v, dict):                 print('subkeys', list(v.keys())[:40])             elif isinstance(v, list):                 print('len', len(v))                 if v:                     print(' first', v[0] if not isinstance(v[0], dict) else list(v[0].keys())[:20])             else:                 print('len', len(str(v))) # identity ident=payload.get('identity') print('identity keys', list(ident.keys()) if isinstance(ident, dict) else type(ident)) # look at connectors for k in ['mcp_servers','mcpServers','connectors','integrations','plugins']:     if k in settings:         print('found', k) PY # list MCP processes ls /proc/69894/fd 2>/dev/null | wc -l tr '\0' '\n' < /proc/69894/environ 2>/dev/null | awk -F= '{print $1}' | grep -iE 'git|mcp|token|gh|hub' | head # child processes of grok ps --ppid 69894 -o pid,cmd --no-headers | head -30 # look for github mcp in /tmp or /home ls /tmp 2>/dev/null | head find /home/ubuntu/.grok -name 'config.toml' -o -name '*mcp.json' 2>/dev/null | grep -v marketplace | grep -v sessions 
+Miniforge3-Linux-aarch64.sh
+TinyTeX-1-linux-arm64.tar.xz
+claude-1001
+install-tinytex.sh
+node-compile-cache
+opencode
+sessions
+snap-private-tmp
+systemd-private-656ccf724b9f445ca469e5e97b363e28-ModemManager.service-UFgW6v
+systemd-private-656ccf724b9f445ca469e5e97b363e28-chrony.service-4Rgciq
+/home/ubuntu/.grok/config.toml

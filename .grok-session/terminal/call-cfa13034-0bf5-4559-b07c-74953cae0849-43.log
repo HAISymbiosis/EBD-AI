@@ -1,0 +1,40 @@
+A  .grok-session/announcement_state.json
+A  .grok-session/chat_history.jsonl
+A  .grok-session/events.jsonl
+A  .grok-session/mcp/call-d5fa5138-74f4-41f8-bed9-8e5e4f8e8157-31.json
+A  .grok-session/prompt_context.json
+A  .grok-session/resources_state.json
+A  .grok-session/signals.json
+A  .grok-session/summary.json
+A  .grok-session/system_prompt.txt
+A  .grok-session/title_refresh_idx
+A  .grok-session/tool_definitions.json
+A  .grok-session/updates.jsonl
+?? .grok-session/README.md
+[main 60f9a43] Add Grok session snapshot used to create this independent EBD-AI copy.
+ 12 files changed, 2822 insertions(+)
+ create mode 100644 .grok-session/announcement_state.json
+ create mode 100644 .grok-session/chat_history.jsonl
+ create mode 100644 .grok-session/events.jsonl
+ create mode 100644 .grok-session/mcp/call-d5fa5138-74f4-41f8-bed9-8e5e4f8e8157-31.json
+ create mode 100644 .grok-session/prompt_context.json
+ create mode 100644 .grok-session/resources_state.json
+ create mode 100644 .grok-session/signals.json
+ create mode 100644 .grok-session/summary.json
+ create mode 100644 .grok-session/system_prompt.txt
+ create mode 100644 .grok-session/title_refresh_idx
+ create mode 100644 .grok-session/tool_definitions.json
+ create mode 100644 .grok-session/updates.jsonl
+To github.com:Mybotstaff/EBD-AI.git
+   b705071..60f9a43  main -> main
+=== HEAD ===
+60f9a43 Add Grok session snapshot used to create this independent EBD-AI copy.
+origin	git@github.com:Mybotstaff/EBD-AI.git (fetch)
+origin	git@github.com:Mybotstaff/EBD-AI.git (push)
+=== workspace ===
+total 20
+drwxrwxr-x  5 ubuntu ubuntu 4096 Sep 16 23:56 .
+drwxr-x--- 14 ubuntu ubuntu 4096 Sep 16 22:44 ..
+drwxrwxr-x 11 ubuntu ubuntu 4096 Sep 16 23:57 EBD-AI
+drwxrwxr-x  4 ubuntu ubuntu 4096 Sep 14 18:17 EyeWarn-ext
+drwxrwxr-x 13 ubuntu ubuntu 4096 Sep 16 13:52 UKRIXAI
