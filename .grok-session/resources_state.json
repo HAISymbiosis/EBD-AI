@@ -1,4 +1,35 @@
 {
+  "state": {
+    "grok_build.ReportedTaskCompletions": {
+      "reported": [
+        "call-ba33b454-1c82-4a3f-b1ac-958dc5d83211-35"
+      ]
+    },
+    "grok_build.Todo": {
+      "todos": {
+        "1": {
+          "content": "Inspect source repo (code, docs, wiki) and identify GitHub user",
+          "priority": "medium",
+          "status": "completed"
+        },
+        "2": {
+          "content": "Create independent EBD-AI repo (not a GitHub-linked fork)",
+          "priority": "medium",
+          "status": "in_progress"
+        },
+        "3": {
+          "content": "Push full history, branches, tags, and documentation",
+          "priority": "medium",
+          "status": "pending"
+        },
+        "4": {
+          "content": "Clone EBD-AI into workspace and move session files into it",
+          "priority": "medium",
+          "status": "pending"
+        }
+      }
+    }
+  },
   "params": {
     "grok_build.ReadFile": {
       "cursor_rules_on_read": false
@@ -46,37 +77,6 @@
       "timeout_enabled": true,
       "timeout_secs": 1800,
       "non_interactive": null
-    }
-  },
-  "state": {
-    "grok_build.ReportedTaskCompletions": {
-      "reported": [
-        "call-ba33b454-1c82-4a3f-b1ac-958dc5d83211-35"
-      ]
-    },
-    "grok_build.Todo": {
-      "todos": {
-        "1": {
-          "content": "Inspect source repo (code, docs, wiki) and identify GitHub user",
-          "priority": "medium",
-          "status": "completed"
-        },
-        "2": {
-          "content": "Create independent EBD-AI repo (not a GitHub-linked fork)",
-          "priority": "medium",
-          "status": "in_progress"
-        },
-        "3": {
-          "content": "Push full history, branches, tags, and documentation",
-          "priority": "medium",
-          "status": "pending"
-        },
-        "4": {
-          "content": "Clone EBD-AI into workspace and move session files into it",
-          "priority": "medium",
-          "status": "pending"
-        }
-      }
     }
   }
 }
