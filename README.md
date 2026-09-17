@@ -32,7 +32,8 @@
 
 **BDI** is a comprehensive Python library for **explainable artificial intelligence** through fuzzy logic programming. Built with a focus on accessibility and visualization, it enables researchers and practitioners to create interpretable machine learning models using fuzzy association rules.
 
-BDI is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy). The Python import remains `ex_fuzzy` for compatibility with that lineage.
+BDI is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy).
+`import ex_fuzzy` is that rebased API; `import ebdai` is for new BDI expansions.
 
 ### Why BDI?
 
@@ -70,7 +71,8 @@ BDI is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy). The Python
 
 ### Installation
 
-The pip package is **`ebdai`**. The import remains `ex_fuzzy`.
+The pip package is **`ebdai`**. That install provides two imports: `ex_fuzzy`
+for the rebased Ex-Fuzzy API, and `ebdai` for new BDI expansions.
 
 ```bash
 pip install ebdai
@@ -98,6 +100,7 @@ pip install -e ".[evox]"
 ### Basic Usage
 
 ```python
+import ebdai
 from ex_fuzzy import BaseFuzzyRulesClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split

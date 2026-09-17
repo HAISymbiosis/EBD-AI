@@ -13,8 +13,9 @@ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0
 Changed
 -------
 - **Rebranded as BDI**: The Explainable By Design AI Toolbox, authored by
-  Prof. Javier Andreu-Perez. This repository is a rebase of Ex-Fuzzy; the
-  pip package is ``ebdai`` and the Python import remains ``ex_fuzzy``.
+  Prof. Javier Andreu-Perez. This repository is a rebase of Ex-Fuzzy. The
+  pip package is ``ebdai``. ``import ex_fuzzy`` is the rebased API;
+  ``import ebdai`` is for new BDI expansions.
 
 [3.2.0] - 2026-09-16
 ====================

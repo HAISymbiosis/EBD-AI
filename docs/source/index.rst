@@ -21,7 +21,8 @@ for building, training, and analyzing fuzzy rule-based classifiers and
 regressors with a focus on readable rules and reproducible experiments.
 
 BDI is a rebase of `Ex-Fuzzy <https://github.com/Fuminides/ex-fuzzy>`_.
-The Python import remains ``ex_fuzzy`` for compatibility with that lineage.
+``import ex_fuzzy`` is that rebased API; ``import ebdai`` is for new BDI
+expansions that compose with it.
 
 .. grid:: 2
     :gutter: 3
@@ -168,7 +169,7 @@ Regression follows the same estimator workflow and optimizes training-set
 Installation
 ============
 
-Install the ``ebdai`` pip package (the import remains ``ex_fuzzy``):
+Install the ``ebdai`` pip package (``import ex_fuzzy`` and ``import ebdai``):
 
 .. code-block:: bash
 

@@ -41,6 +41,29 @@ def test_package_import_is_lazy(tmp_path):
     """, tmp_path)
 
 
+def test_ebdai_is_the_expansion_package(tmp_path):
+    _run("""
+        import sys
+        import ebdai
+        import ex_fuzzy
+
+        assert ebdai.__name__ == 'ebdai'
+        assert ex_fuzzy.__name__ == 'ex_fuzzy'
+        assert ebdai is not ex_fuzzy
+        assert ebdai.__version__ == ex_fuzzy.__version__
+        assert 'sklearn' not in sys.modules and 'pandas' not in sys.modules
+        assert 'numpy' not in sys.modules
+        assert not hasattr(ebdai, 'BaseFuzzyRulesClassifier')
+        try:
+            ebdai.no_such_name
+        except AttributeError as error:
+            assert 'no_such_name' in str(error)
+        else:
+            raise AssertionError('unknown attributes must raise AttributeError')
+        assert '__version__' in dir(ebdai)
+    """, tmp_path)
+
+
 def test_star_import_exposes_every_export(tmp_path):
     _run("""
         namespace = {}

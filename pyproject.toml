@@ -75,7 +75,7 @@ Paper = "https://www.sciencedirect.com/science/article/pii/S0925231224008191"
 Upstream = "https://github.com/Fuminides/ex-fuzzy"
 
 [tool.setuptools]
-packages = ["ex_fuzzy"]
+packages = ["ex_fuzzy", "ebdai"]
 
 [tool.setuptools.package-data]
 ex_fuzzy = ["*.pyx"]

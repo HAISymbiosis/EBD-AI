@@ -1,10 +1,9 @@
 """
-BDI: explainable fuzzy rule-based learning.
+Ex-Fuzzy rule-based learning, the rebased API shipped by BDI.
 
-Submodules and the top-level classes are imported on first access, so
-``import ex_fuzzy`` is cheap and each module's dependencies load only when
-that module is used. ``from ex_fuzzy import BaseFuzzyRulesClassifier`` and
-``ex_fuzzy.rules`` work as before.
+``import ex_fuzzy`` is this library. New BDI expansions live in ``ebdai`` and
+accept these objects. Submodules and top-level classes load on first access,
+so ``import ex_fuzzy`` is cheap.
 """
 import importlib
 

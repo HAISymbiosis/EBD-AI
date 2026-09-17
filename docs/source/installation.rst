@@ -3,8 +3,10 @@ Installation
 ============
 
 Install BDI in the Python environment where you want to use it. The pip
-package name is ``ebdai``; the import remains ``ex_fuzzy``. The environment can
-come from ``venv``, conda, pyenv, system Python, or any other Python manager.
+package name is ``ebdai``. That install provides ``import ex_fuzzy`` for the
+rebased Ex-Fuzzy API and ``import ebdai`` for new BDI expansions. The
+environment can come from ``venv``, conda, pyenv, system Python, or any other
+Python manager.
 
 Quick Install
 =============
