@@ -93,7 +93,7 @@ Mean test accuracy over the cross-validation folds. The best value in each row i
 
 ## Rules per model
 
-Mean rule count over the folds: Ex-Fuzzy rules, FERL and decision-tree leaves, and leaves summed over the forest. Logistic regression is not a rule model and has no entry.
+Mean rule count over the folds: BDI rules, FERL and decision-tree leaves, and leaves summed over the forest. Logistic regression is not a rule model and has no entry.
 
 | Dataset | Genetic Search Rules | Mine+Search, additive | Mine+Search, sufficient | FERL compact | FERL medium | FERL deep | Logistic regression | Decision tree | Random forest | Gradient boosting |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

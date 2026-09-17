@@ -2,7 +2,7 @@
 Training Performance
 ====================
 
-Genetic training in Ex-Fuzzy runs through several optimizations that avoid work
+Genetic training in BDI runs through several optimizations that avoid work
 without changing what the search finds. They are automatic: there is no flag to
 turn them on, and no public option changes because of them.
 
@@ -70,7 +70,7 @@ chromosome still counts as an evaluation; it is simply not recomputed.
 What enables each fast path
 ===========================
 
-Ex-Fuzzy falls back to a slower but equivalent path whenever it cannot prove a
+BDI falls back to a slower but equivalent path whenever it cannot prove a
 faster one applies. This table is the quickest way to find out why a fit is not
 as fast as another one.
 
@@ -117,7 +117,7 @@ require, so both are disabled. Because the caches are substantial, a threaded
 fit is not reliably faster than a serial one — measure before assuming it is.
 
 A custom loss disables the caches and the array evaluator together, since
-Ex-Fuzzy cannot know that your objective depends only on the rule base. Your
+BDI cannot know that your objective depends only on the rule base. Your
 loss still receives an ordinary ``MasterRuleBase``, exactly as before.
 
 How the batching route is chosen
@@ -126,7 +126,7 @@ How the batching route is chosen
 Batching a whole generation is faster on small datasets and *slower* on large
 ones, because the intermediate arrays grow with the number of samples. The
 crossover point depends on your data shape and on the machine's cache and memory
-bandwidth, so Ex-Fuzzy measures it rather than assuming it.
+bandwidth, so BDI measures it rather than assuming it.
 
 Early in each eligible fit, a few generations run alternately on each route and
 their cost per candidate is recorded. The cheaper route is then used for the
@@ -257,7 +257,7 @@ results match:
    assert np.array_equal(fast_pred, slow_pred)
 
 Both fits must agree exactly, not approximately. If they do not, please
-`report it <https://github.com/fuminides/ex-fuzzy/issues>`_ with the two scores,
+`report it <https://github.com/HAISymbiosis/EBD-AI/issues>`_ with the two scores,
 your data shape, the fuzzy set type and whether you passed
 ``linguistic_variables``. That is a real defect and the assertion above is
 enough to reproduce it.

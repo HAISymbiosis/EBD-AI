@@ -1,5 +1,5 @@
 """
-Test configuration and fixtures for the Ex-Fuzzy library test suite.
+Test configuration and fixtures for the BDI test suite.
 
 This module provides common fixtures and configuration for pytest,
 including sample datasets, test parameters, and utility functions.

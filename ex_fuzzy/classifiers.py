@@ -1,5 +1,5 @@
 """
-Fuzzy Classification Algorithms for Ex-Fuzzy Library
+Fuzzy Classification Algorithms for BDI
 
 This module provides high-level classification algorithms that combine rule mining,
 genetic optimization, and fuzzy inference for pattern classification tasks. The
@@ -169,7 +169,7 @@ class FuzzyRulesClassifier(ClassifierMixin, BaseEstimator):
        or ``rules_per_class`` when set.
 
     Rules are weighted by their penalized certainty factor and combined as in
-    Ex-Fuzzy's regression: with ``rule_mode="additive"`` every matching rule
+    BDI's regression: with ``rule_mode="additive"`` every matching rule
     votes with its weighted firing, and with ``rule_mode="sufficient"`` only each
     sample's strongest weighted rule decides. Samples that fire no rule take the
     training majority class. :class:`ex_fuzzy.BaseFuzzyRulesClassifier`
@@ -475,7 +475,7 @@ class FuzzyRulesClassifier(ClassifierMixin, BaseEstimator):
         return association._merge(pools)
 
     def _build_rule_base(self):
-        """Export the selected rules as Ex-Fuzzy rule bases, one per class."""
+        """Export the selected rules as BDI rule bases, one per class."""
         if self.n_rules_ == 0:
             return None
         n_features = len(self.selected_features_)

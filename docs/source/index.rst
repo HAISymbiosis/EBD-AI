@@ -1,27 +1,22 @@
-======================
-Ex-Fuzzy Documentation
-======================
+==================
+BDI Documentation
+==================
 
-.. image:: https://img.shields.io/pypi/v/ex-fuzzy.svg
-   :target: https://pypi.org/project/ex-fuzzy/
-   :alt: PyPI version
-
-.. image:: https://img.shields.io/pypi/pyversions/ex-fuzzy.svg
-   :target: https://pypi.org/project/ex-fuzzy/
-   :alt: Python versions
-
-.. image:: https://img.shields.io/github/license/fuminides/ex-fuzzy.svg
-   :target: https://github.com/fuminides/ex-fuzzy/blob/main/LICENSE
+.. image:: https://img.shields.io/github/license/HAISymbiosis/EBD-AI.svg
+   :target: https://github.com/HAISymbiosis/EBD-AI/blob/main/LICENSE
    :alt: License
 
-.. image:: https://img.shields.io/github/stars/fuminides/ex-fuzzy.svg?style=social
-   :target: https://github.com/fuminides/ex-fuzzy
+.. image:: https://img.shields.io/github/stars/HAISymbiosis/EBD-AI.svg?style=social
+   :target: https://github.com/HAISymbiosis/EBD-AI
    :alt: GitHub stars
 
-**Ex-Fuzzy** is a Python library for explainable fuzzy logic inference and
-approximate reasoning. It provides tools for building, training, and analyzing
-fuzzy rule-based classifiers and regressors with a focus on readable rules and
-reproducible experiments.
+**BDI: The Explainable By Design AI Toolbox** is a Python library for
+explainable fuzzy logic inference and approximate reasoning. It provides tools
+for building, training, and analyzing fuzzy rule-based classifiers and
+regressors with a focus on readable rules and reproducible experiments.
+
+BDI is a rebase of `Ex-Fuzzy <https://github.com/Fuminides/ex-fuzzy>`_.
+The Python import remains ``ex_fuzzy`` for compatibility with that lineage.
 
 .. grid:: 2
     :gutter: 3
@@ -30,7 +25,7 @@ reproducible experiments.
         :link: getting-started
         :link-type: doc
 
-        Get up and running with Ex-Fuzzy in minutes. Learn the basics of fuzzy classification
+        Get up and running with BDI in minutes. Learn the basics of fuzzy classification
         and regression through practical examples.
 
     .. grid-item-card:: User Guide
@@ -51,7 +46,7 @@ reproducible experiments.
         :link: examples/index
         :link-type: doc
 
-        Real-world examples and case studies demonstrating Ex-Fuzzy's capabilities across
+        Real-world examples and case studies demonstrating BDI's capabilities across
         different domains.
 
 Key Features
@@ -168,18 +163,12 @@ Regression follows the same estimator workflow and optimizes training-set
 Installation
 ============
 
-Install Ex-Fuzzy using pip:
+Install BDI from this repository (the Python package name remains ``ex_fuzzy``):
 
 .. code-block:: bash
 
-    pip install ex-fuzzy
-
-Or install from source:
-
-.. code-block:: bash
-
-    git clone https://github.com/fuminides/ex-fuzzy.git
-    cd ex-fuzzy
+    git clone https://github.com/HAISymbiosis/EBD-AI.git
+    cd EBD-AI
     pip install -e .
 
 Choosing a Workflow
@@ -206,7 +195,7 @@ Choosing a Workflow
    * - Mine and select a compact fuzzy association rule base
      - :class:`ex_fuzzy.FuzzyRulesClassifier`
    * - Use GPU-accelerated evolutionary optimization
-     - ``backend="evox"`` with either estimator and the ``ex-fuzzy[evox]`` extra
+     - ``backend="evox"`` with either estimator and the ``.[evox]`` extra
    * - Save and reload fuzzy variables
      - :mod:`ex_fuzzy.persistence`
 
@@ -275,13 +264,13 @@ Community and Support
     :gutter: 3
 
     .. grid-item-card:: 💬 Discussion
-        :link: https://github.com/fuminides/ex-fuzzy/discussions
+        :link: https://github.com/HAISymbiosis/EBD-AI/discussions
         :link-type: url
 
         Join our community discussions, ask questions, and share your projects.
 
     .. grid-item-card:: 🐛 Report Issues
-        :link: https://github.com/fuminides/ex-fuzzy/issues
+        :link: https://github.com/HAISymbiosis/EBD-AI/issues
         :link-type: url
 
         Found a bug or have a feature request? Let us know on GitHub.
@@ -290,7 +279,7 @@ Community and Support
         :link: contributing
         :link-type: doc
 
-        Help improve Ex-Fuzzy by contributing code, documentation, or examples.
+        Help improve BDI by contributing code, documentation, or examples.
 
     .. grid-item-card:: 📧 Contact
         :link: mailto:your-email@example.com
@@ -301,7 +290,8 @@ Community and Support
 Citation
 ========
 
-If you use Ex-Fuzzy in your research, please cite:
+If you use BDI in your research, please cite the original Ex-Fuzzy paper that
+this toolbox rebases:
 
 .. code-block:: bibtex
 

@@ -1,7 +1,7 @@
 Core Concepts
 =============
 
-This guide introduces the fundamental concepts underlying the ex-fuzzy library, providing a solid foundation for understanding fuzzy logic, fuzzy sets, and fuzzy rule-based systems.
+This guide introduces the fundamental concepts underlying BDI, providing a solid foundation for understanding fuzzy logic, fuzzy sets, and fuzzy rule-based systems.
 
 .. contents:: Table of Contents
    :local:

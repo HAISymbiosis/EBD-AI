@@ -2,12 +2,12 @@
 Contributing
 ============
 
-We welcome contributions to Ex-Fuzzy! This guide will help you get started with contributing code, documentation, or examples.
+We welcome contributions to BDI! This guide will help you get started with contributing code, documentation, or examples.
 
 Ways to Contribute
 ==================
 
-There are many ways to contribute to Ex-Fuzzy:
+There are many ways to contribute to BDI:
 
 .. grid:: 2
     :gutter: 3
@@ -47,8 +47,8 @@ Development Setup
 
    .. code-block:: bash
 
-       git clone https://github.com/fuminides/ex-fuzzy.git
-       cd ex-fuzzy
+       git clone https://github.com/HAISymbiosis/EBD-AI.git
+       cd EBD-AI
 
 3. **Create a virtual environment**:
 
@@ -178,7 +178,7 @@ Before reporting a bug:
 
 When reporting, include:
 
-- Ex-Fuzzy version
+- BDI version
 - Python version and operating system
 - Complete error traceback
 - Minimal code example
@@ -200,7 +200,7 @@ Use our bug report template:
     What you expected to happen.
 
     **Environment**
-    - Ex-Fuzzy version:
+    - BDI version:
     - Python version:
     - Operating System:
 
@@ -215,7 +215,7 @@ Suggesting Features
 We welcome feature suggestions! Before suggesting:
 
 1. **Check existing issues** and discussions
-2. **Consider the scope** - does it fit Ex-Fuzzy's goals?
+2. **Consider the scope** - does it fit BDI's goals?
 3. **Think about implementation** - is it feasible?
 
 When suggesting a feature:
@@ -303,7 +303,7 @@ What reviewers look for:
 Release Process
 ===============
 
-Ex-Fuzzy follows semantic versioning:
+BDI follows semantic versioning:
 
 - **Major** (X.0.0): Breaking changes
 - **Minor** (X.Y.0): New features, backward compatible
@@ -358,6 +358,6 @@ If you need help contributing:
 Thank You!
 ==========
 
-Thank you for considering contributing to Ex-Fuzzy! Every contribution, no matter how small, helps make the library better for everyone.
+Thank you for considering contributing to BDI! Every contribution, no matter how small, helps make the library better for everyone.
 
-Ready to contribute? Check out our `good first issues <https://github.com/fuminides/ex-fuzzy/labels/good%20first%20issue>`_ to get started!
+Ready to contribute? Check out our `good first issues <https://github.com/HAISymbiosis/EBD-AI/labels/good%20first%20issue>`_ to get started!

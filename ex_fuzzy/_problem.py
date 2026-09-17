@@ -2,7 +2,7 @@
 Optimizer-independent problem base for the genetic searches.
 
 The fitting problems used to subclass pymoo's ``Problem``, so importing
-Ex-Fuzzy imported pymoo even for EvoX fits that never use it.  This module
+BDI imported pymoo even for EvoX fits that never use it.  This module
 reproduces the part of that interface the problems and their callers rely on:
 the problem attributes, elementwise runners and ``evaluate``.  It imports no
 optimizer.
@@ -78,7 +78,7 @@ class Problem:
     Single-objective problem description shared by every optimizer backend.
 
     Attribute names, defaults and evaluation semantics follow pymoo's
-    ``Problem`` for the features Ex-Fuzzy uses, so problems and runners written
+    ``Problem`` for the features BDI uses, so problems and runners written
     against that interface keep working.
     """
 
@@ -237,7 +237,7 @@ def _pymoo_problem_class():
         raise ImportError(PYMOO_INSTALL_MESSAGE) from error
 
     class PymooProblemWrapper(PymooProblem):
-        """A pymoo problem delegating every evaluation to an Ex-Fuzzy problem."""
+        """A pymoo problem delegating every evaluation to an BDI problem."""
 
         def __init__(self, problem: Problem) -> None:
             variables = getattr(problem, "vars", None)
@@ -273,7 +273,7 @@ def _pymoo_problem_class():
 
 def as_pymoo_problem(problem: Any):
     """
-    Return ``problem`` as a pymoo problem, wrapping Ex-Fuzzy problems.
+    Return ``problem`` as a pymoo problem, wrapping BDI problems.
 
     Needed only to pass a fitting problem to pymoo directly; the ``pymoo``
     backend does this itself.  pymoo problems are returned unchanged.

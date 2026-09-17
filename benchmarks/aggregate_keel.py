@@ -226,7 +226,7 @@ def write_table(report: dict, destination: Path) -> None:
         lines.append(f'| {row["dataset"]} | {row["n_samples"]:,} | {row["n_features"]} | '
                      f'{row["n_classes"]} | ' + ' | '.join(cells) + ' |')
     lines += ['', '## Rules per model',
-              '', 'Mean rule count over the folds: Ex-Fuzzy rules, FERL and decision-tree '
+              '', 'Mean rule count over the folds: BDI rules, FERL and decision-tree '
                   'leaves, and leaves summed over the forest. Logistic regression is not a '
                   'rule model and has no entry.', '',
               '| Dataset | ' + ' | '.join(LABELS[method] for method in methods) + ' |',
@@ -317,7 +317,7 @@ def plot(report: dict, destination: Path) -> None:
                   frameon=False, fontsize=10, labelcolor=INK_SECONDARY, handletextpad=.3,
                   columnspacing=1.4)
     figure.suptitle(
-        f'Ex-Fuzzy on {report["n_datasets_compared"]} KEEL classification datasets',
+        f'BDI on {report["n_datasets_compared"]} KEEL classification datasets',
         x=0.006, ha='left', fontsize=15, fontweight='bold', color=INK)
     figure.supxlabel(
         f'{report["folds"]}-fold stratified cross-validation with one shared seed. FERL uses the '

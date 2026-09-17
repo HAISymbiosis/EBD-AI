@@ -1,7 +1,7 @@
 Examples
 ========
 
-Welcome to the Ex-Fuzzy examples gallery! Here you'll find practical examples demonstrating how to use Ex-Fuzzy for various machine learning tasks.
+Welcome to the BDI examples gallery! Here you'll find practical examples demonstrating how to use BDI for various machine learning tasks.
 
 .. grid:: 2
     :gutter: 3
@@ -46,27 +46,27 @@ first run.
 
    * - Notebook
      - What it shows
-   * - `01 Getting started <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/01_getting_started.ipynb>`_
+   * - `01 Getting started <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/01_getting_started.ipynb>`_
      - Fit, score, read the rules, probabilities, per-sample explanations, partition plots.
-   * - `02 Scikit-learn integration <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/02_scikit_learn_integration.ipynb>`_
+   * - `02 Scikit-learn integration <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/02_scikit_learn_integration.ipynb>`_
      - Titanic data with categorical columns and missing values: a pipeline with imputation, cross-validation, grid search.
-   * - `03 Rules and partitions <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/03_rules_and_partitions.ipynb>`_
+   * - `03 Rules and partitions <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/03_rules_and_partitions.ipynb>`_
      - Fuzzy sets and rules by hand, fixed versus optimised partitions, Type-2 sets, validation, inference modes, LaTeX export, saving and loading.
-   * - `04 Controlling the search <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/04_controlling_the_search.ipynb>`_
+   * - `04 Controlling the search <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/04_controlling_the_search.ipynb>`_
      - Budget and early stopping, custom objectives, checkpoints, mined candidate rules, all classifiers compared.
-   * - `05 Regression <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/05_regression.ipynb>`_
+   * - `05 Regression <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/05_regression.ipynb>`_
      - Crisp and Mamdani consequents on California housing, then inference by hand.
-   * - `06 Uncertainty <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/06_uncertainty.ipynb>`_
+   * - `06 Uncertainty <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/06_uncertainty.ipynb>`_
      - Conformal prediction sets with coverage evaluation, next to FERL and DeepFERL evidential outputs.
-   * - `07 Robustness <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/07_robustness.ipynb>`_
+   * - `07 Robustness <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/07_robustness.ipynb>`_
      - Pattern stability over repeated fits, permutation and bootstrap validation.
-   * - `08 Temporal <https://github.com/Fuminides/ex-fuzzy/blob/main/Demos/08_temporal.ipynb>`_
+   * - `08 Temporal <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/08_temporal.ipynb>`_
      - Temporal fuzzy sets on the occupancy data, one rule base per period of the day.
 
 The EvoX backend comparison is a script, ``Demos/evox_backend_demo.py``, since
 it needs the optional backend. To run the notebooks yourself, open them with
 Jupyter after installing the package, or launch them
-`in Binder <https://mybinder.org/v2/gh/Fuminides/ex-fuzzy/HEAD?urlpath=%2Fdoc%2Ftree%2FDemos>`_.
+`in Binder <https://mybinder.org/v2/gh/HAISymbiosis/EBD-AI/HEAD?urlpath=%2Fdoc%2Ftree%2FDemos>`_.
 
 Example Categories
 ==================
@@ -90,7 +90,7 @@ Example Categories
 Contributing Examples
 =====================
 
-We welcome contributions of new examples! If you have an interesting use case or application of Ex-Fuzzy:
+We welcome contributions of new examples! If you have an interesting use case or application of BDI:
 
 1. Create a clear, well-documented notebook
 2. Include explanations and visualizations  

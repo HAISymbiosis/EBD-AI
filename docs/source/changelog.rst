@@ -2,13 +2,19 @@
 Changelog
 =========
 
-This document tracks all notable changes to Ex-Fuzzy.
+This document tracks all notable changes to BDI.
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_,
 and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
 [Unreleased]
 ============
+
+Changed
+-------
+- **Rebranded as BDI**: The Explainable By Design AI Toolbox, authored by
+  Prof. Javier Andreu-Perez. This repository is a rebase of Ex-Fuzzy; the
+  Python import remains ``ex_fuzzy``.
 
 [3.2.0] - 2026-09-16
 ====================
@@ -180,7 +186,7 @@ Changed
   and final metrics. The temporary arrays are released before resampling or
   fit return, and the final model is unchanged
 - The fitness cache holds four populations of chromosomes (at least 256)
-- **pymoo is imported only when used**: importing Ex-Fuzzy and EvoX fits no
+- **pymoo is imported only when used**: importing BDI and EvoX fits no
   longer import pymoo. ``FitRuleBase``, ``FitRuleBaseRegression`` and
   ``ExploreRuleBases`` no longer subclass pymoo's ``Problem``; the PyMoo backend
   and the temporal classifier wrap them when they run. To pass one to pymoo
@@ -221,7 +227,7 @@ Added
   compact certainty-factor-weighted rule base with a vectorized genetic
   algorithm. It is a proper scikit-learn estimator; the earlier constructor
   and ``fit`` arguments still work. Rules combine additively or
-  sufficiently (``rule_mode``), as in Ex-Fuzzy regression. Rules with four
+  sufficiently (``rule_mode``), as in BDI regression. Rules with four
   or five conditions are mined with Apriori-style support pruning, which keeps
   the same candidates as exhaustive enumeration
 - **Fuzzy Regression**: Scikit-learn-compatible Type-1 rule learning for

@@ -1,7 +1,7 @@
 Classifiers Module
 ==================
 
-The :mod:`ex_fuzzy.classifiers` module provides the main classification interface for the ex-fuzzy library.
+The :mod:`ex_fuzzy.classifiers` module provides the main classification interface for BDI.
 
 .. currentmodule:: ex_fuzzy.classifiers
 

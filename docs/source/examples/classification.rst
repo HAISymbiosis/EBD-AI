@@ -1,7 +1,7 @@
 Classification Examples
 =======================
 
-This section provides comprehensive examples of using ex-fuzzy for classification tasks, from basic usage to advanced techniques.
+This section provides comprehensive examples of using BDI for classification tasks, from basic usage to advanced techniques.
 
 .. contents:: Table of Contents
    :local:
@@ -681,7 +681,7 @@ Related Examples:
 Conformal Learning Demo
 -----------------------
 
-Ex-Fuzzy includes a runnable conformal learning demo that trains a fuzzy classifier,
+BDI includes a runnable conformal learning demo that trains a fuzzy classifier,
 calibrates conformal prediction, and reports coverage and prediction-set metrics.
 
 The notebook ``Demos/06_uncertainty.ipynb`` runs this workflow end to end.

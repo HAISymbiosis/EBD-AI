@@ -2,7 +2,7 @@ Rules Module
 ============
 
 The :mod:`ex_fuzzy.rules` module contains rule and rule-base abstractions used
-by Ex-Fuzzy inference engines.
+by BDI inference engines.
 
 .. currentmodule:: ex_fuzzy.rules
 

@@ -1,4 +1,4 @@
-"""Measure Ex-Fuzzy learners against reference baselines on the KEEL collection.
+"""Measure BDI learners against reference baselines on the KEEL collection.
 
 One invocation runs a single (dataset, method) pair through stratified
 cross-validation and writes a self-describing JSON result. The grid is meant to
@@ -7,7 +7,7 @@ Aggregate the finished results with ``benchmarks/aggregate_keel.py``.
 
 Every method sees the raw KEEL columns. Baselines use their library defaults;
 logistic regression standardizes features inside its own pipeline, fitted on the
-training folds only. The Ex-Fuzzy learners use stated, uniform configurations:
+training folds only. The BDI learners use stated, uniform configurations:
 a search budget for the genetic learner, and the three FERL operating points of
 the fuzzy_greedy_tree paper (compact and medium through FERL, deep through
 DeepFERL). Nothing is tuned per dataset, and the figures built
@@ -33,11 +33,11 @@ from keel_datasets import available_datasets, dataset_path, load_dataset  # noqa
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = ROOT / 'benchmarks' / 'results' / 'keel'
-#: Order is the figure's order; keep the Ex-Fuzzy learners first.
+#: Order is the figure's order; keep the BDI learners first.
 METHODS = ('exfuzzy-ga', 'exfuzzy-frc-additive', 'exfuzzy-frc-sufficient',
            'exfuzzy-ferl-compact', 'exfuzzy-ferl-medium', 'exfuzzy-ferl-deep',
            'sklearn-logreg', 'sklearn-tree', 'sklearn-forest', 'sklearn-hgb')
-#: Display names. The figure marks Ex-Fuzzy's families by colour and marker, so
+#: Display names. The figure marks BDI's families by colour and marker, so
 #: the names carry no library prefix.
 LABELS = {'exfuzzy-ga': 'Genetic Search Rules',
           'exfuzzy-frc-additive': 'Mine+Search, additive',
@@ -49,7 +49,7 @@ LABELS = {'exfuzzy-ga': 'Genetic Search Rules',
           'sklearn-tree': 'Decision tree',
           'sklearn-forest': 'Random forest',
           'sklearn-hgb': 'Gradient boosting'}
-#: Methods from the Ex-Fuzzy library, as opposed to reference baselines.
+#: Methods from the BDI, as opposed to reference baselines.
 EXFUZZY_METHODS = frozenset(method for method in METHODS if method.startswith('exfuzzy-'))
 #: Methods whose model is not a rule base, so they have no rule count.
 RULELESS_METHODS = frozenset({'sklearn-logreg'})
@@ -62,11 +62,11 @@ FRC_CONFIG = dict(max_features=8, n_linguistic_variables='auto', nAnts=3, nRules
 FRC_RULE_MODES = {'exfuzzy-frc-additive': 'additive', 'exfuzzy-frc-sufficient': 'sufficient'}
 
 #: The FERL operating points of the fuzzy_greedy_tree paper (its AAAI tables), as
-#: ``(constructor kwargs, fit kwargs)`` for Ex-Fuzzy's native FERL. Compact mirrors
+#: ``(constructor kwargs, fit kwargs)`` for BDI's native FERL. Compact mirrors
 #: that repository's ``fgrt-base`` and medium its ``fgrt-performance`` pipeline
 #: configuration, with the pipeline's own defaults (20 rules, depth 5, minimum
 #: improvement 0.01, patience 3) written out where a preset leaves them unset,
-#: because Ex-Fuzzy's FERL defaults to 15 rules. Deep is a different estimator,
+#: because BDI's FERL defaults to 15 rules. Deep is a different estimator,
 #: :class:`ex_fuzzy.DeepFERL`, and is built separately below.
 FERL_PRESETS = {
     'exfuzzy-ferl-compact': (dict(partition='quantile', max_rules=20, max_depth=5,
@@ -79,7 +79,7 @@ FERL_PRESETS = {
 }
 
 #: Structural budget for the genetic learner: the library's own defaults, so the
-#: model stays the small rule base Ex-Fuzzy advertises.
+#: model stays the small rule base BDI advertises.
 GA_MODEL = dict(nRules=30, nAnts=4)
 #: Search budget. The shipped defaults (70 generations, population 30, patience
 #: 10) stop early enough to understate the learner: on `vehicle` they reached
@@ -178,7 +178,7 @@ def _leaf_depth_total(tree) -> int:
 def build_method(method: str, seed: int, n_classes: int, y_train=None):
     """Return ``(estimator, fit_kwargs, size_function)`` for one method.
 
-    Baselines keep their library defaults and the Ex-Fuzzy learners take the
+    Baselines keep their library defaults and the BDI learners take the
     module-level configurations; only the random seed varies by fold.
     ``y_train`` lets gradient boosting drop early stopping where the default
     cannot run at all.
@@ -233,7 +233,7 @@ def run_fold(method: str, seed: int, X_train, y_train, X_test, y_test, n_classes
     start = time.perf_counter()
     predicted = np.asarray(model.predict(X_test))
     predict_seconds = time.perf_counter() - start
-    # Ex-Fuzzy can abstain with -1 when no rule fires; that counts as an error.
+    # BDI can abstain with -1 when no rule fires; that counts as an error.
     return dict(accuracy=float(accuracy_score(y_test, predicted)),
                 balanced_accuracy=float(balanced_accuracy_score(y_test, predicted)),
                 macro_f1=float(f1_score(y_test, predicted, average='macro', zero_division=0)),

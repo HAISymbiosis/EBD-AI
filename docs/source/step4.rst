@@ -2,7 +2,7 @@
 
 Inspect rules and fuzzy sets
 ============================
-Ex-Fuzzy can print the rules obtained after training and visualize the learned
+BDI can print the rules obtained after training and visualize the learned
 fuzzy sets.
 The easiest way to do this is using the ``eval_tools.eval_fuzzy_model`` function::
 

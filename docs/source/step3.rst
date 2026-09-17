@@ -19,7 +19,7 @@ For more info about the dominance scores, you can see [Fach23].
 --------------------------------------
 Training a fuzzy rule based classifier
 --------------------------------------
-In order to train a fuzzy rule based classifier, Ex-Fuzzy uses a Genetic algorithm to tune the rules to the 
+In order to train a fuzzy rule based classifier, BDI uses a Genetic algorithm to tune the rules to the 
 desired classification task. The interface to use this kind of classifiers is analogous to the standard used
 in scikit-learn, so it requires no previous knowledge about fuzzy logic in order to work.
 
@@ -60,7 +60,7 @@ You can modulate the inference process regarding rule weights by using the ds_mo
 Evaluation
 -----------------
 The genetic algorithm needs a fitness measure to evaluate the quality of each solution. In order to obtain the best possible set of rules,
-Ex-Fuzzy uses three different criteria.
+BDI uses three different criteria.
 
 1. Matthew Correlation Coefficient: it is a metric that ranges from [-1, 1] that measures the quality of a classification performance. It less sensible to imbalance classification than the standard accuracy.
 2. Less antecedents: the less antecedents per rule, the better.

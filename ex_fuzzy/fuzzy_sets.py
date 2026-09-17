@@ -1,7 +1,7 @@
 """
-Fuzzy Sets Module for Ex-Fuzzy Library
+Fuzzy Sets Module for BDI
 
-This module contains the core fuzzy set classes and functionality for the ex-fuzzy library.
+This module contains the core fuzzy set classes and functionality for BDI.
 It implements Type-1, Type-2, and General Type-2 fuzzy sets with their associated 
 membership functions and operations.
 

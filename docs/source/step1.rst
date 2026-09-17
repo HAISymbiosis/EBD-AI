@@ -6,7 +6,7 @@ Creating fuzzy sets and fuzzy variables
 -----------------
 Fuzzy Sets
 -----------------
-Ex-Fuzzy supports different kinds of fuzzy sets, but the procedure to use them all is the same.
+BDI supports different kinds of fuzzy sets, but the procedure to use them all is the same.
 Fuzzy sets have a name, a domain range and a membership function::
     
     import ex_fuzzy.fuzzy_sets as fs

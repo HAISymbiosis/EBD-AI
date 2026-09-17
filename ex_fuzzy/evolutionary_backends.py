@@ -173,7 +173,7 @@ class PyMooBackend(EvolutionaryBackend):
         Optimize using pymoo's genetic algorithm.
         
         Args:
-            problem: Ex-Fuzzy problem, wrapped for pymoo here, or a pymoo Problem
+            problem: BDI problem, wrapped for pymoo here, or a pymoo Problem
             n_gen: Number of generations
             pop_size: Population size
             random_state: Random seed
@@ -218,7 +218,7 @@ class PyMooBackend(EvolutionaryBackend):
         Optimize with checkpoint callbacks at specified intervals.
         
         Args:
-            problem: Ex-Fuzzy problem, wrapped for pymoo here, or a pymoo Problem
+            problem: BDI problem, wrapped for pymoo here, or a pymoo Problem
             n_gen: Number of generations
             pop_size: Population size
             random_state: Random seed
@@ -519,7 +519,7 @@ def get_backend(backend_name: str = 'pymoo') -> EvolutionaryBackend:
         raise ValueError(
             f"Backend '{backend_name}' is not available. "
             f"Please install required dependencies. "
-            f"For EvoX: pip install ex-fuzzy[evox]"
+            "For EvoX: pip install -e '.[evox]'"
         )
     
     return backend

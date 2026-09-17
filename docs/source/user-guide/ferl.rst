@@ -2,7 +2,7 @@
 Fast Evidential Rule Learning (FERL)
 =====================================
 
-FERL is Ex-Fuzzy's greedy fuzzy rule-tree classifier. It learns interpretable
+FERL is BDI's greedy fuzzy rule-tree classifier. It learns interpretable
 rules and derives evidential predictions directly from their fuzzy firing
 strengths. A fitted model can return:
 
@@ -11,7 +11,7 @@ strengths. A fitted model can return:
 - a scalar ignorance mass for each sample; and
 - native set-valued predictions for abstention or cautious decisions.
 
-FERL is implemented inside Ex-Fuzzy and has no dependency on a separate FERL
+FERL is implemented inside BDI and has no dependency on a separate FERL
 or fuzzy-tree repository.
 
 Quick start
@@ -42,10 +42,10 @@ Optional compiled backend
 
 ``FERL(backend="cython")`` uses a native additive-vote scoring kernel adapted
 from ``fgrt_fast`` in the ``fuzzy_greedy_tree`` repository. That implementation
-uses Cython compiled to **C**, rather than C++. Ex-Fuzzy includes its own source;
+uses Cython compiled to **C**, rather than C++. BDI includes its own source;
 the sibling repository is not a runtime dependency.
 
-Build from the Ex-Fuzzy source directory with a C compiler and the development
+Build from the BDI source directory with a C compiler and the development
 headers for your Python interpreter installed:
 
 .. code-block:: bash
@@ -189,7 +189,7 @@ FERL constructs Type-1 fuzzy partitions during ``fit`` unless custom
      - Supervised Fayyad--Irani MDLP cuts converted to overlapping trapezoids;
        overlap is controlled by ``overlap_frac``.
    * - ``fuzzy_partitions=...``
-     - User-supplied Ex-Fuzzy variables, one per input feature.
+     - User-supplied BDI variables, one per input feature.
 
 Missing features
 ================

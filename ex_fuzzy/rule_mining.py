@@ -1,5 +1,5 @@
 """
-Fuzzy Rule Mining Module for Ex-Fuzzy Library
+Fuzzy Rule Mining Module for BDI
 
 This module provides comprehensive fuzzy rule mining capabilities for extracting meaningful
 rules from datasets using support-based itemset mining algorithms. It implements efficient

@@ -156,7 +156,7 @@ Inspecting the rules
 ====================
 
 ``selected_features_`` holds the indices of the features the rules use, and
-``linguistic_variables_`` their partitions. ``rule_base_`` is an Ex-Fuzzy
+``linguistic_variables_`` their partitions. ``rule_base_`` is an BDI
 :class:`~ex_fuzzy.rules.MasterRuleBase`, with one rule base per class and the
 certainty factors as rule weights, so the usual rule inspection and
 persistence tools apply. ``internal_classifier()`` wraps it as a

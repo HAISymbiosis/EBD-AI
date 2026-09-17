@@ -7,7 +7,7 @@ EvoX Backend Guide
 Overview
 ========
 
-Ex-Fuzzy supports evolutionary optimization through the EvoX backend, using
+BDI supports evolutionary optimization through the EvoX backend, using
 PyTorch for its population operations. The amount of GPU acceleration depends
 on the optimization problem and its fitness evaluator.
 
@@ -45,14 +45,14 @@ Basic Installation (PyMoo only)
 
 .. code-block:: bash
 
-   pip install ex-fuzzy
+   pip install -e .
 
 With EvoX Support
 -----------------
 
 .. code-block:: bash
 
-   pip install "ex-fuzzy[evox]"
+   pip install -e ".[evox]"
 
 For GPU support, ensure you have CUDA-compatible hardware and drivers installed.
 
@@ -286,13 +286,13 @@ If EvoX backend is not available:
    
    available = evolutionary_backends.list_available_backends()
    if 'evox' not in available:
-       print('EvoX not installed. Install with: pip install "ex-fuzzy[evox]"')
+       print('EvoX not installed. Install with: pip install -e ".[evox]"')
 
 **Solution**: Install EvoX and PyTorch:
 
 .. code-block:: bash
 
-   pip install "ex-fuzzy[evox]"
+   pip install -e ".[evox]"
 
 GPU Not Detected
 ----------------
@@ -394,6 +394,6 @@ See Also
 
 - :ref:`ga` - Genetic Algorithm Details
 - :doc:`optimize` - Optimization Guide
-- :ref:`extending` - Extending Ex-Fuzzy
+- :ref:`extending` - Extending BDI
 - `EvoX Documentation <https://evox.readthedocs.io/>`_
 - `PyTorch Documentation <https://pytorch.org/docs/>`_

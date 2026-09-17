@@ -2,7 +2,7 @@
 API Reference
 =============
 
-This section provides detailed documentation for Ex-Fuzzy modules.
+This section provides detailed documentation for BDI modules.
 
 Core Modules
 ============

@@ -60,7 +60,7 @@ classes are required: ``RuleBaseT2``, ``RuleBaseGT2``.
 Classification problems and Master Rule Bases
 ---------------------------------------------
 Up to now, we have discussed how to model a regression problem. Classification problems perform the inference in a different way, which require another kind of object: the ``ex_fuzzy.rules.MasterRuleBase``.
-This is because the way in which Ex-Fuzzy handles classification problems is by using one Rule Base per consequent. 
+This is because the way in which BDI handles classification problems is by using one Rule Base per consequent. 
 So, the ``rules.MasterRuleBase`` class is used to handle the rule bases created for each class. An object of this class is created using
 a list of rule bases, and its main method is ``rules.MasterRuleBase.winning_rule_predict()`` which returns the class obtained from the rule with highest association degree.
 You can find more the specifics of the classification inference in the next steps.

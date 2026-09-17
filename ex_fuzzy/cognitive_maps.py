@@ -1,5 +1,5 @@
 """
-Fuzzy Cognitive Maps for Ex-Fuzzy Library
+Fuzzy Cognitive Maps for BDI
 
 This module implements Fuzzy Cognitive Maps (FCMs), a soft computing technique that
 combines fuzzy logic with cognitive mapping for modeling complex systems with

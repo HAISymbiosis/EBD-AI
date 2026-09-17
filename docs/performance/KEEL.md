@@ -1,16 +1,16 @@
-# Ex-Fuzzy on the KEEL classification collection
+# BDI on the KEEL classification collection
 
-The figure in the project README places Ex-Fuzzy's rule learners next to four
+The figure in the project README places BDI's rule learners next to four
 scikit-learn baselines on the KEEL classification datasets. The rule learners are
 the genetic learner (**Genetic Search Rules** in the figure), the fuzzy
 association rule classifier in its additive and sufficient rule modes
 (**Mine+Search**), and three **FERL** presets. Everything runs under one protocol: the same folds, the
 same seed and the same raw columns. Baselines keep their library defaults. The
-Ex-Fuzzy learners use the stated, uniform configurations recorded below. It is an illustration of out-of-the-box
+BDI learners use the stated, uniform configurations recorded below. It is an illustration of out-of-the-box
 behaviour across many problems, **not** a tuned comparison and not a claim that
 any method is best.
 
-The KEEL collection is not redistributed with Ex-Fuzzy. Obtain it from
+The KEEL collection is not redistributed with BDI. Obtain it from
 [the KEEL dataset repository](https://sci2s.ugr.es/keel/datasets.php) and point
 `EX_FUZZY_KEEL_ROOT` at a directory holding one subdirectory per dataset, each
 containing a `<name>.dat` file.
@@ -64,7 +64,7 @@ python benchmarks/aggregate_keel.py --plot-only
   method. Each fold's estimator is seeded with `0 + fold_index`.
 - **Reported numbers.** Test accuracy, balanced accuracy and macro F1 per fold,
   averaged over folds; then averaged (accuracy) or taken as the median (rules,
-  time) across datasets. Ex-Fuzzy may abstain with `-1` when no rule fires; an
+  time) across datasets. BDI may abstain with `-1` when no rule fires; an
   abstention counts as an error and the count is recorded separately.
 - **Model size.** "Rules" means Genetic Search Rules' rules surviving pruning,
   Mine+Search's selected rules, FERL leaves, decision-tree leaves, or leaves summed over every tree in the random forest or the gradient boosting
@@ -102,8 +102,8 @@ The three FERL presets are the compact, medium and deep operating points of the
 medium mirror that repository's `fgrt-base` and `fgrt-performance` pipeline
 configurations. That pipeline defaults to 20 rules, depth 5, minimum improvement
 0.01 and patience 3, and those values are written out where a preset leaves them
-unset, because Ex-Fuzzy's own `FERL` defaults to 15 rules. Deep is a different
-algorithm, the paper's standalone learned tree, available in Ex-Fuzzy as
+unset, because BDI's own `FERL` defaults to 15 rules. Deep is a different
+algorithm, the paper's standalone learned tree, available in BDI as
 `DeepFERL`. It grows recursively with weighted-Gini learned splits instead of
 under a rule budget, and predicts by a soft vote over its leaves. The medium
 results were produced before the deep preset was ported, under an earlier label
@@ -125,7 +125,7 @@ Both rule modes use the same configuration; the additive mode is the library
 default.
 
 For the genetic learner, only the **search budget** departs from the defaults,
-and it is uniform across every dataset rather than tuned per problem. Ex-Fuzzy's shipped defaults (70 generations, population 30,
+and it is uniform across every dataset rather than tuned per problem. BDI's shipped defaults (70 generations, population 30,
 patience 10) stop early enough to understate it: on `vehicle` the defaults
 reached 0.42 accuracy where the budget above reached 0.62, for a tenth of the
 time. Quoting the truncated search would misrepresent the learner; quoting a

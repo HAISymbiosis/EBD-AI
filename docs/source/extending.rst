@@ -1,6 +1,6 @@
 .. _extending:
 
-Extending Ex-Fuzzy
+Extending BDI
 =======================================
 
 Some of the default behaviour/components can be easily extended to support more fuzzy/explainability tools. 

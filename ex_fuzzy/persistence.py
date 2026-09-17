@@ -1,5 +1,5 @@
 """
-Persistence Module for Ex-Fuzzy Library
+Persistence Module for BDI
 
 This module provides functionality for loading and saving fuzzy rule systems and fuzzy variables
 from/to plain text format. It enables serialization and deserialization of fuzzy systems

@@ -5,15 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ex_fuzzy"
 dynamic = ["version"]
-description = "Library to perform explainable AI using fuzzy logic."
+description = "BDI: The Explainable By Design AI Toolbox. A rebase of Ex-Fuzzy."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "AGPL-3.0-or-later"}
 authors = [
-    {name = "Javier Fumanal Idocin", email = "javierfumanalidocin@gmail.com"},
+    {name = "Prof. Javier Andreu-Perez"},
 ]
 maintainers = [
-    {name = "Javier Fumanal Idocin", email = "javierfumanalidocin@gmail.com"},
+    {name = "Prof. Javier Andreu-Perez"},
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -68,11 +68,11 @@ dev = ["ex_fuzzy[test,docs]"]
 all = ["ex_fuzzy[gpu,evox,test,docs]"]
 
 [project.urls]
-Homepage = "https://github.com/Fuminides/ex-fuzzy"
-Documentation = "https://fuminides.github.io/ex-fuzzy/"
-Repository = "https://github.com/Fuminides/ex-fuzzy"
-Download = "https://pypi.org/project/ex-fuzzy/"
+Homepage = "https://github.com/HAISymbiosis/EBD-AI"
+Documentation = "https://haisymbiosis.github.io/EBD-AI/"
+Repository = "https://github.com/HAISymbiosis/EBD-AI"
 Paper = "https://www.sciencedirect.com/science/article/pii/S0925231224008191"
+Upstream = "https://github.com/Fuminides/ex-fuzzy"
 
 [tool.setuptools]
 packages = ["ex_fuzzy"]

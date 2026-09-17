@@ -1,5 +1,5 @@
 """
-Ex-Fuzzy: explainable fuzzy rule-based learning.
+BDI: explainable fuzzy rule-based learning.
 
 Submodules and the top-level classes are imported on first access, so
 ``import ex_fuzzy`` is cheap and each module's dependencies load only when

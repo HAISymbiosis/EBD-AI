@@ -11,14 +11,14 @@ Herrera, IEEE Transactions on Fuzzy Systems 19(5), 2011):
 2. A covering-based subgroup-discovery prescreen keeps a diverse pool of rules
    per class, ranking them by weighted relative accuracy and down-weighting
    samples that are already covered. Every class keeps some candidates.
-3. Rules carry their penalized certainty factor as a weight. As in Ex-Fuzzy's
+3. Rules carry their penalized certainty factor as a weight. As in BDI's
    regression, rules combine additively (every matching rule votes) or
    sufficiently (only each sample's strongest rule decides).
 4. A genetic algorithm selects a compact subset of the pool. Because candidate
    firing strengths are fixed, whole populations are scored from one
    precomputed firing matrix without building rule-base objects.
 
-Rule firing uses the product t-norm, matching Ex-Fuzzy's Type-1 rule bases.
+Rule firing uses the product t-norm, matching BDI's Type-1 rule bases.
 """
 from __future__ import annotations
 

@@ -3,7 +3,7 @@
 Conformal Learning
 ==================
 
-Ex-Fuzzy includes conformal prediction utilities that wrap fuzzy classifiers to provide
+BDI includes conformal prediction utilities that wrap fuzzy classifiers to provide
 set-valued predictions with statistically valid coverage guarantees.
 This is useful when you want reliable uncertainty quantification alongside interpretable rules.
 

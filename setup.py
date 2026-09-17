@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-"""Build script for Ex-Fuzzy.
+"""Build script for BDI: The Explainable By Design AI Toolbox.
 
 The package metadata lives in ``pyproject.toml``. This script only adds the
 opt-in native FERL extension, which needs a C compiler and Cython.

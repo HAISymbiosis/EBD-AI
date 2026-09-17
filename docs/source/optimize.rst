@@ -3,7 +3,7 @@
 Genetic algorithm details
 =======================================
 
-The genetic algorithm searches for the optimal rule base for a problem. Ex-Fuzzy supports two evolutionary optimization backends:
+The genetic algorithm searches for the optimal rule base for a problem. BDI supports two evolutionary optimization backends:
 
 **PyMoo Backend (CPU)**:
   - Traditional CPU-based optimization

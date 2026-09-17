@@ -78,7 +78,7 @@ Example
 GPU optimization
 ================
 
-Install ``ex-fuzzy[evox]`` and select the EvoX backend to evaluate complete
+Install the ``.[evox]`` extra and select the EvoX backend to evaluate complete
 populations on CUDA. If CUDA is unavailable, EvoX runs the same PyTorch path on
 the CPU.
 

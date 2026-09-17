@@ -1,7 +1,7 @@
 Rule Mining Guide
 =================
 
-This guide provides comprehensive coverage of fuzzy rule mining in ex-fuzzy, from basic concepts to advanced techniques for discovering high-quality rules from data.
+This guide provides comprehensive coverage of fuzzy rule mining in BDI, from basic concepts to advanced techniques for discovering high-quality rules from data.
 
 .. contents:: Table of Contents
    :local:

@@ -2,55 +2,48 @@
   <img src="https://github.com/user-attachments/assets/74380868-0bee-4251-b09c-57e8ad65f2e5" width="200" height="200">
 </p>
 
-<h1 align="center">Ex-Fuzzy</h1>
+<h1 align="center">BDI: The Explainable By Design AI Toolbox</h1>
 
 <p align="center">
-  <i>🚀 A modern, explainable fuzzy logic library for Python</i>
+  <i>A modern, explainable fuzzy logic library for Python</i>
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/ex-fuzzy/">
-    <img alt="PyPI" src="https://img.shields.io/pypi/v/ex-fuzzy?color=blue&style=flat-square">
+  <a href="https://github.com/HAISymbiosis/EBD-AI/actions/workflows/tests.yml">
+    <img alt="Tests" src="https://github.com/HAISymbiosis/EBD-AI/actions/workflows/tests.yml/badge.svg">
   </a>
-  <a href="https://pypi.org/project/ex-fuzzy/">
-    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/ex-fuzzy?style=flat-square">
+  <a href="https://github.com/HAISymbiosis/EBD-AI/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/HAISymbiosis/EBD-AI?style=flat-square">
   </a>
-  <a href="https://github.com/Fuminides/ex-fuzzy/actions/workflows/tests.yml">
-    <img alt="Tests" src="https://github.com/Fuminides/ex-fuzzy/actions/workflows/tests.yml/badge.svg">
+  <a href="https://github.com/HAISymbiosis/EBD-AI/stargazers">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/HAISymbiosis/EBD-AI?style=flat-square">
   </a>
-  <a href="https://codecov.io/gh/Fuminides/ex-fuzzy">
-    <img alt="codecov" src="https://codecov.io/gh/Fuminides/ex-fuzzy/branch/main/graph/badge.svg">
-  </a>
-  <a href="https://github.com/Fuminides/ex-fuzzy/blob/main/LICENSE">
-    <img alt="License" src="https://img.shields.io/github/license/Fuminides/ex-fuzzy?style=flat-square">
-  </a>
-  <a href="https://github.com/Fuminides/ex-fuzzy/stargazers">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/Fuminides/ex-fuzzy?style=flat-square">
+  <a href="https://haisymbiosis.github.io/EBD-AI/">
+    <img alt="Docs" src="https://img.shields.io/badge/docs-GitHub%20Pages-blue?style=flat-square">
   </a>
   <a href="https://www.sciencedirect.com/science/article/pii/S0925231224008191">
     <img alt="Paper" src="https://img.shields.io/badge/Paper-Neurocomputing-green?style=flat-square">
   </a>
 </p>
 
-
-
 ---
 
-## 🎯 Overview
+## Overview
 
-**Ex-Fuzzy** is a comprehensive Python library for **explainable artificial intelligence** through fuzzy logic programming. Built with a focus on accessibility and visualization, it enables researchers and practitioners to create interpretable machine learning models using fuzzy association rules.
+**BDI** is a comprehensive Python library for **explainable artificial intelligence** through fuzzy logic programming. Built with a focus on accessibility and visualization, it enables researchers and practitioners to create interpretable machine learning models using fuzzy association rules.
 
-### Why Ex-Fuzzy?
+BDI is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy). The Python import remains `ex_fuzzy` for compatibility with that lineage.
 
-- 🔍 **Explainable AI**: Create interpretable models that humans can understand. Support for classification and regression problems.
-- 📊 **Rich Visualizations**: Beautiful plots and graphs for fuzzy sets and rules.
-- 🛠️ **Scikit-learn Compatible**: Familiar API for machine learning practitioners.
-- 🚀 **High Performance**: Optimized algorithms with optional GPU support using Evox (https://github.com/EMI-Group/evox).
+### Why BDI?
 
-## ✨ Features
+- Explainable AI: Create interpretable models that humans can understand. Support for classification and regression problems.
+- Rich visualizations: Plots and graphs for fuzzy sets and rules.
+- Scikit-learn compatible: Familiar API for machine learning practitioners.
+- High performance: Optimized algorithms with optional GPU support using [EvoX](https://github.com/EMI-Group/evox).
 
+## Features
 
-### **Explainable Rule-Based Learning**
+### Explainable Rule-Based Learning
 - **Fuzzy Association Rules**: For both classification and regression problems with genetic fine-tuning.
 - **FERL Rule Trees**: Greedy fuzzy rule learning with native belief,
   plausibility, ignorance, and set-valued predictions.
@@ -59,32 +52,33 @@
 - **Statistical Analysis of Results**: Confidence intervals for all rule quality metrics, repeated experiments for rule robustness.
 - **Conformal Predictions Supported Out-of-the-box**: Use Rule classifiers with conformal guarantees to obtain more reliable classification/regression.
 
-###  **Complete Rule Base Visualization and Validation**
+### Complete Rule Base Visualization and Validation
 - **Comprehensive Plots**: Visualize fuzzy sets and rules.
 - **Robustness Metrics**: Compute validation of rules, ensure linguistic meaning of fuzzy partitions, robustness metrics for rules and space partitions, reproducible experiments, etc.
 
-###  **Advanced Learning Routines**
+### Advanced Learning Routines
 - **Multiple Backend Support**: Choose between PyMoo (CPU) and EvoX (GPU-accelerated) backends for evolutionary optimization.
 - **Genetic Algorithms**: Rule base optimization supports fine-tuning of different hyperparameters, like tournament size, crossover rate, etc.
 - **GPU Genetic Acceleration**: EvoX backend with PyTorch provides significant speedups for large datasets and complex rule bases.
 - **Extensible Architecture**: Easy to extend with custom components.
 
-### **Complete Fuzzy Logic Systems Support**
+### Complete Fuzzy Logic Systems Support
 - **Multiple Fuzzy Set Types**: Classic, Interval-Valued Type-2, and General Type-2 fuzzy sets
 - **Linguistic Variables**: Automatic generation with quantile-based optimization.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
-Install Ex-Fuzzy using pip:
+Install BDI from this repository (the Python package name remains `ex_fuzzy`):
 
 ```bash
-# Basic installation (CPU only, PyMoo backend)
-pip install ex-fuzzy
+git clone https://github.com/HAISymbiosis/EBD-AI.git
+cd EBD-AI
+pip install -e .
 
 # With GPU support (EvoX backend with PyTorch)
-pip install "ex-fuzzy[evox]"
+pip install -e ".[evox]"
 ```
 
 ### Basic Usage
@@ -120,7 +114,7 @@ eval_fuzzy_model(classifier, X_train, y_train, X_test, y_test,
 ### FERL Evidential Classification
 
 `FERL` learns a fuzzy rule tree and derives Dempster--Shafer evidence directly
-from rule firing strengths. It is implemented natively in Ex-Fuzzy and needs no
+from rule firing strengths. It is implemented natively in BDI and needs no
 separate fuzzy-tree package.
 
 ```python
@@ -172,9 +166,9 @@ print(f"Test R2: {regressor.score(X_test, y_test):.3f}")
 regressor.print_rules()
 ```
 
-## 📊 Visualizations
+## Visualizations
 
-Ex-Fuzzy provides beautiful visualizations to understand your fuzzy models:
+BDI provides visualizations to understand your fuzzy models:
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/858ae72b-6504-4173-b81b-b11a3caf802f" height="280" title="Type-1 Fuzzy Sets">
@@ -185,7 +179,7 @@ Ex-Fuzzy provides beautiful visualizations to understand your fuzzy models:
   <img src="https://github.com/Fuminides/ex-fuzzy/assets/12574757/b356a09f-4c66-45c9-8362-ebdbda684669" height="280" title="General Type-2 Fuzzy Sets">
 </p>
 
-### 📈 Statistical Analysis
+### Statistical Analysis
 
 Monitor pattern stability and variable usage across multiple runs:
 
@@ -194,7 +188,7 @@ Monitor pattern stability and variable usage across multiple runs:
   <img src="https://github.com/user-attachments/assets/819f0988-deeb-4c8d-8cca-d8dd75e437f7" height="300" title="Usage per Variable">
 </p>
 
-### 🎯 Bootstrap Confidence Intervals
+### Bootstrap Confidence Intervals
 
 Obtain statistical confidence intervals for your metrics:
 
@@ -202,20 +196,18 @@ Obtain statistical confidence intervals for your metrics:
   <img src="https://github.com/user-attachments/assets/4d5d9d77-4ac4-474e-8ac2-6a146085ae53" alt="Bootstrap Analysis" style="border: 2px solid #ddd; border-radius: 8px; padding: 10px;" />
 </p>
 
-## ⚡ Performance
+## Performance
 
 ### Accuracy and model size on 67 KEEL datasets
 
-![Test accuracy, rules per model and training time for Ex-Fuzzy's Genetic Search Rules, Mine+Search and FERL learners against logistic regression, decision tree, random forest and gradient boosting baselines on 67 KEEL classification datasets](docs/performance/keel.svg)
+![Test accuracy, rules per model and training time for BDI's Genetic Search Rules, Mine+Search and FERL learners against logistic regression, decision tree, random forest and gradient boosting baselines on 67 KEEL classification datasets](docs/performance/keel.svg)
 
-### Ex-Fuzzy 2.0 vs Ex-Fuzzy 3.0 training speed
-
-
+### Training speed in the ex-fuzzy lineage (2.0 vs 3.0)
 
 ![T1 complete-fit scaling from 1,000 to 100,000 samples and 10 to 200 features](docs/performance/t1_scaling.svg)
 
-Our implementation is getting more efficient! This experiment crosses **1,000 / 10,000 / 100,000 samples**
-with **10 / 50 / 200 features**, for both fixed and optimized partitions. All of them using CPU backend.
+This experiment crosses **1,000 / 10,000 / 100,000 samples**
+with **10 / 50 / 200 features**, for both fixed and optimized partitions, using the CPU backend.
 
 ### EvoX GPU acceleration
 
@@ -227,7 +219,7 @@ population 40 and 5 generations):
 
 ### Backend Comparison
 
-Ex-Fuzzy supports two evolutionary optimization backends:
+BDI supports two evolutionary optimization backends:
 
 | Backend | Hardware | Best For |
 |---------|----------|----------|
@@ -250,9 +242,9 @@ Ex-Fuzzy supports two evolutionary optimization backends:
 Both backends automatically batch operations to fit available memory and large datasets are processed in chunks to prevent out-of-memory errors.
 
 
-## 🛠️ Examples
+## Examples
 
-### 🔬 Notebooks
+### Notebooks
 
 Eight executed notebooks in [`Demos/`](Demos/README.md) walk through the library; they render on GitHub with their outputs.
 
@@ -269,11 +261,11 @@ Eight executed notebooks in [`Demos/`](Demos/README.md) walk through the library
 | [EvoX backend](Demos/evox_backend_demo.py) | GPU-accelerated training with EvoX (script) |
 
 #### Real Applications
-  - Ex-Fuzzy in fNIRS data: https://github.com/jjcato9/ex_fuzzy_fnirs_demo
-### 💻 Code Examples
+  - BDI in fNIRS data: https://github.com/jjcato9/ex_fuzzy_fnirs_demo
+### Code Examples
 
 <details>
-<summary><b>📊 Fuzzy Partition Visualization</b></summary>
+<summary><b>Fuzzy Partition Visualization</b></summary>
 
 ```python
 # Plot fuzzy variable partitions
@@ -282,7 +274,7 @@ classifier.plot_fuzzy_variables()
 </details>
 
 <details>
-<summary><b>🚀 GPU-Accelerated Training (EvoX Backend)</b></summary>
+<summary><b>GPU-Accelerated Training (EvoX Backend)</b></summary>
 
 ```python
 from ex_fuzzy import BaseFuzzyRulesClassifier, BaseFuzzyRulesRegressor
@@ -320,7 +312,7 @@ print(regressor.gpu_accelerated_)      # True only when CUDA was used
 </details>
 
 <details>
-<summary><b>🧪 Bootstrap Analysis</b></summary>
+<summary><b>Bootstrap Analysis</b></summary>
 
 ```python
 from ex_fuzzy.bootstrapping_test import generate_bootstrap_samples
@@ -340,14 +332,14 @@ print(f"Bootstrap confidence interval: {np.percentile(bootstrap_results, [2.5, 9
 ```
 </details>
 
-## 📚 Documentation
+## Documentation
 
-- **📖 [User Guide](https://fuminides.github.io/ex-fuzzy/user-guide/index.html)**: Comprehensive tutorials and examples
-- **🔧 [API Reference](https://fuminides.github.io/ex-fuzzy/api/index.html)**: Detailed function and class documentation
-- **🚀 [Quick Start Guide](https://fuminides.github.io/ex-fuzzy/getting-started.html)**: Get up and running fast
-- **📊 [Examples Gallery](https://github.com/Fuminides/ex-fuzzy/tree/main/Demos)**: Real-world use cases
+- **[User Guide](https://haisymbiosis.github.io/EBD-AI/user-guide/index.html)**: Comprehensive tutorials and examples
+- **[API Reference](https://haisymbiosis.github.io/EBD-AI/api/index.html)**: Detailed function and class documentation
+- **[Quick Start Guide](https://haisymbiosis.github.io/EBD-AI/getting-started.html)**: Get up and running fast
+- **[Examples Gallery](https://github.com/HAISymbiosis/EBD-AI/tree/main/Demos)**: Real-world use cases
 
-## 🛡️ Requirements
+## Requirements
 
 ### Core Dependencies
 - **Python** >= 3.10
@@ -358,34 +350,34 @@ print(f"Bootstrap confidence interval: {np.percentile(bootstrap_results, [2.5, 9
 - **PyMOO** >= 0.6.2
 
 ### Optional Dependencies
-- **EvoX** >= 1.3.0 (for GPU-accelerated evolutionary optimization): `pip install "ex-fuzzy[evox]"`
+- **EvoX** >= 1.3.0 (for GPU-accelerated evolutionary optimization): `pip install -e ".[evox]"`
 - **PyTorch** >= 2.6.0 (required by EvoX)
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from the community! Here's how you can help:
 
 ### Bug Reports
-Found a bug? Please [open an issue](https://github.com/Fuminides/ex-fuzzy/issues) with:
+Found a bug? Please [open an issue](https://github.com/HAISymbiosis/EBD-AI/issues) with:
 - Clear description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
 - System information
 
 ### Feature Requests
-Have an idea? [Submit a feature request](https://github.com/Fuminides/ex-fuzzy/issues) with:
+Have an idea? [Submit a feature request](https://github.com/HAISymbiosis/EBD-AI/issues) with:
 - Clear use case description
 - Proposed API design
 - Implementation considerations
 
-### 💻 Code Contributions
+### Code Contributions
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes with tests
 4. Run the test suite: `pytest tests/ -v`
 5. Submit a pull request
 
-### 🧪 Running Tests
+### Running Tests
 ```bash
 # Install test dependencies
 pip install pytest pytest-cov
@@ -401,13 +393,16 @@ pytest tests/test_fuzzy_sets_comprehensive.py -v
 ```
 
 
-## 📄 License
+## License
 
 This project is licensed under the **AGPL v3 License** - see the [LICENSE](LICENSE) file for details.
 
-## 📑 Citation
+Copyright for this rebase and BDI branding: **Prof. Javier Andreu-Perez**.
+The codebase is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy); original copyright of that project remains with its authors.
 
-If you use Ex-Fuzzy in your research, please cite our paper:
+## Citation
+
+If you use BDI in your research, please cite the original Ex-Fuzzy paper that this toolbox rebases:
 
 ```bibtex
 @article{fumanalex2024,
@@ -422,20 +417,21 @@ If you use Ex-Fuzzy in your research, please cite our paper:
 }
 ```
 
-## 👥 Main Authors
+## Author
 
-- **[Javier Fumanal-Idocin](https://github.com/Fuminides)** - *Lead Developer*
-- **[Javier Andreu-Perez](https://github.com/jandreu)** - *Development manager & Licensing officer*
+- **[Prof. Javier Andreu-Perez](https://github.com/jandreu)** — Author
 
-## 🌟 Acknowledgments
+## Acknowledgments
 
-- Special thanks to all [contributors](https://github.com/Fuminides/ex-fuzzy/graphs/contributors)
+BDI is a rebase of **[Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy)** by Javier Fumanal-Idocin and Javier Andreu-Perez.
+
+- Special thanks to all [Ex-Fuzzy contributors](https://github.com/Fuminides/ex-fuzzy/graphs/contributors)
 - This research has been supported by EU Horizon Europe under the Marie Skłodowska-Curie COFUND grant No 101081327 YUFE4Postdocs.
 ---
 
 <p align="center">
-  <b>⭐ Star us on GitHub if you find Ex-Fuzzy useful!</b><br>
-  <a href="https://github.com/Fuminides/ex-fuzzy/stargazers">
-    <img src="https://img.shields.io/github/stars/Fuminides/ex-fuzzy?style=social" alt="GitHub Stars">
+  <b>Star us on GitHub if you find BDI useful!</b><br>
+  <a href="https://github.com/HAISymbiosis/EBD-AI/stargazers">
+    <img src="https://img.shields.io/github/stars/HAISymbiosis/EBD-AI?style=social" alt="GitHub Stars">
   </a>
 </p>

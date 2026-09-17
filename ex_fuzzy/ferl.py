@@ -1,7 +1,7 @@
 """
 Fast Evidential Rule Learning (FERL) for interpretable classification.
 
-This module is a native Ex-Fuzzy port of the fuzzy greedy rule-tree learner.
+This module is a native BDI port of the fuzzy greedy rule-tree learner.
 FERL grows fuzzy rules greedily and turns their firing strengths into
 Dempster--Shafer evidence for point, interval, and set-valued predictions.
 """

@@ -2,19 +2,20 @@
 Getting Started
 ===============
 
-Welcome to Ex-Fuzzy! This guide will help you get up and running with fuzzy
+Welcome to BDI! This guide will help you get up and running with fuzzy
 logic classification and regression in just a few minutes.
 
-What is Ex-Fuzzy?
-==================
+What is BDI?
+============
 
-Ex-Fuzzy is a Python library for building explainable fuzzy rule-based
-classifiers and regressors. Unlike traditional "black box" machine learning
-models, Ex-Fuzzy generates human-readable fuzzy rules that explain how
-predictions are made.
+BDI (The Explainable By Design AI Toolbox) is a rebase of Ex-Fuzzy for
+building explainable fuzzy rule-based classifiers and regressors. Unlike
+traditional "black box" machine learning models, BDI generates human-readable
+fuzzy rules that explain how predictions are made. The Python import remains
+``ex_fuzzy``.
 
 .. note::
-    **Why Choose Ex-Fuzzy?**
+    **Why Choose BDI?**
     
     - **Explainable**: Generate interpretable fuzzy rules
     - **Fast**: Vectorized rule evaluation, with an optional GPU backend for large datasets
@@ -25,30 +26,24 @@ predictions are made.
 Installation
 ============
 
-Install Ex-Fuzzy using pip:
+Install BDI from this repository:
 
 .. code-block:: bash
 
-    pip install ex-fuzzy
+    git clone https://github.com/HAISymbiosis/EBD-AI.git
+    cd EBD-AI
+    pip install -e .
 
 Install the optional EvoX/PyTorch backend for GPU-oriented optimization:
 
 .. code-block:: bash
 
-    pip install "ex-fuzzy[evox]"
-
-Or from source:
-
-.. code-block:: bash
-
-    git clone https://github.com/fuminides/ex-fuzzy.git
-    cd ex-fuzzy
-    pip install -e .
+    pip install -e ".[evox]"
 
 Dependencies
 ------------
 
-Ex-Fuzzy requires:
+BDI requires:
 
 - Python 3.10+
 - NumPy

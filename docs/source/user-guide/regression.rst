@@ -2,7 +2,7 @@
 Fuzzy Regression
 ================
 
-This guide covers regression with Ex-Fuzzy: predicting a continuous target with
+This guide covers regression with BDI: predicting a continuous target with
 rules you can read. It assumes you have met :doc:`core-concepts`.
 
 Introduction
@@ -55,7 +55,7 @@ Install the optional backend and select it on the estimator:
 
 .. code-block:: bash
 
-   python -m pip install "ex-fuzzy[evox]"
+   python -m pip install -e ".[evox]"
 
 .. code-block:: python
 

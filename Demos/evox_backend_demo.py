@@ -400,7 +400,7 @@ def print_summary():
 
 ```bash
 # Basic (pymoo only)
-pip install ex-fuzzy
+pip install -e .
 
 # With EvoX support (now uses PyTorch)
 pip install evox torch
@@ -408,7 +408,7 @@ pip install evox torch
 
 ### Additional Resources:
 
-- ex-fuzzy Documentation: https://github.com/Fuminides/ex-fuzzy
+- ex-fuzzy Documentation: https://github.com/HAISymbiosis/EBD-AI
 - EvoX Library: https://github.com/EMI-Group/evox
 - PyMoo Library: https://pymoo.org/
 """

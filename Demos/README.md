@@ -1,10 +1,10 @@
-# Ex-Fuzzy demos
+# BDI demos
 
 Eight notebooks walk through the library, from a first classifier to
 uncertainty quantification. They are executed with their outputs stored, so
 they read well on GitHub, and every one of them runs in well under a minute
-on a laptop. Open them with Jupyter after `pip install ex-fuzzy` (or
-`pip install -e .` from a checkout), or read them online.
+on a laptop. Open them with Jupyter after installing BDI from a checkout
+(`pip install -e .`), or read them online.
 
 | Notebook | What it shows |
 | --- | --- |

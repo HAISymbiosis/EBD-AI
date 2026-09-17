@@ -1,5 +1,5 @@
 """
-Bootstrap Statistical Testing Module for Ex-Fuzzy Library
+Bootstrap Statistical Testing Module for BDI
 
 This module provides comprehensive bootstrap statistical testing capabilities for evaluating
 the performance and reliability of fuzzy rules and fuzzy rule-based classifiers.

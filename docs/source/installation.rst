@@ -2,16 +2,18 @@
 Installation
 ============
 
-Install Ex-Fuzzy with ``pip`` in the Python environment where you want to use
-it. The environment can come from ``venv``, conda, pyenv, system Python, or any
-other Python manager.
+Install BDI from a repository checkout in the Python environment where you want
+to use it. The environment can come from ``venv``, conda, pyenv, system Python,
+or any other Python manager. The Python package name remains ``ex_fuzzy``.
 
 Quick Install
 =============
 
 .. code-block:: bash
 
-    python -m pip install ex-fuzzy
+    git clone https://github.com/HAISymbiosis/EBD-AI.git
+    cd EBD-AI
+    python -m pip install -e .
 
 Using ``python -m pip`` keeps the command tied to the active Python interpreter,
 which avoids installing into the wrong environment.
@@ -23,16 +25,16 @@ Install extras only when you need the corresponding feature:
 
 .. code-block:: bash
 
-    python -m pip install "ex-fuzzy[gpu]"   # PyTorch support for GPU tensors
-    python -m pip install "ex-fuzzy[evox]"  # EvoX/PyTorch evolutionary backend
-    python -m pip install "ex-fuzzy[docs]"  # Documentation build dependencies
-    python -m pip install "ex-fuzzy[all]"   # All optional dependencies
+    python -m pip install -e ".[gpu]"   # PyTorch support for GPU tensors
+    python -m pip install -e ".[evox]"  # EvoX/PyTorch evolutionary backend
+    python -m pip install -e ".[docs]"  # Documentation build dependencies
+    python -m pip install -e ".[all]"   # All optional dependencies
 
-Most users only need:
+Most users only need the editable install from a checkout:
 
 .. code-block:: bash
 
-    python -m pip install ex-fuzzy
+    python -m pip install -e .
 
 Environment Examples
 ====================
@@ -45,7 +47,7 @@ With ``venv``:
 
     python -m venv .venv
     source .venv/bin/activate
-    python -m pip install ex-fuzzy
+    python -m pip install -e .
 
 On Windows, activate the environment with:
 
@@ -57,9 +59,9 @@ With conda:
 
 .. code-block:: bash
 
-    conda create -n exfuzzy python=3.11
-    conda activate exfuzzy
-    python -m pip install ex-fuzzy
+    conda create -n bdi python=3.11
+    conda activate bdi
+    python -m pip install -e .
 
 Development Install
 ===================
@@ -68,8 +70,8 @@ From a repository checkout:
 
 .. code-block:: bash
 
-    git clone https://github.com/fuminides/ex-fuzzy.git
-    cd ex-fuzzy
+    git clone https://github.com/HAISymbiosis/EBD-AI.git
+    cd EBD-AI
     python -m pip install -e .
 
 For development and documentation work:
@@ -85,7 +87,7 @@ active Python environment.
 Requirements
 ============
 
-Ex-Fuzzy requires Python 3.10 or later. Core dependencies are installed
+BDI requires Python 3.10 or later. Core dependencies are installed
 automatically by ``pip``:
 
 .. list-table::
@@ -131,7 +133,7 @@ backend, install the EvoX extra in the same environment:
 
 .. code-block:: bash
 
-    python -m pip install "ex-fuzzy[evox]"
+    python -m pip install -e ".[evox]"
 
 Then select it when creating a classifier or regressor:
 
@@ -143,7 +145,7 @@ Then select it when creating a classifier or regressor:
     regressor = BaseFuzzyRulesRegressor(backend="evox")
 
 For CUDA-specific PyTorch wheels, install PyTorch using the command recommended
-by the PyTorch project for your platform, then install Ex-Fuzzy with the EvoX
+by the PyTorch project for your platform, then install BDI with the EvoX
 extra in the same environment.
 
 Troubleshooting
@@ -157,7 +159,7 @@ environment:
 
 .. code-block:: bash
 
-    python -m pip show ex-fuzzy
+    python -m pip show ex_fuzzy
     python -c "import sys; print(sys.executable)"
 
 If an optional backend import fails, install the matching extra in the active
@@ -165,7 +167,7 @@ environment:
 
 .. code-block:: bash
 
-    python -m pip install "ex-fuzzy[evox]"
+    python -m pip install -e ".[evox]"
 
 Next Steps
 ==========

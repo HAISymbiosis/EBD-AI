@@ -2,7 +2,7 @@
 Choosing a Workflow
 ===================
 
-Ex-Fuzzy exposes several modeling paths. Choose the smallest workflow that
+BDI exposes several modeling paths. Choose the smallest workflow that
 matches the uncertainty, interpretability, and performance needs of the task.
 
 Estimator Choices

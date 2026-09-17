@@ -15,9 +15,12 @@ with open(os.path.abspath('../../ex_fuzzy/_version.py'), encoding='utf-8') as f:
     exec(f.read(), version_ns)
 
 # -- Project information -----------------------------------------------------
-project = 'Ex-Fuzzy'
-copyright = f'2023-{datetime.now().year}, Javier Fumanal Idocin'
-author = 'Javier Fumanal Idocin'
+project = 'BDI'
+copyright = (
+    f'2026-{datetime.now().year}, Prof. Javier Andreu-Perez. '
+    'Rebase of Ex-Fuzzy by Javier Fumanal Idocin and Javier Andreu-Perez.'
+)
+author = 'Prof. Javier Andreu-Perez'
 release = version_ns['__version__']
 version = version_ns['__version__']
 
@@ -88,8 +91,8 @@ intersphinx_mapping = {}
 
 # External links
 extlinks = {
-    'issue': ('https://github.com/fuminides/ex-fuzzy/issues/%s', 'issue %s'),
-    'pr': ('https://github.com/fuminides/ex-fuzzy/pull/%s', 'PR %s'),
+    'issue': ('https://github.com/HAISymbiosis/EBD-AI/issues/%s', 'issue %s'),
+    'pr': ('https://github.com/HAISymbiosis/EBD-AI/pull/%s', 'PR %s'),
 }
 
 # Todo configuration
@@ -104,23 +107,17 @@ copybutton_prompt_is_regexp = True
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = 'pydata_sphinx_theme'
-html_title = f"Ex-Fuzzy {version}"
+html_title = f"BDI {version}"
 
 html_theme_options = {
     "logo": {
-        "text": "Ex-Fuzzy",
+        "text": "BDI",
     },
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/fuminides/ex-fuzzy",
+            "url": "https://github.com/HAISymbiosis/EBD-AI",
             "icon": "fab fa-github-square",
-            "type": "fontawesome",
-        },
-        {
-            "name": "PyPI",
-            "url": "https://pypi.org/project/ex-fuzzy/",
-            "icon": "fas fa-box",
             "type": "fontawesome",
         },
     ],
@@ -138,8 +135,8 @@ html_theme_options = {
 }
 
 html_context = {
-    "github_user": "fuminides",
-    "github_repo": "ex-fuzzy",
+    "github_user": "HAISymbiosis",
+    "github_repo": "EBD-AI",
     "github_version": "main",
     "doc_path": "docs/source",
 }
@@ -165,20 +162,20 @@ latex_elements = {
 }
 
 latex_documents = [
-    ('index', 'ex-fuzzy.tex', 'Ex-Fuzzy Documentation',
-     'Javier Fumanal Idocin', 'manual'),
+    ('index', 'bdi.tex', 'BDI: The Explainable By Design AI Toolbox',
+     'Prof. Javier Andreu-Perez', 'manual'),
 ]
 
 # -- Options for manual page output ------------------------------------------
 man_pages = [
-    ('index', 'ex-fuzzy', 'Ex-Fuzzy Documentation',
+    ('index', 'bdi', 'BDI: The Explainable By Design AI Toolbox',
      [author], 1)
 ]
 
 # -- Options for Texinfo output ----------------------------------------------
 texinfo_documents = [
-    ('index', 'ex-fuzzy', 'Ex-Fuzzy Documentation',
-     author, 'ex-fuzzy', 'A library for explainable fuzzy logic inference.',
+    ('index', 'bdi', 'BDI: The Explainable By Design AI Toolbox',
+     author, 'bdi', 'The Explainable By Design AI Toolbox, a rebase of Ex-Fuzzy.',
      'Miscellaneous'),
 ]
 

@@ -1,5 +1,5 @@
 """
-Temporal Fuzzy Sets Module for Ex-Fuzzy Library
+Temporal Fuzzy Sets Module for BDI
 
 This module extends the base fuzzy sets functionality with temporal-aware fuzzy sets,
 enabling modeling of time-dependent fuzzy systems and temporal rule bases.

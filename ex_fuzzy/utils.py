@@ -1,5 +1,5 @@
 """
-Utility Functions for Ex-Fuzzy Library
+Utility Functions for BDI
 
 This module provides utility functions that support fuzzy system operations but are not
 fuzzy-specific themselves. The main focus is on quantile computation for fuzzy partitions,

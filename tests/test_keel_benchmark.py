@@ -259,7 +259,7 @@ def test_ferl_presets_record_their_configuration():
     compact = benchmark_keel.method_configuration('exfuzzy-ferl-compact')
     deep = benchmark_keel.method_configuration('exfuzzy-ferl-deep')
     medium = benchmark_keel.method_configuration('exfuzzy-ferl-medium')
-    # Written out explicitly: Ex-Fuzzy's FERL defaults to 15 rules, fgrt to 20.
+    # Written out explicitly: BDI's FERL defaults to 15 rules, fgrt to 20.
     assert compact['max_rules'] == 20 and compact['fit'] == {'patience': 3}
     # Medium is the paper's learned-threshold preset (fgrt-performance).
     assert medium['split_mode'] == 'learned' and medium['max_rules'] == 150

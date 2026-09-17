@@ -1,4 +1,4 @@
-# Ex-Fuzzy speedup validation
+# BDI speedup validation
 
 > Accuracy and model size across the KEEL collection are documented separately in
 > [KEEL.md](KEEL.md).

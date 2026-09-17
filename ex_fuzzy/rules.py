@@ -1,5 +1,5 @@
 """
-Fuzzy Rules and Inference Engine for Ex-Fuzzy Library
+Fuzzy Rules and Inference Engine for BDI
 
 This module contains the core classes and functions for fuzzy rule definition, management,
 and inference. It implements a complete fuzzy inference system supporting Type-1, Type-2,

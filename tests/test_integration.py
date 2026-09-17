@@ -1,5 +1,5 @@
 """
-Integration tests for Ex-Fuzzy library.
+Integration tests for BDI.
 
 Tests complete pipelines from data to predictions,
 ensuring all components work together correctly.

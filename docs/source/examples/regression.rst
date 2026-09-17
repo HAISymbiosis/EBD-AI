@@ -2,7 +2,7 @@
 Regression Examples
 ===================
 
-Ex-Fuzzy learns interpretable Type-1 fuzzy rules for continuous targets with
+BDI learns interpretable Type-1 fuzzy rules for continuous targets with
 :class:`ex_fuzzy.BaseFuzzyRulesRegressor`. The estimator provides the familiar
 ``fit``, ``predict``, and ``score`` methods; ``score`` returns :math:`R^2`.
 
@@ -73,7 +73,7 @@ estimator:
 
 .. code-block:: bash
 
-   python -m pip install "ex-fuzzy[evox]"
+   python -m pip install -e ".[evox]"
 
 .. code-block:: python
 
@@ -89,7 +89,7 @@ estimator:
    print(gpu_regressor.optimization_device_)  # "cuda" or "cpu"
    print(gpu_regressor.gpu_accelerated_)      # True only on CUDA
 
-EvoX evolves the population while Ex-Fuzzy evaluates the complete regression
+EvoX evolves the population while BDI evaluates the complete regression
 objective in PyTorch. CUDA is selected automatically when available; otherwise
 the same implementation runs on CPU. Population and sample batching adapts to
 available memory.

@@ -7,7 +7,7 @@ This page collects common installation and runtime issues.
 Import Errors
 =============
 
-If importing Ex-Fuzzy fails after installing from source, verify that the
+If importing BDI fails after installing from source, verify that the
 package was installed from the repository root:
 
 .. code-block:: bash
@@ -28,7 +28,7 @@ optimization:
 
 .. code-block:: bash
 
-    pip install "ex-fuzzy[evox]"
+    pip install -e ".[evox]"
 
 If PyTorch cannot find a compatible CUDA device, first confirm that the default
 CPU backend works:
