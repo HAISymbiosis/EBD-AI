@@ -1,0 +1,160 @@
+=== workspace ===
+total 124
+drwxrwxr-x 11 ubuntu ubuntu  4096 Sep 17 00:22 .
+drwxrwxr-x  5 ubuntu ubuntu  4096 Sep 17 00:22 ..
+drwxrwxr-x  7 ubuntu ubuntu  4096 Sep 17 00:22 .git
+drwxrwxr-x  3 ubuntu ubuntu  4096 Sep 17 00:22 .github
+-rw-rw-r--  1 ubuntu ubuntu   987 Sep 17 00:22 .gitignore
+drwxrwxr-x  4 ubuntu ubuntu  4096 Sep 17 00:22 .grok-session
+-rw-rw-r--  1 ubuntu ubuntu   861 Sep 17 00:22 .readthedocs.yaml
+-rw-rw-r--  1 ubuntu ubuntu   473 Sep 17 00:22 AGENTS.md
+-rw-rw-r--  1 ubuntu ubuntu   133 Sep 17 00:22 CLAUDE.md
+=== .grok-session in clone ===
+total 1688
+drwxrwxr-x  4 ubuntu ubuntu    4096 Sep 17 00:22 .
+drwxrwxr-x 11 ubuntu ubuntu    4096 Sep 17 00:22 ..
+-rw-rw-r--  1 ubuntu ubuntu     303 Sep 17 00:22 README.md
+-rw-rw-r--  1 ubuntu ubuntu     636 Sep 17 00:22 announcement_state.json
+-rw-rw-r--  1 ubuntu ubuntu  472191 Sep 17 00:22 chat_history.jsonl
+-rw-rw-r--  1 ubuntu ubuntu  123880 Sep 17 00:22 events.jsonl
+drwxrwxr-x  2 ubuntu ubuntu    4096 Sep 17 00:22 mcp
+-rw-rw-r--  1 ubuntu ubuntu     624 Sep 17 00:22 prompt_context.json
+-rw-rw-r--  1 ubuntu ubuntu    2280 Sep 17 00:22 resources_state.json
+-rw-rw-r--  1 ubuntu ubuntu    1602 Sep 17 00:22 signals.json
+-rw-rw-r--  1 ubuntu ubuntu     816 Sep 17 00:22 summary.json
+-rw-rw-r--  1 ubuntu ubuntu    5900 Sep 17 00:22 system_prompt.txt
+drwxrwxr-x  2 ubuntu ubuntu    4096 Sep 17 00:22 terminal
+-rw-rw-r--  1 ubuntu ubuntu       1 Sep 17 00:22 title_refresh_idx
+-rw-rw-r--  1 ubuntu ubuntu   60513 Sep 17 00:22 tool_definitions.json
+-rw-rw-r--  1 ubuntu ubuntu 1009868 Sep 17 00:22 updates.jsonl
+=== live session ===
+total 2900
+drwx------ 4 ubuntu ubuntu    4096 Sep 17 00:24 .
+drwx------ 6 ubuntu ubuntu    4096 Sep 16 23:50 ..
+-rw-rw-r-- 1 ubuntu ubuntu     636 Sep 16 23:48 announcement_state.json
+-rw-rw-r-- 1 ubuntu ubuntu  750213 Sep 17 00:24 chat_history.jsonl
+-rw-rw-r-- 1 ubuntu ubuntu       0 Sep 16 23:48 chat_history.jsonl.lock
+-rw-rw-r-- 1 ubuntu ubuntu  366597 Sep 17 00:24 events.jsonl
+drwxrwxr-x 2 ubuntu ubuntu    4096 Sep 16 23:54 mcp
+-rw-rw-r-- 1 ubuntu ubuntu     624 Sep 16 23:50 prompt_context.json
+-rw-rw-r-- 1 ubuntu ubuntu    2434 Sep 17 00:22 resources_state.json
+-rw-rw-r-- 1 ubuntu ubuntu    1005 Sep 17 00:23 rewind_points.jsonl
+-rw-rw-r-- 1 ubuntu ubuntu       0 Sep 16 23:58 rewind_points.jsonl.lock
+-rw-rw-r-- 1 ubuntu ubuntu    1692 Sep 17 00:23 signals.json
+-rw-rw-r-- 1 ubuntu ubuntu     990 Sep 17 00:24 summary.json
+-rw-rw-r-- 1 ubuntu ubuntu       0 Sep 16 23:42 summary.json.lock
+-rw-rw-r-- 1 ubuntu ubuntu    5900 Sep 16 23:50 system_prompt.txt
+drwxrwxr-x 2 ubuntu ubuntu    4096 Sep 17 00:24 terminal
+-rw-rw-r-- 1 ubuntu ubuntu       1 Sep 17 00:19 title_refresh_idx
+-rw-rw-r-- 1 ubuntu ubuntu   60513 Sep 16 23:52 tool_definitions.json
+-rw-rw-r-- 1 ubuntu ubuntu 1715233 Sep 17 00:24 updates.jsonl
+-rw-rw-r-- 1 ubuntu ubuntu       0 Sep 16 23:48 updates.jsonl.lock
+-rw-rw-r-- 1 ubuntu ubuntu    3731 Sep 17 00:23 usage.json
+=== timestamps / sizes ===
+root=/home/ubuntu/.grok/sessions/%2Fhome%2Fubuntu%2Fgithub/01a0ac99-8e59-7441-9d61-a9124ffce4c6
+  files=57 bytes=3011197
+  newest 2026-09-17 00:24:05 terminal/call-e4b0911c-8e2c-463d-b367-4a68169312a4-90.log 0
+  listing:
+    23:48:16      636 announcement_state.json
+    00:24:05   750213 chat_history.jsonl
+    23:48:16        0 chat_history.jsonl.lock
+    00:24:05   366597 events.jsonl
+    23:54:42    24925 mcp/call-d5fa5138-74f4-41f8-bed9-8e5e4f8e8157-31.json
+    23:50:51      624 prompt_context.json
+    00:22:57     2434 resources_state.json
+    00:23:04     1005 rewind_points.jsonl
+    23:58:44        0 rewind_points.jsonl.lock
+    00:23:04     1692 signals.json
+    00:24:05      990 summary.json
+    23:42:19        0 summary.json.lock
+    23:50:51     5900 system_prompt.txt
+    00:13:17      866 terminal/call-031680e4-38e1-410a-89a8-61314489bfab-64.log
+    00:22:57     2138 terminal/call-0b2c174a-501a-4646-beff-c4dee27b4974-89.log
+    23:56:28     3390 terminal/call-0ce9e486-071e-45c1-a964-2715b54ca1fa-38.log
+    00:14:24      700 terminal/call-0d6a047e-2ca8-4360-9eed-ca5810dfb4d5-72.log
+    23:48:52       34 terminal/call-1ae711dd-238d-4313-b477-68c8caba6c75-14.log
+    23:57:53     1898 terminal/call-23832cfb-77f3-43b7-a723-8f94d4c3e8c7-44.log
+    00:21:46     2278 terminal/call-2440bcf3-c8c8-4812-b507-1bdbf6fa8b1a-86.log
+    00:14:37     2956 terminal/call-28476a1e-c661-4de6-8b7a-4136101d72eb-73.log
+    23:49:29     3829 terminal/call-29285da4-9508-4b52-8c46-0978327aa22a-19.log
+    23:54:05    13925 terminal/call-35b25f7e-16d5-4421-9cc2-20a3dbc1546a-26.log
+    00:15:56       87 terminal/call-481b0529-3235-41c9-b76d-26687ca11d8d-76.log
+    23:49:15      748 terminal/call-4bb81a64-3030-4063-bb70-9af31ed9506f-17.log
+    23:57:14     1231 terminal/call-4bf25906-102b-465c-a777-8c7d78cde868-41.log
+    00:17:50        0 terminal/call-4c535ec2-365f-465e-9633-843d0da6442c-81.log
+    23:58:17     2473 terminal/call-5089c586-e88f-441a-ae95-c2166582342a-45.log
+    00:22:31     2514 terminal/call-61da62d5-bf66-4d34-9bfe-d9c19d798402-88.log
+    23:58:29     5710 terminal/call-700ad9b7-603b-4689-bdcf-e67e279265f1-46.log
+    00:13:02      950 terminal/call-74c47c02-22b4-474e-9541-016092113f7a-63.log
+    00:16:02     3654 terminal/call-86752e10-2d13-4e13-913e-c0eaee03c747-77.log
+    23:57:06     1394 terminal/call-8de74ed4-e497-4d0b-b0a8-5ce212dad2a7-40.log
+    23:53:38      633 terminal/call-a56c128d-cad4-49e2-b984-74e8999363fb-23.log
+    23:54:17     5969 terminal/call-ad311e08-9e60-4c68-8386-6c8ade2f4578-28.log
+    23:56:01     5301 terminal/call-ba33b454-1c82-4a3f-b1ac-958dc5d83211-35.log
+    23:55:07       77 terminal/call-c047add6-d99a-4e71-b39d-4f66345fac4c-34.log
+    00:06:01      568 terminal/call-c69a08c4-d68f-480c-abe1-346355116308-61.log
+    00:16:41      171 terminal/call-c7fa5fe5-a6e7-477b-bd15-4e8c7e7e3e20-78.log
+    23:57:33     1815 terminal/call-cfa13034-0bf5-4559-b07c-74953cae0849-43.log
+    00:13:49      417 terminal/call-d1b7c7a7-c4ee-4e56-ad39-176f55af3310-71.log
+    00:05:47      313 terminal/call-d8380f60-fb86-4ebc-aabd-065242429d1f-59.log
+    23:56:56       37 terminal/call-d9c47e5a-af94-4d00-85ba-fa8067ae4205-39.log
+    00:15:34     2934 terminal/call-e40e7224-a1c9-4ef3-a23b-e385188e3458-75.log
+    00:24:05        0 terminal/call-e4b0911c-8e2c-463d-b367-4a68169312a4-90.log
+    00:22:10      159 terminal/call-e84d64db-483b-47d7-b1f1-cb1fb45bb9a1-87.log
+    23:49:04       97 terminal/call-f128203d-2972-4fdd-ab3d-08f10567508e-16.log
+    00:15:16     3754 terminal/call-f395b7bf-fd6d-4bbf-bae3-4be7d4815571-74.log
+    00:17:32      216 terminal/call-f4c9d3eb-f34e-40b7-bd6c-047f55b5c2c4-79.log
+    00:18:31      733 terminal/call-f67015f2-76cb-4ea4-a96e-ddc5985b85b9-84.log
+    00:21:27      534 terminal/call-f954fa03-e565-457d-acdb-4ef3b58861a9-83.log
+    23:53:20     2200 terminal/call-fa745233-2135-44cd-9ad7-e9eb97bf46ec-22.log
+    00:19:00        1 title_refresh_idx
+    23:52:58    60513 tool_definitions.json
+    00:24:05  1715233 updates.jsonl
+    23:48:16        0 updates.jsonl.lock
+    00:23:04     3731 usage.json
+
+root=/home/ubuntu/github/EBD-AI/.grok-session
+  files=29 bytes=1744219
+  newest 2026-09-17 00:22:55 updates.jsonl 1009868
+  listing:
+    00:22:55      303 README.md
+    00:22:55      636 announcement_state.json
+    00:22:55   472191 chat_history.jsonl
+    00:22:55   123880 events.jsonl
+    00:22:55    24925 mcp/call-d5fa5138-74f4-41f8-bed9-8e5e4f8e8157-31.json
+    00:22:55      624 prompt_context.json
+    00:22:55     2280 resources_state.json
+    00:22:55     1602 signals.json
+    00:22:55      816 summary.json
+    00:22:55     5900 system_prompt.txt
+    00:22:55     3390 terminal/call-0ce9e486-071e-45c1-a964-2715b54ca1fa-38.log
+    00:22:55       34 terminal/call-1ae711dd-238d-4313-b477-68c8caba6c75-14.log
+    00:22:55        0 terminal/call-23832cfb-77f3-43b7-a723-8f94d4c3e8c7-44.log
+    00:22:55     3829 terminal/call-29285da4-9508-4b52-8c46-0978327aa22a-19.log
+    00:22:55    13925 terminal/call-35b25f7e-16d5-4421-9cc2-20a3dbc1546a-26.log
+    00:22:55      748 terminal/call-4bb81a64-3030-4063-bb70-9af31ed9506f-17.log
+    00:22:55     1231 terminal/call-4bf25906-102b-465c-a777-8c7d78cde868-41.log
+    00:22:55     1394 terminal/call-8de74ed4-e497-4d0b-b0a8-5ce212dad2a7-40.log
+    00:22:55      633 terminal/call-a56c128d-cad4-49e2-b984-74e8999363fb-23.log
+    00:22:55     5969 terminal/call-ad311e08-9e60-4c68-8386-6c8ade2f4578-28.log
+    00:22:55     5301 terminal/call-ba33b454-1c82-4a3f-b1ac-958dc5d83211-35.log
+    00:22:55       77 terminal/call-c047add6-d99a-4e71-b39d-4f66345fac4c-34.log
+    00:22:55     1815 terminal/call-cfa13034-0bf5-4559-b07c-74953cae0849-43.log
+    00:22:55       37 terminal/call-d9c47e5a-af94-4d00-85ba-fa8067ae4205-39.log
+    00:22:55       97 terminal/call-f128203d-2972-4fdd-ab3d-08f10567508e-16.log
+    00:22:55     2200 terminal/call-fa745233-2135-44cd-9ad7-e9eb97bf46ec-22.log
+    00:22:55        1 title_refresh_idx
+    00:22:55    60513 tool_definitions.json
+    00:22:55  1009868 updates.jsonl
+=== git status of snapshot ===
+.grok-session/README.md
+.grok-session/announcement_state.json
+.grok-session/chat_history.jsonl
+.grok-session/events.jsonl
+.grok-session/mcp/call-d5fa5138-74f4-41f8-bed9-8e5e4f8e8157-31.json
+.grok-session/prompt_context.json
+.grok-session/resources_state.json
+.grok-session/signals.json
+.grok-session/summary.json
+.grok-session/system_prompt.txt
+2e1a1da Include Grok session terminal logs in snapshot

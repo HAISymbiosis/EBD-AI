@@ -1,0 +1,22 @@
+=== existing local clone ===
+total 124
+drwxrwxr-x 11 ubuntu ubuntu  4096 Sep 16 23:57 .
+drwxrwxr-x  5 ubuntu ubuntu  4096 Sep 16 23:56 ..
+drwxrwxr-x  7 ubuntu ubuntu  4096 Sep 16 23:58 .git
+drwxrwxr-x  3 ubuntu ubuntu  4096 Sep 16 23:56 .github
+-rw-rw-r--  1 ubuntu ubuntu   987 Sep 16 23:56 .gitignore
+drwx------  4 ubuntu ubuntu  4096 Sep 16 23:57 .grok-session
+-rw-rw-r--  1 ubuntu ubuntu   861 Sep 16 23:56 .readthedocs.yaml
+-rw-rw-r--  1 ubuntu ubuntu   473 Sep 16 23:56 AGENTS.md
+-rw-rw-r--  1 ubuntu ubuntu   133 Sep 16 23:56 CLAUDE.md
+=== existing remotes ===
+origin	git@github.com:Mybotstaff/EBD-AI.git (fetch)
+origin	git@github.com:Mybotstaff/EBD-AI.git (push)
+=== existing mirror ===
+drwxrwxr-x 6 ubuntu ubuntu 200 Sep 16 23:56 /tmp/ebd-ai-mirror/ex-fuzzy.git
+=== Mybotstaff repo ===
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.

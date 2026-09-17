@@ -1,0 +1,24 @@
+
+GET https://api.github.com/repos/HAISymbiosis/EBD-AI
+status 404 {"message":"Not Found","documentation_url":"https://docs.github.com/rest/repos/repos#get-a-repository","status":"404"}
+
+GET https://api.github.com/repos/Mybotstaff/EBD-AI
+status 404 {"message":"Not Found","documentation_url":"https://docs.github.com/rest/repos/repos#get-a-repository","status":"404"}
+
+GET https://api.github.com/orgs/HAISymbiosis/repos?per_page=20
+count 0
+
+GET https://api.github.com/orgs/Mybotstaff/repos?per_page=20
+count 0
+=== ssh HAISymbiosis ===
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+=== ssh Mybotstaff ===
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.

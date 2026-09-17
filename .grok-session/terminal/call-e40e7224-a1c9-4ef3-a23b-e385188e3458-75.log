@@ -1,0 +1,124 @@
+matches 1
+1 ['ghp_'] /home/ubuntu/.grok/README.md
+=== resources_state github bits ===
+{
+  "state": {
+    "grok_build.ReportedTaskCompletions": {
+      "reported": [
+        "call-ba33b454-1c82-4a3f-b1ac-958dc5d83211-35"
+      ]
+    },
+    "grok_build.Todo": {
+      "todos": {
+        "1": {
+          "content": "Inspect source repo (code, docs, wiki) and identify GitHub user",
+          "priority": "medium",
+          "status": "completed"
+        },
+        "2": {
+          "content": "Create independent EBD-AI repo (not a GitHub-linked fork)",
+          "priority": "medium",
+          "status": "completed"
+        },
+        "3": {
+          "content": "Push full history, branches, tags, and documentation",
+          "priority": "medium",
+          "status": "completed"
+        },
+        "4": {
+          "content": "Clone EBD-AI into workspace and move session files into it",
+          "priority": "medium",
+          "status": "completed"
+        }
+      }
+    }
+  },
+  "params": {
+    "grok_build.ReadFile": {
+      "cursor_rules_on_read": false
+    },
+    "grok_build.Grep": {
+      "max_output_bytes": null,
+      "max_chars_per_line": null
+    },
+    "grok_build.SearchReplace": {
+      "skip_read_before_edit": false,
+      "empty_old_string_does_not_override": false,
+      "unicode_normalized_fallback": false,
+      "include_user_edit_hint": true
+    },
+    "grok_build.UseTool": {
+      "native_tool_correction": true
+    },
+    "grok_build.Bash": {
+      "timeout_secs": null,
+      "max_timeout_secs": 36000.0,
+      "output_byte_limit": null,
+      "cmd_prefix": null,
+      "enabled_background": true,
+      "auto_background_on_timeout": true,
+      "foreground_block_budget_ms": null,
+      "max_block_until_ms": null,
+      "allow_background_operator": true,
+      "surface_bg_completion_reminders": true
+    },
+    "grok_build.ListDir": {
+      "max_output_chars": null
+    },
+    "grok_build.WebFetch": {
+      "cache_ttl_secs": null,
+      "max_cache_entries": null,
+      "timeout_secs": null,
+      "max_content_length": null,
+      "max_markdown_length": null,
+      "context_window_tokens": 500000,
+      "allowed_domains": null,
+      "proxy_endpoint": null,
+      "allow_local": null
+    },
+    "grok_build.AskUserQuestion": {
+      "timeout_enabled": true,
+      "timeout_secs": 1800,
+      "non_interactive": null
+    }
+  }
+}
+grok-linux-aarch64
+CHANGELOG.json
+CHANGELOG.md
+README.md
+active_sessions.json
+active_sessions.lock
+agent_id
+auth.json
+auth.json.lock
+bin
+bundled
+completions
+config.toml
+debug
+docs
+downloads
+grove
+hooks
+hooks-paths
+installed-plugins
+logs
+managed_config.lock
+marketplace-cache
+memory
+memtrace
+models_cache.json
+pager.toml
+sandbox-bwrap-sentinel
+sandbox.toml
+sessions
+settings_cache.json
+slash-mru.json
+tip_cursor.json
+trusted_folders.toml
+vendor
+version.json
+worktrees.db
+/home/ubuntu/.grok/memory/github-d21ab5d7
+/home/ubuntu/.grok/docs/user-guide/07-mcp-servers.md

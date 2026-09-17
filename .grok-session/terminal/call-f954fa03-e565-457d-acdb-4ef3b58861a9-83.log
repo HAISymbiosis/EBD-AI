@@ -1,0 +1,16 @@
+
+! Failed to copy one-time code to clipboard
+  No clipboard utilities available. Please install xsel, xclip, wl-clipboard or Termux:API add-on for termux-clipboard-get/set.
+! First copy your one-time code: 64F6-60E6
+Press Enter to open https://github.com/login/device in your browser... 
+[captured code 64F6-60E6]
+
+[sent enter]
+
+✓ Authentication complete.
+- gh config set -h github.com git_protocol ssh
+✓ Configured git protocol
+! Authentication credentials saved in plain text
+✓ Logged in as jandreu
+
+[login success]

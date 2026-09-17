@@ -1,0 +1,18 @@
+=== which conda/mamba ===
+/home/ubuntu/miniforge3/bin/mamba
+/home/ubuntu/miniforge3/bin/conda
+/home/ubuntu/miniforge3
+developer
+prowriter
+/home/ubuntu/miniforge3/envs/developer
+=== bashrc conda ===
+119:# >>> conda initialize >>>
+120:# !! Contents within this block are managed by 'conda init' !!
+121:__conda_setup="$('/home/ubuntu/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+123:    eval "$__conda_setup"
+125:    if [ -f "/home/ubuntu/miniforge3/etc/profile.d/conda.sh" ]; then
+126:        . "/home/ubuntu/miniforge3/etc/profile.d/conda.sh"
+128:        export PATH="/home/ubuntu/miniforge3/bin:$PATH"
+131:unset __conda_setup
+132:# <<< conda initialize <<<
+135:# >>> mamba initialize >>>

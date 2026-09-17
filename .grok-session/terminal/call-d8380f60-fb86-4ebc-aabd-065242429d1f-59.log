@@ -1,0 +1,8 @@
+=== ls-remote HAISymbiosis/EBD-AI ===
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+=== ls-remote HAISymbiosis ===
+Hi jandreu! You've successfully authenticated, but GitHub does not provide shell access.

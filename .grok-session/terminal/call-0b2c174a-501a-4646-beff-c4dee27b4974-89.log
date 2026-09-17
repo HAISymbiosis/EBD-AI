@@ -1,0 +1,42 @@
+=== push session snapshot commits onto main ===
+2e1a1da Include Grok session terminal logs in snapshot
+ee8b073 Include remaining Grok session snapshot files
+60f9a43 Add Grok session snapshot used to create this independent EBD-AI copy.
+b705071 demos: eight executed notebooks, and the fixes they surfaced
+eb6a306 demos: import through the package and verify every notebook runs
+To github.com:HAISymbiosis/EBD-AI.git
+   b705071..2e1a1da  main -> main
+=== enable GitHub Pages from gh-pages ===
+{"url":"https://api.github.com/repos/HAISymbiosis/EBD-AI/pages","status":null,"cname":null,"custom_404":false,"html_url":"https://haisymbiosis.github.io/EBD-AI/","build_type":"legacy","source":{"branch":"gh-pages","path":"/"},"public":true,"protected_domain_state":null,"pending_domain_unverified_at":null,"https_enforced":true}=== topics and homepage ===
+=== clone into workspace ===
+Cloning into 'EBD-AI'...
+=== verify ===
+{"defaultBranchRef":{"name":"main"},"description":"Explainable By Design AI Toolbox (EBD-AI)","hasWikiEnabled":false,"homepageUrl":"https://haisymbiosis.github.io/EBD-AI/","isFork":false,"latestRelease":null,"nameWithOwner":"HAISymbiosis/EBD-AI","repositoryTopics":[{"name":"approximate-reasoning"},{"name":"explainable-ai"},{"name":"fuzzy-logic"},{"name":"python3"}],"url":"https://github.com/HAISymbiosis/EBD-AI"}
+--- local ---
+origin	git@github.com:HAISymbiosis/EBD-AI.git (fetch)
+origin	git@github.com:HAISymbiosis/EBD-AI.git (push)
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/chore/public-repository-cleanup
+  remotes/origin/chore/repository-sanitization
+  remotes/origin/feat/evox-gpu-support
+  remotes/origin/fix/categorical-detection-and-partition-validation
+  remotes/origin/fix/pattern-stability-empty-pie
+  remotes/origin/fix/python39-pymoo-install
+  remotes/origin/frc-association-rules
+  remotes/origin/gh-pages
+  remotes/origin/main
+  remotes/origin/speed-ups
+Stable
+archive/regression
+v3.0.0
+v3.1.0
+Makefile
+command_build.sh
+make.bat
+performance
+requirements.txt
+source
+readthedocs=yes
+session_snapshot=yes
+fork False parent None has_pages True html https://github.com/HAISymbiosis/EBD-AI
