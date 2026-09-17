@@ -24,9 +24,7 @@ iris_partitions.txt
 /.idea/
 /job_ids.txt
 
-# Agent instructions, session dumps, and tool configuration
-AGENTS.md
-CLAUDE.md
+# Agent session dumps and tool configuration (keep AGENTS.md, CLAUDE.md, LLM/*.md tracked)
 CLAUDE.local.md
 GEMINI.md
 CODEX.md
@@ -73,7 +71,7 @@ CODEX.md
 mcp.json
 skills-lock.json
 .skills/
-LLM/
+/LLM/environments/
 .DS_Store
 Thumbs.db
 *.gz
