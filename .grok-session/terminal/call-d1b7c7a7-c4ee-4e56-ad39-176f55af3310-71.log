@@ -1,8 +1,0 @@
-moved workspace clone to /tmp/ebd-ai-backup/EBD-AI
-total 16
-drwxrwxr-x  4 ubuntu ubuntu 4096 Sep 17 00:13 .
-drwxr-x--- 14 ubuntu ubuntu 4096 Sep 16 22:44 ..
-drwxrwxr-x  4 ubuntu ubuntu 4096 Sep 14 18:17 EyeWarn-ext
-drwxrwxr-x 13 ubuntu ubuntu 4096 Sep 16 13:52 UKRIXAI
-drwxrwxr-x 11 ubuntu ubuntu 380 Sep 16 23:57 /tmp/ebd-ai-backup/EBD-AI
-drwxrwxr-x  6 ubuntu ubuntu 200 Sep 16 23:56 /tmp/ebd-ai-mirror/ex-fuzzy.git
