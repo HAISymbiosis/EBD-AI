@@ -1,12 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 160" role="img" aria-label="BDI: The Explainable By Design AI Toolbox" style="background:#1A1030">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 160" role="img" aria-label="BDI: The Explainable By Design AI Toolbox">
   <svg x="0" y="8" width="144" height="144" viewBox="0 0 512 512">
     <rect width="512" height="512" rx="40" fill="#36295E"/>
-    <circle cx="256" cy="256" r="168" fill="#32285C"/>
-    <g clip-path="url(#d)">
-      <clipPath id="d"><circle cx="256" cy="256" r="168"/></clipPath>
-      <path d="M90,340 C120,140 200,140 256,250 C312,140 392,140 422,340 Z" fill="#77BEC4" fill-opacity="0.82"/>
-      <path d="M140,340 C210,175 330,175 400,340 Z" fill="#E7C598" fill-opacity="0.82"/>
-    </g>
+    <circle cx="256" cy="256" r="168" fill="#302658"/>
+    <circle cx="228" cy="256" r="36" fill="#3EADB0"/>
+    <circle cx="300" cy="198" r="34" fill="#C9A34A"/>
+    <circle cx="300" cy="318" r="34" fill="#F3E6C8"/>
+    <circle cx="392" cy="256" r="32" fill="#241C48" stroke="#C9A34A" stroke-width="3"/>
     <circle cx="256" cy="256" r="194" fill="none" stroke="#C9A34A" stroke-width="10"/>
   </svg>
   <text x="168" y="92" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF">BDI</text>

@@ -1,11 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="BDI">
   <rect width="512" height="512" rx="40" fill="#36295E"/>
-  <circle cx="256" cy="256" r="168" fill="#32285C"/>
-  <g clip-path="url(#disc)">
-    <clipPath id="disc"><circle cx="256" cy="256" r="168"/></clipPath>
-    <path d="M90,340 C120,140 200,140 256,250 C312,140 392,140 422,340 Z" fill="#77BEC4" fill-opacity="0.82"/>
-    <path d="M120,340 C180,150 300,150 392,340 Z" fill="#77BEC4" fill-opacity="0.55"/>
-    <path d="M140,340 C210,175 330,175 400,340 Z" fill="#E7C598" fill-opacity="0.82"/>
+  <circle cx="256" cy="256" r="168" fill="#302658"/>
+  <!-- prototype / input constellation -->
+  <g fill="#D2CDD6">
+    <circle cx="128" cy="256" r="5"/><circle cx="118" cy="244" r="4.5"/><circle cx="118" cy="268" r="4.5"/>
+    <circle cx="138" cy="232" r="5"/><circle cx="138" cy="256" r="5"/><circle cx="138" cy="280" r="5"/>
+    <circle cx="148" cy="220" r="4.5"/><circle cx="148" cy="244" r="5"/><circle cx="148" cy="268" r="5"/><circle cx="148" cy="292" r="4.5"/>
+    <circle cx="158" cy="232" r="5"/><circle cx="158" cy="256" r="5"/><circle cx="158" cy="280" r="5"/>
+    <circle cx="168" cy="244" r="5"/><circle cx="168" cy="268" r="5"/><circle cx="178" cy="256" r="5"/>
+  </g>
+  <!-- concept bottleneck -->
+  <circle cx="228" cy="256" r="40" fill="none" stroke="#3EADB0" stroke-width="3"/>
+  <circle cx="228" cy="256" r="36" fill="#3EADB0"/>
+  <circle cx="300" cy="198" r="38" fill="none" stroke="#C9A34A" stroke-width="3"/>
+  <circle cx="300" cy="198" r="34" fill="#C9A34A"/>
+  <circle cx="300" cy="318" r="38" fill="none" stroke="#F3E6C8" stroke-width="3"/>
+  <circle cx="300" cy="318" r="34" fill="#F3E6C8"/>
+  <!-- decision -->
+  <circle cx="392" cy="256" r="36" fill="none" stroke="#C9A34A" stroke-width="3"/>
+  <circle cx="392" cy="256" r="32" fill="#241C48"/>
+  <polygon points="392,243 396,253 407,253 398,260 401,271 392,264 383,271 386,260 377,253 388,253" fill="#FFF8E6"/>
+  <!-- bottleneck flow -->
+  <g stroke="#C9A34A" stroke-width="2.2" fill="#C9A34A" stroke-linecap="round">
+    <line x1="186" y1="256" x2="190" y2="256"/>
+    <polygon points="192,256 184,252 184,260"/>
+    <line x1="264" y1="256" x2="352" y2="256"/>
+    <polygon points="358,256 350,252 350,260"/>
+    <line x1="322" y1="224" x2="368" y2="238"/>
+    <line x1="322" y1="288" x2="368" y2="274"/>
   </g>
   <circle cx="256" cy="256" r="194" fill="none" stroke="#C9A34A" stroke-width="10"/>
   <circle cx="256" cy="256" r="178" fill="none" stroke="#C4A86E" stroke-width="2"/>
