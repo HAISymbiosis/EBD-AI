@@ -2,6 +2,11 @@
 BDI Documentation
 ==================
 
+.. image:: _static/logo.png
+   :width: 160px
+   :align: center
+   :alt: BDI logo
+
 .. image:: https://img.shields.io/github/license/HAISymbiosis/EBD-AI.svg
    :target: https://github.com/HAISymbiosis/EBD-AI/blob/main/LICENSE
    :alt: License

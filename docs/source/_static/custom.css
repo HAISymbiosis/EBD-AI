@@ -1,19 +1,27 @@
-/* Custom CSS for Ex-Fuzzy Documentation */
+/* Custom CSS for BDI documentation */
 
 /* Brand colors */
 :root {
-  --exfuzzy-primary: #2E86AB;
-  --exfuzzy-secondary: #A23B72;
-  --exfuzzy-accent: #F18F01;
-  --exfuzzy-success: #C73E1D;
-  --exfuzzy-light: #F5F5F5;
-  --exfuzzy-dark: #2C3E50;
+  --bdi-primary: #36295E;
+  --bdi-secondary: #77BEC4;
+  --bdi-accent: #C9A34A;
+  --bdi-success: #3D8B74;
+  --bdi-light: #F7F4EF;
+  --bdi-dark: #1A1030;
+  --exfuzzy-primary: var(--bdi-primary);
+  --exfuzzy-secondary: var(--bdi-secondary);
+  --exfuzzy-accent: var(--bdi-accent);
+  --exfuzzy-success: var(--bdi-success);
+  --exfuzzy-light: var(--bdi-light);
+  --exfuzzy-dark: var(--bdi-dark);
 }
 
 /* Logo and branding */
 .navbar-brand img {
   height: 40px;
   width: auto;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 /* Custom card styling */
@@ -148,6 +156,11 @@ img {
   height: auto;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+img[src*="logo"],
+img[alt="BDI logo"] {
+  box-shadow: none;
 }
 
 /* API documentation */

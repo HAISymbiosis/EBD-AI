@@ -41,6 +41,7 @@ extensions = [
     'sphinx_design',
     'myst_parser',
     'nbsphinx',
+    'sphinxext.opengraph',
 ]
 
 # Templates and patterns
@@ -109,9 +110,14 @@ copybutton_prompt_is_regexp = True
 html_theme = 'pydata_sphinx_theme'
 html_title = f"BDI {version}"
 
+html_logo = '_static/logo.svg'
+html_favicon = '_static/favicon.svg'
+
 html_theme_options = {
     "logo": {
-        "text": "BDI",
+        "image_light": "_static/logo-horizontal.svg",
+        "image_dark": "_static/logo-horizontal-dark.svg",
+        "alt_text": "BDI: The Explainable By Design AI Toolbox",
     },
     "icon_links": [
         {
@@ -146,8 +152,10 @@ html_css_files = [
     'custom.css',
 ]
 
-# Favicon
-html_favicon = None
+ogp_site_url = 'https://haisymbiosis.github.io/EBD-AI/'
+ogp_image = '_static/og-image.png'
+ogp_site_name = 'BDI: The Explainable By Design AI Toolbox'
+ogp_social_cards = {'enable': False}
 
 # Show source links
 html_show_sourcelink = True

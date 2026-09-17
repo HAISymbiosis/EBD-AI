@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/74380868-0bee-4251-b09c-57e8ad65f2e5" width="200" height="200">
+  <img src="docs/source/_static/logo.png" width="200" height="200" alt="BDI logo">
 </p>
 
 <h1 align="center">BDI: The Explainable By Design AI Toolbox</h1>
