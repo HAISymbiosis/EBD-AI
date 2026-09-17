@@ -120,7 +120,7 @@ Check the installed version:
 
 .. code-block:: bash
 
-    python -c "import ex_fuzzy; print(ex_fuzzy.__version__)"
+    python -c "import ebdai, ex_fuzzy; print('ebdai', ebdai.__version__); print('ex_fuzzy', ex_fuzzy.__version__)"
 
 Create a classifier:
 

@@ -50,7 +50,8 @@ def test_ebdai_is_the_expansion_package(tmp_path):
         assert ebdai.__name__ == 'ebdai'
         assert ex_fuzzy.__name__ == 'ex_fuzzy'
         assert ebdai is not ex_fuzzy
-        assert ebdai.__version__ == ex_fuzzy.__version__
+        assert ebdai.__version__ == '1.0.1'
+        assert ex_fuzzy.__version__ == '3.2.0'
         assert 'sklearn' not in sys.modules and 'pandas' not in sys.modules
         assert 'numpy' not in sys.modules
         assert not hasattr(ebdai, 'BaseFuzzyRulesClassifier')

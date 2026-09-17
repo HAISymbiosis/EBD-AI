@@ -82,4 +82,4 @@ ex_fuzzy = ["*.pyx"]
 ebdai = ["data/*.csv"]
 
 [tool.setuptools.dynamic]
-version = {attr = "ex_fuzzy._version.__version__"}
+version = {attr = "ebdai._version.__version__"}

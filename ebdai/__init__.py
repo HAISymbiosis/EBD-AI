@@ -7,7 +7,7 @@ enum must exist once per process.
 """
 import importlib
 
-from ex_fuzzy._version import __version__
+from ._version import __version__
 
 #: Register new expansion modules here. Tests and demos import through this
 #: package, never the module files directly.
