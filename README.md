@@ -5,7 +5,7 @@
 <h1 align="center">BDI: The Explainable By Design AI Toolbox</h1>
 
 <p align="center">
-  <i>A modern, explainable fuzzy logic library for Python</i>
+  <i>A Python toolbox for explainable-by-design machine learning</i>
 </p>
 
 <p align="center">
@@ -30,49 +30,54 @@
 
 ## Overview
 
-**BDI** is a comprehensive Python library for **explainable artificial intelligence** through fuzzy logic programming. Built with a focus on accessibility and visualization, it enables researchers and practitioners to create interpretable machine learning models using fuzzy association rules.
+**BDI** is a Python toolbox for **explainable-by-design** machine learning:
+models whose decisions are interpretable by construction, not explained after
+the fact by a separate method.
 
-BDI is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy).
-`import ex_fuzzy` is that rebased API; `import ebdai` is for new BDI expansions.
+It is meant for many families of that idea — rule systems, evidential and
+conformal predictors, sparse or prototype models, constrained learners, and
+other methods that keep the model itself readable — not only fuzzy logic.
+
+The first shipped family is fuzzy rule learning, via a rebase of
+[Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy). `import ex_fuzzy` is that
+API. `import ebdai` is the home for further explainable-by-design methods that
+compose with it.
 
 ### Why BDI?
 
-- Explainable AI: Create interpretable models that humans can understand. Support for classification and regression problems.
-- Rich visualizations: Plots and graphs for fuzzy sets and rules.
-- Scikit-learn compatible: Familiar API for machine learning practitioners.
-- High performance: Optimized algorithms with optional GPU support using [EvoX](https://github.com/EMI-Group/evox).
+- Explainable by design: the model is the explanation (rules, sets, prototypes, constraints), not a post-hoc saliency map.
+- Broader than fuzzy logic: `ex_fuzzy` is the first method family; new EBD methods land in `ebdai`.
+- Classification and regression with a scikit-learn-style `fit` / `predict` API.
+- Built-in checks: visualizations, robustness, and uncertainty tools for the models you train.
 
 ## Features
 
-### Explainable Rule-Based Learning
-- **Fuzzy Association Rules**: For both classification and regression problems with genetic fine-tuning.
-- **FERL Rule Trees**: Greedy fuzzy rule learning with native belief,
-  plausibility, ignorance, and set-valued predictions.
-- **Out-of-the-box Results**: Complete compatibility with scikit-learn, minimal to none fuzzy knowledge required to obtain good results.
-- **Complete Complexity Control**: Number of rules, rule length, linguistic variables, etc. can be specified by the user with strong and soft constrains.
-- **Statistical Analysis of Results**: Confidence intervals for all rule quality metrics, repeated experiments for rule robustness.
-- **Conformal Predictions Supported Out-of-the-box**: Use Rule classifiers with conformal guarantees to obtain more reliable classification/regression.
+### Explainable-by-design toolbox
+- **Method families**, not a single algorithm: start with fuzzy rules, add other EBD learners under `ebdai` without changing the `ex_fuzzy` API.
+- **Readable models**: human-inspectable structure (rules, trees, sets, scores) instead of explaining a black box later.
+- **Uncertainty as a first-class output**: conformal prediction sets and evidential belief / plausibility where the method supports them.
+- **Shared workflow**: scikit-learn compatible estimators, train/test evaluation, and optional GPU search.
 
-### Complete Rule Base Visualization and Validation
-- **Comprehensive Plots**: Visualize fuzzy sets and rules.
-- **Robustness Metrics**: Compute validation of rules, ensure linguistic meaning of fuzzy partitions, robustness metrics for rules and space partitions, reproducible experiments, etc.
+### Currently available: fuzzy rule learning (`ex_fuzzy`)
 
-### Advanced Learning Routines
-- **Multiple Backend Support**: Choose between PyMoo (CPU) and EvoX (GPU-accelerated) backends for evolutionary optimization.
-- **Genetic Algorithms**: Rule base optimization supports fine-tuning of different hyperparameters, like tournament size, crossover rate, etc.
-- **GPU Genetic Acceleration**: EvoX backend with PyTorch provides significant speedups for large datasets and complex rule bases.
-- **Extensible Architecture**: Easy to extend with custom components.
+This is the rebased Ex-Fuzzy stack, the first method family in the toolbox.
 
-### Complete Fuzzy Logic Systems Support
-- **Multiple Fuzzy Set Types**: Classic, Interval-Valued Type-2, and General Type-2 fuzzy sets
-- **Linguistic Variables**: Automatic generation with quantile-based optimization.
+- **Fuzzy association rules**: classification and regression with genetic fine-tuning.
+- **FERL rule trees**: greedy fuzzy rule learning with native belief, plausibility, ignorance, and set-valued predictions.
+- **Complexity control**: number of rules, rule length, linguistic variables, with strong and soft constraints.
+- **Statistical analysis**: confidence intervals for rule quality, repeated fits for robustness.
+- **Conformal predictions**: rule classifiers with finite-sample coverage guarantees.
+- **Visualisation and validation**: fuzzy-set and rule plots, partition meaning, pattern stability.
+- **Search backends**: PyMoo (CPU) and EvoX (GPU/CPU) for evolutionary rule optimisation.
+- **Fuzzy set types**: Type-1, interval Type-2, and general Type-2, with quantile-based linguistic variables.
 
 ## Quick Start
 
 ### Installation
 
 The pip package is **`ebdai`**. That install provides two imports: `ex_fuzzy`
-for the rebased Ex-Fuzzy API, and `ebdai` for new BDI expansions.
+for the fuzzy rule-learning family, and `ebdai` for other explainable-by-design
+methods as they are added.
 
 ```bash
 pip install ebdai
@@ -98,6 +103,9 @@ pip install -e ".[evox]"
 ```
 
 ### Basic Usage
+
+The example below trains a fuzzy rule classifier from `ex_fuzzy`, the first
+method family. Further explainable-by-design learners will import from `ebdai`.
 
 ```python
 import ebdai
@@ -131,8 +139,8 @@ eval_fuzzy_model(classifier, X_train, y_train, X_test, y_test,
 ### FERL Evidential Classification
 
 `FERL` learns a fuzzy rule tree and derives Dempster--Shafer evidence directly
-from rule firing strengths. It is implemented natively in BDI and needs no
-separate fuzzy-tree package.
+from rule firing strengths. It ships in `ex_fuzzy` and needs no separate
+fuzzy-tree package.
 
 ```python
 from ex_fuzzy import FERL
@@ -185,7 +193,7 @@ regressor.print_rules()
 
 ## Visualizations
 
-BDI provides visualizations to understand your fuzzy models:
+The `ex_fuzzy` family includes plots for partitions, rules, and stability:
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/858ae72b-6504-4173-b81b-b11a3caf802f" height="280" title="Type-1 Fuzzy Sets">
@@ -236,7 +244,7 @@ population 40 and 5 generations):
 
 ### Backend Comparison
 
-BDI supports two evolutionary optimization backends:
+The fuzzy rule search supports two evolutionary optimization backends:
 
 | Backend | Hardware | Best For |
 |---------|----------|----------|
@@ -263,7 +271,7 @@ Both backends automatically batch operations to fit available memory and large d
 
 ### Notebooks
 
-Eight executed notebooks in [`Demos/`](Demos/README.md) walk through the library; they render on GitHub with their outputs.
+Eight executed notebooks in [`Demos/`](Demos/README.md) walk through the `ex_fuzzy` family; they render on GitHub with their outputs.
 
 | Notebook | What it shows |
 |----------|---------------|
@@ -403,7 +411,7 @@ pip install pytest pytest-cov
 pytest tests/ -v
 
 # Run tests with coverage report
-pytest tests/ --cov=ex_fuzzy --cov-report=html
+pytest tests/ --cov=ex_fuzzy --cov=ebdai --cov-report=html
 
 # Run specific test file
 pytest tests/test_fuzzy_sets_comprehensive.py -v
@@ -419,7 +427,7 @@ The codebase is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy); o
 
 ## Citation
 
-If you use BDI in your research, please cite the original Ex-Fuzzy paper that this toolbox rebases:
+If you use BDI’s fuzzy rule learners in your research, please cite the original Ex-Fuzzy paper that this toolbox rebases:
 
 ```bibtex
 @article{fumanalex2024,
@@ -440,7 +448,7 @@ If you use BDI in your research, please cite the original Ex-Fuzzy paper that th
 
 ## Acknowledgments
 
-BDI is a rebase of **[Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy)** by Javier Fumanal-Idocin and Javier Andreu-Perez.
+BDI is an explainable-by-design toolbox. Its first method family is a rebase of **[Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy)** by Javier Fumanal-Idocin and Javier Andreu-Perez.
 
 - Special thanks to all [Ex-Fuzzy contributors](https://github.com/Fuminides/ex-fuzzy/graphs/contributors)
 - This research has been supported by EU Horizon Europe under the Marie Skłodowska-Curie COFUND grant No 101081327 YUFE4Postdocs.
