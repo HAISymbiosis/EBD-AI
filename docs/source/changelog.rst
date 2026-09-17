@@ -16,6 +16,9 @@ Changed
   Prof. Javier Andreu-Perez. This repository is a rebase of Ex-Fuzzy. The
   pip package is ``ebdai``. ``import ex_fuzzy`` is the rebased API;
   ``import ebdai`` is for new BDI expansions.
+- **Bias tools** (``ebdai.bias``, demos 09–11): data and inference bias
+  helpers from the WorkshopIgualdad2025 notebooks, updated for the current
+  ``ex_fuzzy`` API.
 
 [3.2.0] - 2026-09-16
 ====================

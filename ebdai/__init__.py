@@ -11,10 +11,27 @@ from ex_fuzzy._version import __version__
 
 #: Register new expansion modules here. Tests and demos import through this
 #: package, never the module files directly.
-_SUBMODULES: tuple[str, ...] = ()
+_SUBMODULES: tuple[str, ...] = ('bias', 'datasets')
 
 #: Top-level names and the submodule that defines each of them.
-_EXPORTS: dict[str, str] = {}
+_EXPORTS: dict[str, str] = {
+    'fairness_report': 'bias',
+    'outcome_rates_by_group': 'bias',
+    'group_performance': 'bias',
+    'disparity_metrics': 'bias',
+    'reweigh_weights': 'bias',
+    'parse_printed_rules': 'bias',
+    'winning_rules_by_group': 'bias',
+    'plot_outcome_rates': 'bias',
+    'plot_winning_rules_by_group': 'bias',
+    'weighted_mcc_loss': 'bias',
+    'fairness_regularized_loss': 'bias',
+    'classification_metrics': 'bias',
+    'load_titanic': 'datasets',
+    'load_heart_failure': 'datasets',
+    'load_loan_approval': 'datasets',
+    'features_and_target': 'datasets',
+}
 
 __all__ = ['__version__', *_SUBMODULES, *_EXPORTS]
 

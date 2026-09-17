@@ -1,10 +1,11 @@
 # BDI demos
 
-Eight notebooks walk through the library, from a first classifier to
-uncertainty quantification. They are executed with their outputs stored, so
-they read well on GitHub, and every one of them runs in well under a minute
-on a laptop. Open them with Jupyter after `pip install ebdai` (or
-`pip install -e .` from a checkout), or read them online.
+Eleven notebooks walk through the library, from a first classifier to
+uncertainty, temporal rules, and bias in data and inference. They are
+executed with their outputs stored, so they read well on GitHub, and
+every one of them runs in well under a minute on a laptop. Open them
+with Jupyter after `pip install ebdai` (or `pip install -e .` from a
+checkout), or read them online.
 
 | Notebook | What it shows |
 | --- | --- |
@@ -16,11 +17,14 @@ on a laptop. Open them with Jupyter after `pip install ebdai` (or
 | [06 Uncertainty](06_uncertainty.ipynb) | Conformal prediction sets with coverage evaluation and rule-level explanations, next to FERL and DeepFERL evidential outputs. |
 | [07 Robustness](07_robustness.ipynb) | Pattern stability over repeated fits, and permutation and bootstrap validation of a fitted rule base. |
 | [08 Temporal](08_temporal.ipynb) | Temporal fuzzy sets on the occupancy data: one rule base per period of the day. |
+| [09 Bias in the data (Titanic)](09_bias_titanic.ipynb) | `ebdai` outcome rates and winning-rule firings by sex on the workshop Titanic table. |
+| [10 Bias in heart-failure labels](10_bias_heart_failure.ipynb) | Same bias tools on the heart-failure death data. |
+| [11 Bias in inference and mitigation (loans)](11_bias_loan_fairness.ipynb) | Demographic parity, Kamiran–Calders reweighing, and a fairness-regularised genetic loss. |
 
-The Titanic and California housing notebooks download their data through
-scikit-learn on the first run and cache it in your home directory; nothing
-else leaves the repository. The occupancy data used by notebook 8 is in
-`occupancy_data/`.
+Notebooks 1 and 5 download Titanic and California housing through scikit-learn
+on the first run and cache them in your home directory. Notebook 8 uses
+`occupancy_data/`. Notebooks 9–11 load tables shipped in `ebdai/data/` from the
+[WorkshopIgualdad2025](https://github.com/rferper/WorkshopIgualdad2025) workshop.
 
 `evox_backend_demo.py` compares the PyMoo and EvoX backends and reports
 whether EvoX and CUDA are available; run it as `python Demos/evox_backend_demo.py`.
