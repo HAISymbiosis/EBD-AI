@@ -35,10 +35,10 @@ Welcome to the BDI examples gallery! Here you'll find practical examples demonst
 Working Examples
 ================
 
-The repository ships eight executed notebooks in ``Demos/``. They render with
+The repository ships executed notebooks in ``Demos/``. They render with
 their outputs on GitHub and each runs in well under a minute; the Titanic and
 California housing notebooks download their data through scikit-learn on the
-first run.
+first run. Bias demos 09–11 load tables shipped in ``ebdai/data/``.
 
 .. list-table:: Demo notebooks
    :header-rows: 1
@@ -62,6 +62,12 @@ first run.
      - Pattern stability over repeated fits, permutation and bootstrap validation.
    * - `08 Temporal <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/08_temporal.ipynb>`_
      - Temporal fuzzy sets on the occupancy data, one rule base per period of the day.
+   * - `09 Bias in the data (Titanic) <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/09_bias_titanic.ipynb>`_
+     - ``ebdai`` outcome rates and winning-rule firings by sex. See :doc:`../user-guide/ebdai`.
+   * - `10 Bias in heart-failure labels <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/10_bias_heart_failure.ipynb>`_
+     - Same bias tools on the heart-failure death data.
+   * - `11 Bias in inference and mitigation (loans) <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/11_bias_loan_fairness.ipynb>`_
+     - Demographic parity, Kamiran–Calders reweighing, and a fairness-regularised genetic loss.
 
 The EvoX backend comparison is a script, ``Demos/evox_backend_demo.py``, since
 it needs the optional backend. To run the notebooks yourself, open them with

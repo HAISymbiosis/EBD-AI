@@ -271,7 +271,7 @@ Both backends automatically batch operations to fit available memory and large d
 
 ### Notebooks
 
-Eight executed notebooks in [`Demos/`](Demos/README.md) walk through the `ex_fuzzy` family; they render on GitHub with their outputs.
+Executed notebooks in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `ebdai`; they render on GitHub with their outputs.
 
 | Notebook | What it shows |
 |----------|---------------|
@@ -283,7 +283,21 @@ Eight executed notebooks in [`Demos/`](Demos/README.md) walk through the `ex_fuz
 | [Uncertainty](Demos/06_uncertainty.ipynb) | Conformal prediction sets, FERL and DeepFERL evidential outputs |
 | [Robustness](Demos/07_robustness.ipynb) | Pattern stability over repeated fits, permutation and bootstrap validation |
 | [Temporal](Demos/08_temporal.ipynb) | Temporal fuzzy sets on the occupancy data |
+| [Bias in the data (Titanic)](Demos/09_bias_titanic.ipynb) | `ebdai` outcome rates and winning-rule firings by sex |
+| [Bias in heart-failure labels](Demos/10_bias_heart_failure.ipynb) | Same bias tools on clinical death labels |
+| [Bias in inference and mitigation (loans)](Demos/11_bias_loan_fairness.ipynb) | Demographic parity, reweighing, and a fairness-regularised genetic loss |
 | [EvoX backend](Demos/evox_backend_demo.py) | GPU-accelerated training with EvoX (script) |
+
+Bias demos use `import ebdai` on the workshop tables:
+
+```python
+from ebdai import load_titanic, features_and_target, outcome_rates_by_group, fairness_report
+from ex_fuzzy import BaseFuzzyRulesClassifier
+
+frame, sensitive = load_titanic()
+X, y = features_and_target(frame, 'Survived')
+print(outcome_rates_by_group(y, X[sensitive]))
+```
 
 #### Real Applications
   - BDI in fNIRS data: https://github.com/jjcato9/ex_fuzzy_fnirs_demo
@@ -359,10 +373,12 @@ print(f"Bootstrap confidence interval: {np.percentile(bootstrap_results, [2.5, 9
 
 ## Documentation
 
-- **[User Guide](https://haisymbiosis.github.io/EBD-AI/user-guide/index.html)**: Comprehensive tutorials and examples
-- **[API Reference](https://haisymbiosis.github.io/EBD-AI/api/index.html)**: Detailed function and class documentation
+- **[ebdai user guide](https://haisymbiosis.github.io/EBD-AI/user-guide/ebdai.html)**: Bias in the data and in inference (`import ebdai`)
+- **[ebdai API](https://haisymbiosis.github.io/EBD-AI/api/ebdai.html)**: `ebdai.bias` and `ebdai.datasets`
+- **[User Guide](https://haisymbiosis.github.io/EBD-AI/user-guide/index.html)**: Fuzzy rule learning with `ex_fuzzy`
+- **[API Reference](https://haisymbiosis.github.io/EBD-AI/api/index.html)**: Classes and functions
 - **[Quick Start Guide](https://haisymbiosis.github.io/EBD-AI/getting-started.html)**: Get up and running fast
-- **[Examples Gallery](https://github.com/HAISymbiosis/EBD-AI/tree/main/Demos)**: Real-world use cases
+- **[Examples Gallery](https://github.com/HAISymbiosis/EBD-AI/tree/main/Demos)**: Executed notebooks, including [bias demos 09–11](Demos/README.md)
 
 ## Requirements
 

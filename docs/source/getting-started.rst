@@ -12,7 +12,8 @@ BDI (The Explainable By Design AI Toolbox) is a rebase of Ex-Fuzzy for
 building explainable fuzzy rule-based classifiers and regressors. Unlike
 traditional "black box" machine learning models, BDI generates human-readable
 fuzzy rules that explain how predictions are made. ``import ex_fuzzy`` is
-that rebased API; ``import ebdai`` is for new BDI expansions.
+that rebased API; ``import ebdai`` is for new BDI expansions such as
+:doc:`user-guide/ebdai` (bias in the data and in inference).
 
 .. note::
     **Why Choose BDI?**

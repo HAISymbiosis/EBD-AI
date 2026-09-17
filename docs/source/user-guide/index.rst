@@ -16,6 +16,7 @@ training, and analyzing fuzzy rule-based classifiers and regressors.
    ferl
    fuzzy-association-rules
    conformal-learning
+   ebdai
    training-performance
    troubleshooting
 
@@ -34,8 +35,8 @@ This user guide is organized into several sections:
 
 **Practical Guides**
   Get practical advice on regression, rule mining, conformal prediction,
-  training performance, troubleshooting common issues, and extending BDI
-  for your needs.
+  ``ebdai`` bias tools, training performance, troubleshooting, and extending
+  BDI for your needs.
 
 Getting Help
 ============

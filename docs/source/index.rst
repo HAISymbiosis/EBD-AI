@@ -38,8 +38,8 @@ expansions that compose with it.
         :link: user-guide/index
         :link-type: doc
 
-        Comprehensive tutorials and examples for building fuzzy classifiers and regressors,
-        analyzing patterns, and visualizing results.
+        Tutorials for fuzzy classifiers and regressors, and for ``ebdai``
+        expansions such as bias in the data and in inference.
 
     .. grid-item-card:: API Reference
         :link: api/index
@@ -200,6 +200,8 @@ Choosing a Workflow
      - :class:`ex_fuzzy.FuzzyRulesClassifier`
    * - Use GPU-accelerated evolutionary optimization
      - ``backend="evox"`` with either estimator and the ``ebdai[evox]`` extra
+   * - Measure or mitigate group bias in data and rules
+     - :mod:`ebdai.bias` and demos 09–11; see :doc:`user-guide/ebdai`
    * - Save and reload fuzzy variables
      - :mod:`ex_fuzzy.persistence`
 

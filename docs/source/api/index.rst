@@ -15,6 +15,7 @@ Core Modules
 - :doc:`ferl`
 - :doc:`conformal`
 - :doc:`eval_tools`
+- :doc:`ebdai`
 
 Additional Modules
 ==================
@@ -36,3 +37,4 @@ Module Documentation
    regression
    rule_mining
    eval_tools
+   ebdai
