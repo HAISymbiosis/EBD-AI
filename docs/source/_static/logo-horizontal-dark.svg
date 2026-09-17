@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 160" role="img" aria-label="BDI: The Explainable By Design AI Toolbox">
   <svg x="0" y="8" width="144" height="144" viewBox="0 0 512 512">
     <rect width="512" height="512" rx="40" fill="#36295E"/>
-    <circle cx="256" cy="256" r="168" fill="#302658"/>
-    <circle cx="228" cy="256" r="36" fill="#3EADB0"/>
-    <circle cx="300" cy="198" r="34" fill="#C9A34A"/>
-    <circle cx="300" cy="318" r="34" fill="#F3E6C8"/>
-    <circle cx="392" cy="256" r="32" fill="#241C48" stroke="#C9A34A" stroke-width="3"/>
-    <circle cx="256" cy="256" r="194" fill="none" stroke="#C9A34A" stroke-width="10"/>
+    <circle cx="256" cy="256" r="154" fill="#2A2052"/>
+    <polygon points="256,136 270,256 256,376 242,256" fill="#D4AF5A"/>
+    <polygon points="376,256 256,270 136,256 256,242" fill="#ECD696"/>
+    <circle cx="256" cy="256" r="14" fill="#D4AF5A"/>
+    <circle cx="362" cy="182" r="22" fill="#3EADB0"/>
+    <circle cx="256" cy="256" r="194" fill="none" stroke="#D4AF5A" stroke-width="12"/>
   </svg>
   <text x="168" y="92" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF">BDI</text>
-  <text x="172" y="128" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="16" fill="#C9A34A">The Explainable By Design AI Toolbox</text>
+  <text x="172" y="128" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="16" fill="#D4AF5A">The Explainable By Design AI Toolbox</text>
 </svg>
