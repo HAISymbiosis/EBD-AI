@@ -3,7 +3,7 @@ requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ex_fuzzy"
+name = "ebdai"
 dynamic = ["version"]
 description = "BDI: The Explainable By Design AI Toolbox. A rebase of Ex-Fuzzy."
 readme = "README.md"
@@ -64,8 +64,8 @@ docs = [
     "doc8>=0.11.0",
     "rstcheck>=6.0.0",
 ]
-dev = ["ex_fuzzy[test,docs]"]
-all = ["ex_fuzzy[gpu,evox,test,docs]"]
+dev = ["ebdai[test,docs]"]
+all = ["ebdai[gpu,evox,test,docs]"]
 
 [project.urls]
 Homepage = "https://github.com/HAISymbiosis/EBD-AI"

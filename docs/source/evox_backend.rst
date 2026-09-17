@@ -45,14 +45,14 @@ Basic Installation (PyMoo only)
 
 .. code-block:: bash
 
-   pip install -e .
+   pip install ebdai
 
 With EvoX Support
 -----------------
 
 .. code-block:: bash
 
-   pip install -e ".[evox]"
+   pip install "ebdai[evox]"
 
 For GPU support, ensure you have CUDA-compatible hardware and drivers installed.
 
@@ -286,13 +286,13 @@ If EvoX backend is not available:
    
    available = evolutionary_backends.list_available_backends()
    if 'evox' not in available:
-       print('EvoX not installed. Install with: pip install -e ".[evox]"')
+       print('EvoX not installed. Install with: pip install "ebdai[evox]"')
 
 **Solution**: Install EvoX and PyTorch:
 
 .. code-block:: bash
 
-   pip install -e ".[evox]"
+   pip install "ebdai[evox]"
 
 GPU Not Detected
 ----------------

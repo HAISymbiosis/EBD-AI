@@ -55,7 +55,7 @@ Install the optional backend and select it on the estimator:
 
 .. code-block:: bash
 
-   python -m pip install -e ".[evox]"
+   python -m pip install "ebdai[evox]"
 
 .. code-block:: python
 

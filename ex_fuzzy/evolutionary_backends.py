@@ -519,7 +519,7 @@ def get_backend(backend_name: str = 'pymoo') -> EvolutionaryBackend:
         raise ValueError(
             f"Backend '{backend_name}' is not available. "
             f"Please install required dependencies. "
-            "For EvoX: pip install -e '.[evox]'"
+            "For EvoX: pip install 'ebdai[evox]'"
         )
     
     return backend

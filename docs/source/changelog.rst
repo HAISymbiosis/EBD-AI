@@ -14,7 +14,7 @@ Changed
 -------
 - **Rebranded as BDI**: The Explainable By Design AI Toolbox, authored by
   Prof. Javier Andreu-Perez. This repository is a rebase of Ex-Fuzzy; the
-  Python import remains ``ex_fuzzy``.
+  pip package is ``ebdai`` and the Python import remains ``ex_fuzzy``.
 
 [3.2.0] - 2026-09-16
 ====================

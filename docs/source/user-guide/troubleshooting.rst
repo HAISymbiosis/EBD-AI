@@ -18,7 +18,7 @@ For documentation builds and examples, install the docs extra:
 
 .. code-block:: bash
 
-    pip install -e ".[docs]"
+    pip install "ebdai[docs]"
 
 EvoX, PyTorch, or CUDA Installation
 ===================================
@@ -28,7 +28,7 @@ optimization:
 
 .. code-block:: bash
 
-    pip install -e ".[evox]"
+    pip install "ebdai[evox]"
 
 If PyTorch cannot find a compatible CUDA device, first confirm that the default
 CPU backend works:
@@ -89,7 +89,7 @@ From the repository root, install the documentation dependencies and rebuild:
 
 .. code-block:: bash
 
-    pip install -e ".[docs]"
+    pip install "ebdai[docs]"
     cd docs
     make clean html
 

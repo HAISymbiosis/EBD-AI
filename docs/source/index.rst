@@ -168,13 +168,11 @@ Regression follows the same estimator workflow and optimizes training-set
 Installation
 ============
 
-Install BDI from this repository (the Python package name remains ``ex_fuzzy``):
+Install the ``ebdai`` pip package (the import remains ``ex_fuzzy``):
 
 .. code-block:: bash
 
-    git clone https://github.com/HAISymbiosis/EBD-AI.git
-    cd EBD-AI
-    pip install -e .
+    pip install ebdai
 
 Choosing a Workflow
 ===================
@@ -200,7 +198,7 @@ Choosing a Workflow
    * - Mine and select a compact fuzzy association rule base
      - :class:`ex_fuzzy.FuzzyRulesClassifier`
    * - Use GPU-accelerated evolutionary optimization
-     - ``backend="evox"`` with either estimator and the ``.[evox]`` extra
+     - ``backend="evox"`` with either estimator and the ``ebdai[evox]`` extra
    * - Save and reload fuzzy variables
      - :mod:`ex_fuzzy.persistence`
 

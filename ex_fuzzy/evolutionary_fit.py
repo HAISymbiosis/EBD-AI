@@ -149,7 +149,7 @@ class BaseFuzzyRulesClassifier(ClassifierMixin, BaseEstimator):
             runner: number of threads used to evaluate candidates. Threads disable the fit-local fitness and firing caches, so a serial fit (1, the default) is usually faster; more threads only pay off for an expensive custom loss.
             ds_mode: inference weighting mode: 0 or 'dominance' weights rules by their dominance score, 1 or 'unweighted' uses the firing strengths alone, 2 or 'optimized' lets the genetic search set a weight per rule.
             allow_unknown: if True, the classifier will allow the unknown class in the classification process. (Which would be a -1 value)
-            backend: evolutionary backend to use. Options: 'pymoo' (default, CPU) or 'evox' (GPU-accelerated). Install with: pip install -e '.[evox]'
+            backend: evolutionary backend to use. Options: 'pymoo' (default, CPU) or 'evox' (GPU-accelerated). Install with: pip install 'ebdai[evox]'
             detect_categorical: if True (default) and no categorical_mask is given, the categorical variables are detected from the data with utils.detect_categorical_mask. Ignored when categorical_mask is given or when linguistic_variables are precomputed.
             n_gen: number of generations of the genetic search. fit can override it for one call.
             pop_size: population size of the genetic search. fit can override it for one call.

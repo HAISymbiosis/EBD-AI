@@ -2,18 +2,22 @@
 Installation
 ============
 
-Install BDI from a repository checkout in the Python environment where you want
-to use it. The environment can come from ``venv``, conda, pyenv, system Python,
-or any other Python manager. The Python package name remains ``ex_fuzzy``.
+Install BDI in the Python environment where you want to use it. The pip
+package name is ``ebdai``; the import remains ``ex_fuzzy``. The environment can
+come from ``venv``, conda, pyenv, system Python, or any other Python manager.
 
 Quick Install
 =============
 
 .. code-block:: bash
 
-    git clone https://github.com/HAISymbiosis/EBD-AI.git
-    cd EBD-AI
-    python -m pip install -e .
+    python -m pip install ebdai
+
+From GitHub, until the package is on PyPI:
+
+.. code-block:: bash
+
+    python -m pip install "ebdai @ git+https://github.com/HAISymbiosis/EBD-AI.git"
 
 Using ``python -m pip`` keeps the command tied to the active Python interpreter,
 which avoids installing into the wrong environment.
@@ -25,16 +29,16 @@ Install extras only when you need the corresponding feature:
 
 .. code-block:: bash
 
-    python -m pip install -e ".[gpu]"   # PyTorch support for GPU tensors
-    python -m pip install -e ".[evox]"  # EvoX/PyTorch evolutionary backend
-    python -m pip install -e ".[docs]"  # Documentation build dependencies
-    python -m pip install -e ".[all]"   # All optional dependencies
+    python -m pip install "ebdai[gpu]"   # PyTorch support for GPU tensors
+    python -m pip install "ebdai[evox]"  # EvoX/PyTorch evolutionary backend
+    python -m pip install "ebdai[docs]"  # Documentation build dependencies
+    python -m pip install "ebdai[all]"   # All optional dependencies
 
-Most users only need the editable install from a checkout:
+Most users only need:
 
 .. code-block:: bash
 
-    python -m pip install -e .
+    python -m pip install ebdai
 
 Environment Examples
 ====================
@@ -47,7 +51,7 @@ With ``venv``:
 
     python -m venv .venv
     source .venv/bin/activate
-    python -m pip install -e .
+    python -m pip install ebdai
 
 On Windows, activate the environment with:
 
@@ -61,7 +65,7 @@ With conda:
 
     conda create -n bdi python=3.11
     conda activate bdi
-    python -m pip install -e .
+    python -m pip install ebdai
 
 Development Install
 ===================
@@ -133,7 +137,7 @@ backend, install the EvoX extra in the same environment:
 
 .. code-block:: bash
 
-    python -m pip install -e ".[evox]"
+    python -m pip install "ebdai[evox]"
 
 Then select it when creating a classifier or regressor:
 
@@ -159,7 +163,7 @@ environment:
 
 .. code-block:: bash
 
-    python -m pip show ex_fuzzy
+    python -m pip show ebdai
     python -c "import sys; print(sys.executable)"
 
 If an optional backend import fails, install the matching extra in the active
@@ -167,7 +171,7 @@ environment:
 
 .. code-block:: bash
 
-    python -m pip install -e ".[evox]"
+    python -m pip install "ebdai[evox]"
 
 Next Steps
 ==========

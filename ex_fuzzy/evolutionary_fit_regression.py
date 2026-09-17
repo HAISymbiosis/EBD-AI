@@ -763,7 +763,7 @@ class FitRuleBaseRegression(Problem):
         except ImportError as exc:
             raise ImportError(
                 "PyTorch is required for EvoX regression. "
-                "Install with: pip install -e '.[evox]'"
+                "Install with: pip install 'ebdai[evox]'"
             ) from exc
 
         device = torch.device(device)

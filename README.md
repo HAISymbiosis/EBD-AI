@@ -70,14 +70,28 @@ BDI is a rebase of [Ex-Fuzzy](https://github.com/Fuminides/ex-fuzzy). The Python
 
 ### Installation
 
-Install BDI from this repository (the Python package name remains `ex_fuzzy`):
+The pip package is **`ebdai`**. The import remains `ex_fuzzy`.
+
+```bash
+pip install ebdai
+
+# With GPU support (EvoX backend with PyTorch)
+pip install "ebdai[evox]"
+```
+
+From GitHub, until the package is on PyPI:
+
+```bash
+pip install "ebdai @ git+https://github.com/HAISymbiosis/EBD-AI.git"
+pip install "ebdai[evox] @ git+https://github.com/HAISymbiosis/EBD-AI.git"
+```
+
+Or from a checkout:
 
 ```bash
 git clone https://github.com/HAISymbiosis/EBD-AI.git
 cd EBD-AI
 pip install -e .
-
-# With GPU support (EvoX backend with PyTorch)
 pip install -e ".[evox]"
 ```
 
@@ -350,7 +364,7 @@ print(f"Bootstrap confidence interval: {np.percentile(bootstrap_results, [2.5, 9
 - **PyMOO** >= 0.6.2
 
 ### Optional Dependencies
-- **EvoX** >= 1.3.0 (for GPU-accelerated evolutionary optimization): `pip install -e ".[evox]"`
+- **EvoX** >= 1.3.0 (for GPU-accelerated evolutionary optimization): `pip install "ebdai[evox]"`
 - **PyTorch** >= 2.6.0 (required by EvoX)
 
 ## Contributing

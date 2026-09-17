@@ -26,19 +26,17 @@ fuzzy rules that explain how predictions are made. The Python import remains
 Installation
 ============
 
-Install BDI from this repository:
+Install the ``ebdai`` pip package (the import remains ``ex_fuzzy``):
 
 .. code-block:: bash
 
-    git clone https://github.com/HAISymbiosis/EBD-AI.git
-    cd EBD-AI
-    pip install -e .
+    pip install ebdai
 
 Install the optional EvoX/PyTorch backend for GPU-oriented optimization:
 
 .. code-block:: bash
 
-    pip install -e ".[evox]"
+    pip install "ebdai[evox]"
 
 Dependencies
 ------------
