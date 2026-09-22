@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="BDI">
+  <rect width="512" height="512" rx="40" fill="#36295E"/>
+  <circle cx="256" cy="256" r="154" fill="#2A2052"/>
+  <!-- rose -->
+  <polygon points="256,136 270,256 256,376 242,256" fill="#D4AF5A"/>
+  <polygon points="376,256 256,270 136,256 256,242" fill="#ECD696"/>
+  <polygon points="256,136 242,256 256,256" fill="#A88030"/>
+  <polygon points="376,256 256,242 256,256" fill="#A88030"/>
+  <polygon points="341,171 266,256 256,256 256,246" fill="#A88030"/>
+  <polygon points="341,341 256,266 256,256 266,256" fill="#A88030"/>
+  <polygon points="171,341 246,256 256,256 256,266" fill="#A88030"/>
+  <polygon points="171,171 256,246 256,256 246,256" fill="#A88030"/>
+  <polygon points="341,171 256,266 256,256" fill="#D4AF5A"/>
+  <polygon points="341,341 266,256 256,256" fill="#D4AF5A"/>
+  <polygon points="171,341 256,246 256,256" fill="#D4AF5A"/>
+  <polygon points="171,171 246,256 256,256" fill="#D4AF5A"/>
+  <!-- needle to decision -->
+  <polygon points="368,178 248,268 256,256" fill="#D4AF5A"/>
+  <polygon points="368,178 264,244 256,256" fill="#F7ECD2"/>
+  <polygon points="168,334 248,268 256,256" fill="#F7ECD2"/>
+  <polygon points="168,334 264,244 256,256" fill="#A88030"/>
+  <circle cx="256" cy="256" r="14" fill="#D4AF5A"/>
+  <circle cx="256" cy="256" r="6" fill="#2A2052"/>
+  <!-- decision -->
+  <circle cx="362" cy="182" r="26" fill="#D4AF5A"/>
+  <circle cx="362" cy="182" r="20" fill="#3EADB0"/>
+  <circle cx="256" cy="256" r="194" fill="none" stroke="#D4AF5A" stroke-width="12"/>
+</svg>
