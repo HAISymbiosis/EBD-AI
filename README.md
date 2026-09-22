@@ -269,15 +269,44 @@ Both backends automatically batch operations to fit available memory and large d
 
 ## Examples
 
+### Run the browser demos
+
+**Demo Studio** lets you choose an example, change hyperparameters, inspect
+and edit its code, and view plots and results in your browser. Saved notebook
+edits are picked up automatically.
+
+Use Python 3.10 or newer and a checkout containing Demo Studio (currently on
+`feature/localhost-demo-studio`). Activate your Python environment, then run
+these commands from the **repository root**, where `pyproject.toml` and `Demos/`
+are located:
+
+```bash
+# First-time setup in this Python environment
+python -m pip install -e ".[demo]"
+
+# Start the app
+python -m ebdai.demo_app
+```
+
+The installation command means: `.` installs the project in the current
+folder; `-e` keeps it linked to your source files; `[demo]` adds the optional
+Jupyter dependencies that execute the notebooks. Keep the quotes as shown.
+You do not need to reinstall each time you start the app.
+
+Open the **full URL printed in the terminal**, including the part after `#`
+(normally `http://127.0.0.1:8765/#...`). Keep the terminal running while you use
+the browser. Press **Ctrl+C** in the terminal to stop the app.
+
+On later visits, activate the same environment, return to the repository root,
+and run only `python -m ebdai.demo_app`. See the
+[Demo Studio guide](Demos/README.md#local-browser-app) for environment setup,
+notebook editing, and troubleshooting.
+
 ### Notebooks
 
-Executed notebooks in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `ebdai`; they render on GitHub with their outputs.
-
-For a hands-on browser interface, install `pip install -e ".[demo]"` from a
-checkout and run `python -m ebdai.demo_app`. Open the printed localhost URL to
-explore every example, change hyperparameters, inspect and edit code, and see
-notebook saves reflected in the app. The original notebooks still run on their
-own. See the [Demo Studio guide](Demos/README.md#local-browser-app).
+The original notebooks still run independently in Jupyter. Executed notebooks
+in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `ebdai`; they render on
+GitHub with their outputs.
 
 | Notebook | What it shows |
 |----------|---------------|

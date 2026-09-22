@@ -9,10 +9,52 @@ checkout), or read them online.
 
 ## Local browser app
 
-From the repository root, in the same Python environment used for the library:
+### First-time setup
+
+Use Python 3.10 or newer. Demo Studio currently lives on the
+`feature/localhost-demo-studio` branch. For a new checkout:
 
 ```bash
-pip install -e ".[demo]"
+git clone --branch feature/localhost-demo-studio https://github.com/HAISymbiosis/EBD-AI.git
+cd EBD-AI
+```
+
+If you already have this branch checked out, open a terminal in its repository
+root (the folder containing `pyproject.toml` and `Demos/`). Activate your existing
+Python environment. Alternatively, create one:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+On Windows PowerShell, use `.venv\Scripts\Activate.ps1` instead of the
+`source` command. With the environment active, install the app dependencies:
+
+```bash
+python -m pip install -e ".[demo]"
+```
+
+Here is what that command means:
+
+- `python -m pip` installs into the same Python environment that will run the app.
+- `.` refers to the project in the current folder.
+- `-e` installs it in editable mode, so source changes are available without
+  reinstalling. Restart the app after editing its Python server code.
+- `[demo]` selects the project's optional notebook execution dependencies:
+  `nbclient`, `nbformat`, and `ipykernel`. Keep the quotes around `".[demo]"`.
+
+Do this once per environment; repeat installation if dependencies change.
+The `demo` extra runs notebooks but does not install the JupyterLab editor.
+To edit them in JupyterLab too, optionally run `python -m pip install jupyterlab`
+and then `python -m jupyterlab Demos` in a second terminal with the same
+environment active.
+
+### Start and stop
+
+From the repository root, run:
+
+```bash
 python -m ebdai.demo_app
 ```
 
@@ -20,6 +62,15 @@ Open the session URL printed in the terminal (normally
 `http://127.0.0.1:8765/#…`). **Demo Studio** has a menu of all ten notebooks
 and the EvoX script, parameter controls, plots, tables, and a notebook editor.
 No Node.js, frontend build, or external web service is needed.
+
+Copy the **entire URL**, including the session token after `#`; the example
+`#…` above is a placeholder. Keep the terminal running, and open the URL in a
+browser on the same computer. Press **Ctrl+C** in the terminal to stop the app.
+
+For later visits, activate the same environment, return to the repository root,
+and run `python -m ebdai.demo_app` again. No reinstall is needed.
+
+### Try an example
 
 - Choose an example, change the controls, and click **Run example**. Controls
   are discovered from literal keyword arguments, settings dictionaries, and
@@ -49,6 +100,19 @@ Use `--port 8766` to choose another port, or `--demos /path/to/Demos` when
 launching outside the repository root. Each cell has a ten-minute timeout.
 Arbitrary JavaScript outputs and live Jupyter widgets are not rendered; use
 Jupyter for those. HTML tables are displayed in isolated frames.
+
+### Troubleshooting
+
+| Message or situation | What to do |
+| --- | --- |
+| `No module named ebdai.demo_app` | Check that your checkout contains Demo Studio, activate the correct environment, and run `python -m pip install -e ".[demo]"` from its root. |
+| `Install demo dependencies` | Run the installation command above in the same environment as the app. |
+| `No demos found` | Start from the repository root, or run `python -m ebdai.demo_app --demos /path/to/EBD-AI/Demos`. |
+| Port 8765 is already in use | Run `python -m ebdai.demo_app --port 8766` and open the newly printed URL. |
+| The page asks for a session URL | Copy the full URL from the current server terminal, including its token. Restarting the server creates a new token. |
+| A dataset download fails | Notebooks 02 and 05 need internet access on their first run. The bias examples 09–11 use bundled data. |
+
+### Contributor checks
 
 Browser validation is optional for contributors:
 

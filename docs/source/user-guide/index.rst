@@ -11,6 +11,7 @@ training, and analyzing fuzzy rule-based classifiers and regressors.
 
    core-concepts
    choosing-workflow
+   demo-studio
    rule-mining
    regression
    ferl

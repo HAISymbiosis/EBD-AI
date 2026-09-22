@@ -132,6 +132,10 @@ If the classifier uses explicit ``class_names``, pass that same order as
 Demos
 =====
 
+To run these examples in a browser with hyperparameter controls and code
+editing, follow :doc:`demo-studio`. It explains the one-time installation,
+the ``.[demo]`` dependency extra, launching the localhost app, and notebook sync.
+
 Executed notebooks (they render on GitHub):
 
 - `09 Bias in the data (Titanic) <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/09_bias_titanic.ipynb>`_
