@@ -17,9 +17,11 @@ convert this repo into a GitHub fork. Skip upstream README/LLM/agent files.
 If a change touches `FitRuleBase`, `_fitness.py`, `_array_fitness.py`, or
 firing kernels, keep objective values bit-for-bit.
 
-As of this note, `upstream/main` is still `b705071` (executed notebooks).
-The only extra upstream branch of note is `fix/python39-pymoo-install`
-(restore Python 3.9); we stay on Python ≥ 3.10 like upstream `main`.
+As of 2026-09-22, `upstream/main` is `05fea6e` (dropped the temporal demo
+notebook and occupancy dataset). That change is ported. The temporal library
+code in `ex_fuzzy/temporal.py` stays. Do not merge `fix/python39-pymoo-install`
+(Python 3.9) or `gh-pages` into `main`. Every other origin feature branch is
+already contained in `main`.
 
 ## Two packages, two versions
 

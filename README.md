@@ -282,7 +282,6 @@ Executed notebooks in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `e
 | [Regression](Demos/05_regression.ipynb) | Crisp and Mamdani consequents on California housing |
 | [Uncertainty](Demos/06_uncertainty.ipynb) | Conformal prediction sets, FERL and DeepFERL evidential outputs |
 | [Robustness](Demos/07_robustness.ipynb) | Pattern stability over repeated fits, permutation and bootstrap validation |
-| [Temporal](Demos/08_temporal.ipynb) | Temporal fuzzy sets on the occupancy data |
 | [Bias in the data (Titanic)](Demos/09_bias_titanic.ipynb) | `ebdai` outcome rates and winning-rule firings by sex |
 | [Bias in heart-failure labels](Demos/10_bias_heart_failure.ipynb) | Same bias tools on clinical death labels |
 | [Bias in inference and mitigation (loans)](Demos/11_bias_loan_fairness.ipynb) | Demographic parity, reweighing, and a fairness-regularised genetic loss |

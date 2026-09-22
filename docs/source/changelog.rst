@@ -14,6 +14,11 @@ Added
 -----
 - User guide and API pages for ``ebdai``, plus README links to bias demos 09–11.
 
+Changed
+-------
+- Dropped demo notebook 08 and ``Demos/occupancy_data/``, matching upstream
+  Ex-Fuzzy (``05fea6e``). The temporal fuzzy-set library code remains.
+
 [1.0.1] - 2026-09-17
 ====================
 

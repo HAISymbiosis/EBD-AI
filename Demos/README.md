@@ -1,7 +1,7 @@
 # BDI demos
 
-Eleven notebooks walk through the library, from a first classifier to
-uncertainty, temporal rules, and bias in data and inference. They are
+Ten notebooks walk through the library, from a first classifier to
+uncertainty and bias in data and inference. They are
 executed with their outputs stored, so they read well on GitHub, and
 every one of them runs in well under a minute on a laptop. Open them
 with Jupyter after `pip install ebdai` (or `pip install -e .` from a

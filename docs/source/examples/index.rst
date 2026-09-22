@@ -60,8 +60,6 @@ first run. Bias demos 09–11 load tables shipped in ``ebdai/data/``.
      - Conformal prediction sets with coverage evaluation, next to FERL and DeepFERL evidential outputs.
    * - `07 Robustness <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/07_robustness.ipynb>`_
      - Pattern stability over repeated fits, permutation and bootstrap validation.
-   * - `08 Temporal <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/08_temporal.ipynb>`_
-     - Temporal fuzzy sets on the occupancy data, one rule base per period of the day.
    * - `09 Bias in the data (Titanic) <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/09_bias_titanic.ipynb>`_
      - ``ebdai`` outcome rates and winning-rule firings by sex. See :doc:`../user-guide/ebdai`.
    * - `10 Bias in heart-failure labels <https://github.com/HAISymbiosis/EBD-AI/blob/main/Demos/10_bias_heart_failure.ipynb>`_
