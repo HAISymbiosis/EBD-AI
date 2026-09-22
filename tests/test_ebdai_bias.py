@@ -128,3 +128,105 @@ def test_winning_rules_and_tiny_fit():
     table, gaps = fairness_report(y, preds, X['group'])
     assert 'demographic_parity_difference' in gaps
     assert len(table) >= 1
+
+
+@pytest.mark.parametrize('missing', [np.nan, None, pd.NA])
+def test_missing_sensitive_group_is_counted_everywhere(missing):
+    from types import SimpleNamespace
+
+    groups = pd.Series(['A', 'A', missing, missing], dtype=object)
+    y = np.array([1, 0, 1, 0])
+    predictions = np.array([1, 1, 0, 0])
+    rates = outcome_rates_by_group(predictions, groups)
+    missing_rate = rates.loc[rates.group.isna()].iloc[0]
+    assert missing_rate['n'] == 2
+    assert missing_rate['positive_rate'] == 0
+    table, gaps = fairness_report(y, predictions, groups)
+    missing_row = table.loc[table.group.isna()].iloc[0]
+    assert missing_row['n'] == 2
+    assert missing_row['selection_rate'] == 0
+    assert missing_row['tpr'] == 0
+    assert missing_row['fpr'] == 0
+    assert gaps['demographic_parity_difference'] == 1
+    assert gaps['equalized_odds_difference'] == 1
+
+    classifier = SimpleNamespace(explainable_predict=lambda X: (predictions, [0, 1, 1, 1]))
+    counts = winning_rules_by_group(classifier, np.zeros((4, 1)), groups)
+    assert counts['count'].sum() == 4
+    missing_counts = counts.loc[counts.group.isna()].iloc[0]
+    assert missing_counts['count'] == 2
+    assert missing_counts['rate'] == 1
+
+
+@pytest.mark.parametrize('missing', [np.nan, None, pd.NA])
+def test_reweigh_missing_sensitive_group(missing):
+    groups = pd.Series(['A'] * 4 + [missing] * 4, dtype=object)
+    y = np.array([1, 1, 1, 0, 1, 0, 0, 0])
+    weights = reweigh_weights(y, groups)
+    np.testing.assert_allclose(weights, [2/3, 2/3, 2/3, 2, 2, 2/3, 2/3, 2/3])
+    assert np.average(y[:4], weights=weights[:4]) == pytest.approx(.5)
+    assert np.average(y[4:], weights=weights[4:]) == pytest.approx(.5)
+
+
+def test_mixed_missing_markers_form_one_group():
+    groups = pd.Series(['A', None, pd.NA, np.nan], dtype=object)
+    table, _ = fairness_report([1, 0, 1, 0], [1, 0, 1, 0], groups)
+    assert len(table) == 2
+    assert table.loc[table.group.isna(), 'n'].item() == 3
+
+
+@pytest.mark.parametrize('labels,positive', [(['denied', 'approved'], 'approved'),
+                                          (['approved', 'denied'], 'denied'),
+                                          ([10, 20], 20)])
+def test_fairness_loss_maps_original_labels(monkeypatch, labels, positive):
+    from types import SimpleNamespace
+    from ex_fuzzy import eval_rules
+
+    predictions = np.array([1, 1, 0, 0])
+    X = np.zeros((4, 1))
+    evaluator = SimpleNamespace(
+        X=X, precomputed_truth=None, add_rule_weights=lambda: None,
+        mrule_base=SimpleNamespace(winning_rule_predict=lambda *args, **kwargs: predictions),
+    )
+    monkeypatch.setattr(eval_rules, 'evalRuleBase', lambda *args, **kwargs: evaluator)
+    groups = pd.Series(['A', 'A', pd.NA, pd.NA], dtype=object)
+    loss = fairness_regularized_loss(groups, lam=.2, positive_label=positive, classes=labels)
+    assert loss(None, X, predictions, 0) == pytest.approx(.8)
+    default_loss = fairness_regularized_loss(groups, lam=.2)
+    assert default_loss(None, X, predictions, 0) == pytest.approx(.8)
+    with pytest.raises(ValueError, match='training class'):
+        fairness_regularized_loss(groups, positive_label=2)(None, X, predictions, 0)
+    with pytest.raises(ValueError, match='same length'):
+        fairness_regularized_loss(['A'] * 5)(None, X, predictions, 0)
+
+
+@pytest.mark.parametrize('kwargs', [
+    {'positive_label': 'approved'},
+    {'positive_label': -1},
+    {'positive_label': 'unknown', 'classes': ['approved', 'denied']},
+    {'classes': [0, 1, 1]},
+    {'classes': [0, np.nan]},
+])
+def test_fairness_loss_rejects_invalid_label_mapping(kwargs):
+    with pytest.raises(ValueError):
+        fairness_regularized_loss(['A', 'B'], **kwargs)
+
+
+@pytest.mark.parametrize('class_order', [None, ['denied', 'approved']])
+def test_string_label_fairness_fit_matches_encoded_fit(class_order):
+    X = pd.DataFrame({'x': np.linspace(-2, 2, 40)})
+    y = np.where(X.x > 0, 'approved', 'denied')
+    labels = np.unique(y) if class_order is None else np.array(class_order)
+    encoded = np.array([list(labels).index(label) for label in y])
+    groups = pd.Series(['A'] * 20 + [pd.NA] * 20, dtype=object)
+    kwargs = dict(nRules=4, nAnts=1, n_gen=3, pop_size=8, random_state=42,
+                  verbose=False, ds_mode=1)
+    named = BaseFuzzyRulesClassifier(class_names=class_order, **kwargs)
+    named.customized_loss(fairness_regularized_loss(
+        groups, positive_label='approved', classes=labels))
+    indexed = BaseFuzzyRulesClassifier(**kwargs)
+    indexed.customized_loss(fairness_regularized_loss(
+        groups, positive_label=list(labels).index('approved')))
+    named.fit(X, y)
+    indexed.fit(X, encoded)
+    np.testing.assert_array_equal(named.predict(X), labels[indexed.predict(X).astype(int)])
