@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BDI · Demo Studio</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<aside><a class="brand" href="/">◈ <strong>BDI</strong><span>DEMO STUDIO</span></a><p class="aside-note">Explainable by design.<br>Explore it for yourself.</p><label class="search-label" for="search">EXAMPLES</label><input id="search" type="search" placeholder="Find an example…"><nav id="menu" aria-label="Examples"></nav><footer>Built on Ex-Fuzzy<br><span>Local notebooks · live experiments</span></footer></aside>
+<main>
+<header><div><span class="eyebrow">THE EXPLAINABLE BY DESIGN AI TOOLBOX</span><h1 id="title">Demo Studio</h1><p id="filename">Loading your examples…</p></div><span class="local">● LOCAL SESSION</span></header>
+<div id="notice" role="status" hidden></div>
+<section class="toolbar"><div class="tabs" role="tablist"><button class="tab active" data-tab="explore" role="tab" aria-selected="true">Explore</button><button class="tab" data-tab="code" role="tab" aria-selected="false">Notebook & code</button></div><div class="actions"><button id="download">↓ Download run</button><button id="stop" disabled>Stop</button><button id="run" class="primary">▶ Run example</button></div></section>
+<div class="runline"><span id="status">Ready</span><progress id="progress" value="0" max="1"></progress><span id="elapsed"></span></div>
+<div class="workspace"><section id="content" aria-label="Example content"></section><section id="controls"><div class="panel-head"><h2>Make it your own</h2><button id="reset" class="text-button">Reset</button></div><p>Change a setting, then run. Your notebook defaults stay intact.</p><div id="parameters"></div><details><summary>How notebook sync works</summary><p>Edit and save the notebook in Jupyter or your editor. This page reloads its code and controls automatically. Runs use a fresh kernel. Browser code edits are saved only with “Save notebook”.</p></details></section></div>
+</main><script src="/app.js" defer></script>
+</body></html>

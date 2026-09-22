@@ -11,7 +11,7 @@ from ._version import __version__
 
 #: Register new expansion modules here. Tests and demos import through this
 #: package, never the module files directly.
-_SUBMODULES: tuple[str, ...] = ('bias', 'datasets')
+_SUBMODULES: tuple[str, ...] = ('bias', 'datasets', 'demo_app')
 
 #: Top-level names and the submodule that defines each of them.
 _EXPORTS: dict[str, str] = {

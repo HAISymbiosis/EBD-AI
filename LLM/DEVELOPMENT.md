@@ -58,6 +58,7 @@ All module paths below are relative to `ex_fuzzy/`.
 | Version | `_version.py` (pip / `ebdai.__version__`, not `ex_fuzzy._version`) |
 | Bias in data and inference | `bias.py` |
 | Workshop tables | `datasets.py`, `data/*.csv` |
+| Local demo app | `demo_app.py` (loopback server), `_demo_notebooks.py` (source and parameters), `_demo_worker.py` (Jupyter execution), `demo_static/` (browser UI) |
 
 PyMoo is the default backend and supports checkpoints. The fitting problems
 subclass `_problem.Problem`, not pymoo's; pymoo is imported only when the PyMoo
@@ -108,6 +109,16 @@ when the optional backend is needed. Prefer the mamba env `developer`. Run
 relevant tests with `pytest tests/` or selected test files. Fixtures live in
 `tests/conftest.py`. Bias helpers: `pytest tests/test_ebdai_bias.py`. Refresh
 demo notebook outputs with `python Demos/run_notebooks.py`.
+
+Demo Studio: install `pip install -e ".[demo]"` and run
+`python -m ebdai.demo_app` from the repository root. `Demos/` remains the source
+of truth. UI controls edit execution snapshots; only an explicit notebook save
+changes source files. Preserve revision checks, fresh kernels, cancellation,
+loopback binding, and the session token. Keep `ex_fuzzy` unchanged for GUI work.
+`pytest tests/test_demo_app.py tests/test_ebdai_bias.py` covers the runner and bias
+helpers. Kernel/server tests require local sockets. The optional browser suite is
+`EBD_DEMO_BROWSER=1 pytest tests/test_demo_browser.py` after installing Playwright
+and its Chromium browser. See `Demos/README.md` for the full workflow.
 
 For evaluator changes, relevant suites include `test_array_evaluation.py`,
 `test_genetic_fitness_semantics.py`, `test_fast_fitness.py`, cache tests,

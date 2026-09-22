@@ -8,3 +8,7 @@ Before changing genetic fitness evaluation or firing kernels, also read
 [the decision review](LLM/performance/SPEED_UP_REVIEW.md). Preserve bit-for-bit objective parity.
 
 Before delegating, read [the delegation guidance](LLM/DELEGATION.md).
+
+For Demo Studio, keep the original `Demos/` notebooks and scripts as the source
+of truth. Implement GUI integration under `ebdai`, without modifying the rebased
+`ex_fuzzy` library. Follow the demo validation notes in `LLM/DEVELOPMENT.md`.

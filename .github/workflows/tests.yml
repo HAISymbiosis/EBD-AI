@@ -42,6 +42,23 @@ jobs:
         name: codecov-umbrella
         fail_ci_if_error: false
 
+  test-demo:
+    runs-on: ubuntu-latest
+    name: Test (Demo Studio, Chromium)
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Install demo and browser dependencies
+      run: |
+        pip install -e ".[demo,test]" playwright
+        python -m playwright install --with-deps chromium
+    - name: Test runner, notebook synchronization, and browser controls
+      env:
+        EBD_DEMO_BROWSER: "1"
+      run: pytest tests/test_demo_app.py tests/test_demo_browser.py tests/test_ebdai_bias.py -v --tb=short
+
   test-minimal:
     runs-on: ubuntu-latest
     name: Test (minimal deps)

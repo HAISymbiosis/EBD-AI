@@ -1,6 +1,6 @@
 # Agent handoff
 
-Last updated 2026-09-17. Check the working tree and `git log` before treating
+Last updated 2026-09-22. Check the working tree and `git log` before treating
 this as current.
 
 ## What this repository is
@@ -54,6 +54,33 @@ Workshop source:
 
 Verified in the `developer` mamba env: unit tests passed; all three notebooks
 ran with `python Demos/run_notebooks.py`.
+
+## Demo Studio and bias fixes (feature branch)
+
+Branch: `feature/localhost-demo-studio`. The optional browser app lives entirely
+under `ebdai`; no changes to the rebased `ex_fuzzy` library or demo source files.
+Run `pip install -e ".[demo]"`, then `python -m ebdai.demo_app` from the root.
+Open the full loopback URL printed in the terminal, including its session token.
+
+- Discovers all current numbered notebooks and `*_demo.py` scripts in `Demos/`.
+  There are ten notebooks and the EvoX script; upstream removed notebook 08.
+- Source-preserving parameter overrides, code editor, external-save detection,
+  conflict checks, fresh Jupyter kernels, per-cell progress, cancellation, and
+  executed notebook downloads. Only the latest run is retained temporarily.
+- HTML outputs are isolated. Live widgets/JavaScript outputs remain a Jupyter
+  workflow. The app executes trusted local code, not untrusted uploaded files.
+- Bias helpers count missing sensitive values as one group; fairness losses
+  accept explicit ordered `classes` to resolve original positive labels.
+- Validation: all ten notebooks and the EvoX script completed via the app runner
+  with short GA budgets (3 generations, population 8; reduced CV/grid and large
+  synthetic dataset sizes). This does not establish GPU coverage or performance.
+  Regression and browser checks live in `tests/test_demo_app.py`,
+  `tests/test_demo_browser.py`, and `tests/test_ebdai_bias.py`.
+- Final focused validation: 58 passed, 1 skipped across the demo, browser, bias,
+  label-domain, sklearn-estimator, lazy-import, and optional-pymoo suites.
+  The wheel was built and checked for all GUI assets. Chromium confirmed code
+  editing, external reloads, conflict handling, parameter execution, notebook
+  downloads, plot rendering, and the mobile layout.
 
 ## Environment
 

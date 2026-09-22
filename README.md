@@ -273,6 +273,12 @@ Both backends automatically batch operations to fit available memory and large d
 
 Executed notebooks in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `ebdai`; they render on GitHub with their outputs.
 
+For a hands-on browser interface, install `pip install -e ".[demo]"` from a
+checkout and run `python -m ebdai.demo_app`. Open the printed localhost URL to
+explore every example, change hyperparameters, inspect and edit code, and see
+notebook saves reflected in the app. The original notebooks still run on their
+own. See the [Demo Studio guide](Demos/README.md#local-browser-app).
+
 | Notebook | What it shows |
 |----------|---------------|
 | [Getting started](Demos/01_getting_started.ipynb) | Fit, score, read the rules, probabilities, explanations, partition plots |

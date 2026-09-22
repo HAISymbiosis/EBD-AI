@@ -7,6 +7,61 @@ every one of them runs in well under a minute on a laptop. Open them
 with Jupyter after `pip install ebdai` (or `pip install -e .` from a
 checkout), or read them online.
 
+## Local browser app
+
+From the repository root, in the same Python environment used for the library:
+
+```bash
+pip install -e ".[demo]"
+python -m ebdai.demo_app
+```
+
+Open the session URL printed in the terminal (normally
+`http://127.0.0.1:8765/#…`). **Demo Studio** has a menu of all ten notebooks
+and the EvoX script, parameter controls, plots, tables, and a notebook editor.
+No Node.js, frontend build, or external web service is needed.
+
+- Choose an example, change the controls, and click **Run example**. Controls
+  are discovered from literal keyword arguments, settings dictionaries, and
+  named assignments. Each control identifies its cell and call; expressions
+  and loops can be changed in **Notebook & code**.
+- **Run through here** executes from the beginning up to that cell. Every run
+  starts a fresh Jupyter kernel; it never depends on a previous run's variables.
+- **Explore** initially shows the notebook's saved outputs. During execution it
+  shows the run snapshot, with outputs appearing after each cell completes.
+  **Inspect executed code** shows the actual parameter overrides used.
+- Edit a notebook in Jupyter and save it: the app detects the change within a
+  few seconds and refreshes the code and controls. It does not auto-execute edits.
+  Browser edits remain in memory until **Save notebook**. A conflicting external
+  edit is reported instead of overwritten. Saving code clears stale outputs.
+- Changing controls affects only the run snapshot. **Download run** exports the
+  latest run as a notebook with its code, parameters, and outputs. Temporary
+  runs are removed when the server exits. Keep downloads you want to retain.
+- Use **Stop** to cancel a run. One example executes at a time. The same port
+  shares the current run across tabs.
+
+The original notebook/script paths and standalone workflows are unchanged.
+`ex_fuzzy` is unchanged; the GUI is an optional `ebdai` feature. The app runs
+trusted local Python code with your environment's permissions, and binds only
+to loopback. Open the full session URL, including its token.
+
+Use `--port 8766` to choose another port, or `--demos /path/to/Demos` when
+launching outside the repository root. Each cell has a ten-minute timeout.
+Arbitrary JavaScript outputs and live Jupyter widgets are not rendered; use
+Jupyter for those. HTML tables are displayed in isolated frames.
+
+Browser validation is optional for contributors:
+
+```bash
+pip install playwright
+python -m playwright install chromium
+EBD_DEMO_BROWSER=1 pytest tests/test_demo_browser.py
+```
+
+On Linux, `python -m playwright install-deps chromium` may also be needed.
+The regular integration suite is `pytest tests/test_demo_app.py` and requires
+the `demo` extra for kernel execution tests.
+
 | Notebook | What it shows |
 | --- | --- |
 | [01 Getting started](01_getting_started.ipynb) | Fit, score, read the rules, probabilities, per-sample explanations, partition plots. |
@@ -20,7 +75,7 @@ checkout), or read them online.
 | [10 Bias in heart-failure labels](10_bias_heart_failure.ipynb) | Same bias tools on the heart-failure death data. |
 | [11 Bias in inference and mitigation (loans)](11_bias_loan_fairness.ipynb) | Demographic parity, Kamiran–Calders reweighing, and a fairness-regularised genetic loss. |
 
-Notebooks 1 and 5 download Titanic and California housing through scikit-learn
+Notebooks 2 and 5 download Titanic and California housing through scikit-learn
 on the first run and cache them in your home directory. Notebooks 9–11 load
 tables shipped in `ebdai/data/` from the
 [WorkshopIgualdad2025](https://github.com/rferper/WorkshopIgualdad2025) workshop.
