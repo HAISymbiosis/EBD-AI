@@ -25,6 +25,20 @@ on the first run and cache them in your home directory. Notebooks 9–11 load
 tables shipped in `ebdai/data/` from the
 [WorkshopIgualdad2025](https://github.com/rferper/WorkshopIgualdad2025) workshop.
 
+Those three bias notebooks start with the workshop install cell for Google Colab:
+
+```
+!git clone -q https://github.com/HAISymbiosis/EBD-AI.git
+%cd EBD-AI
+!pip install -q .
+```
+
+Open them from GitHub:
+
+- [09 Bias in the data (Titanic)](https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/09_bias_titanic.ipynb)
+- [10 Bias in heart-failure labels](https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/10_bias_heart_failure.ipynb)
+- [11 Bias in inference and mitigation (loans)](https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/11_bias_loan_fairness.ipynb)
+
 `evox_backend_demo.py` compares the PyMoo and EvoX backends and reports
 whether EvoX and CUDA are available; run it as `python Demos/evox_backend_demo.py`.
 

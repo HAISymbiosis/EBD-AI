@@ -271,7 +271,7 @@ Both backends automatically batch operations to fit available memory and large d
 
 ### Notebooks
 
-Executed notebooks in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `ebdai`; they render on GitHub with their outputs.
+Executed notebooks in [`Demos/`](Demos/README.md) walk through `ex_fuzzy` and `ebdai`; they render on GitHub with their outputs. On Google Colab the bias notebooks start with the workshop install cell (`git clone` this repository, `%cd EBD-AI`, `pip install -q .`): [Titanic](https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/09_bias_titanic.ipynb), [heart failure](https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/10_bias_heart_failure.ipynb), [loans](https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/11_bias_loan_fairness.ipynb).
 
 | Notebook | What it shows |
 |----------|---------------|

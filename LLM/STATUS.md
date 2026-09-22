@@ -48,7 +48,16 @@ Workshop source:
   `fairness_regularized_loss`, `load_titanic`, `load_heart_failure`,
   `load_loan_approval`
 - Demos: `Demos/09_bias_titanic.ipynb`, `10_bias_heart_failure.ipynb`,
-  `11_bias_loan_fairness.ipynb` (executed outputs stored)
+  `11_bias_loan_fairness.ipynb` (executed outputs stored). Each starts with the
+  workshop Colab install cell, unchanged:
+
+  ```
+  !git clone -q https://github.com/HAISymbiosis/EBD-AI.git
+  %cd EBD-AI
+  !pip install -q .
+  ```
+
+  Open-in-Colab links are in `Demos/README.md`.
 - Tests: `tests/test_ebdai_bias.py`
 - Docs: `docs/source/user-guide/ebdai.rst`, `docs/source/api/ebdai.rst`
 
