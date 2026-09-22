@@ -87,6 +87,9 @@ predictions and which rules win for whom.
 
 ``fairness_report`` returns per-group selection rate, TPR and FPR, plus
 demographic-parity and equalized-odds gaps. It does not depend on Fairlearn.
+Missing sensitive values (``NaN``, ``None``, or ``pd.NA``) are counted
+together as one group in outcome rates, fairness reports, reweighing, and
+winning-rule counts. They are not silently excluded.
 
 Mitigation
 ==========
@@ -105,6 +108,26 @@ penalises demographic parity, plug into
 
     clf.customized_loss(fairness_regularized_loss(X_train[sensitive], lam=0.2))
     clf.fit(X_train, y_train)
+
+The classifier encodes labels as integer consequent indexes before invoking
+the loss. Without ``classes``, ``positive_label`` must be one of those indexes
+(the default is 1). To use original string or numeric labels, supply their
+encoding order explicitly:
+
+.. code-block:: python
+
+    import numpy as np
+
+    # For training labels such as "approved" and "denied":
+    loss = fairness_regularized_loss(
+        X_train[sensitive], positive_label='approved',
+        classes=np.unique(y_train),
+    )
+    clf.customized_loss(loss)
+    clf.fit(X_train, y_train)
+
+If the classifier uses explicit ``class_names``, pass that same order as
+``classes`` instead. Unknown positive labels raise ``ValueError``.
 
 Demos
 =====

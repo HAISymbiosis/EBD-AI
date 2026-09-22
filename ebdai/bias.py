@@ -42,7 +42,7 @@ def outcome_rates_by_group(
 
     Args:
         y: Outcome labels.
-        sensitive: Group labels aligned with ``y``.
+        sensitive: Group labels aligned with ``y``; missing values form one group.
         positive_label: Value of ``y`` treated as the favourable outcome.
 
     Returns:
@@ -72,7 +72,7 @@ def group_performance(
     Args:
         y_true: Ground-truth labels.
         y_pred: Predicted labels.
-        sensitive: Group labels aligned with the predictions.
+        sensitive: Group labels aligned with predictions; missing values form one group.
         positive_label: Favourable class.
 
     Returns:
@@ -87,8 +87,10 @@ def group_performance(
     truth = _binary_positive(y_true, positive_label)
     pred = _binary_positive(y_pred, positive_label)
     rows = []
-    for group in pd.unique(sensitive):
-        mask = sensitive == group
+    group_frame = pd.DataFrame({'group': sensitive})
+    for group, indices in group_frame.groupby('group', dropna=False, sort=False).indices.items():
+        mask = np.zeros(len(sensitive), dtype=bool)
+        mask[indices] = True
         t = truth[mask]
         p = pred[mask]
         tp = np.count_nonzero(t & p)
@@ -170,24 +172,20 @@ def reweigh_weights(
     """Kamiran and Calders (2012) sample weights that unbias P(Y, A).
 
     ``w(a, y) = P(Y=y) P(A=a) / P(A=a, Y=y)``.
+    Missing sensitive values form one group.
     """
     y = _as_1d(y, 'y')
     sensitive = _as_1d(sensitive, 'sensitive')
     if y.shape[0] != sensitive.shape[0]:
         raise ValueError('y and sensitive must have the same length')
-    n = y.shape[0]
-    weights = np.ones(n, dtype=float)
-    for group in pd.unique(sensitive):
-        in_group = sensitive == group
-        for label in pd.unique(y):
-            in_cell = in_group & (y == label)
-            n_cell = int(in_cell.sum())
-            if n_cell == 0:
-                continue
-            p_y = float((y == label).mean())
-            p_a = float(in_group.mean())
-            weights[in_cell] = (p_y * p_a) / (n_cell / n)
-    return weights
+    frame = pd.DataFrame({'group': sensitive, 'label': y})
+    n = len(frame)
+    if not n:
+        return np.empty(0, dtype=float)
+    n_y = frame.groupby('label', dropna=False)['group'].transform('size')
+    n_a = frame.groupby('group', dropna=False)['label'].transform('size')
+    n_cell = frame.groupby(['group', 'label'], dropna=False)['label'].transform('size')
+    return ((n_y / n) * (n_a / n) / (n_cell / n)).to_numpy(dtype=float)
 
 
 def parse_printed_rules(rule_text: str) -> list[str]:
@@ -231,7 +229,7 @@ def winning_rules_by_group(
     Args:
         classifier: Fitted ``BaseFuzzyRulesClassifier``.
         X: Feature table aligned with ``sensitive``.
-        sensitive: Group labels.
+        sensitive: Group labels; missing values form one group.
         rule_texts: Optional labels from :func:`parse_printed_rules`.
 
     Returns:
@@ -243,9 +241,9 @@ def winning_rules_by_group(
     if winners.shape[0] != sensitive.shape[0]:
         raise ValueError('X and sensitive must have the same number of rows')
     frame = pd.DataFrame({'group': sensitive, 'rule': winners})
-    counts = frame.groupby(['group', 'rule']).size().rename('count').reset_index()
-    totals = frame['group'].value_counts()
-    counts['rate'] = [row.count / totals[row.group] for row in counts.itertuples()]
+    counts = frame.groupby(['group', 'rule'], dropna=False).size().rename('count').reset_index()
+    totals = counts.groupby('group', dropna=False)['count'].transform('sum')
+    counts['rate'] = counts['count'] / totals
     if rule_texts is not None:
         labels = list(rule_texts)
         counts['rule_text'] = [
@@ -325,22 +323,50 @@ def fairness_regularized_loss(
     sensitive: ArrayLike,
     lam: float = 0.2,
     positive_label: Any = 1,
+    *,
+    classes: Optional[Sequence] = None,
 ) -> Callable:
     """``customized_loss``: MCC minus ``lam`` times demographic-parity difference.
 
     ``sensitive`` must follow the training rows passed to ``fit``.
+    Missing sensitive values are treated as one group.
+
+    Args:
+        sensitive: Sensitive group labels aligned with training rows.
+        lam: Strength of the demographic-parity penalty.
+        positive_label: Favourable label in ``classes``, or an integer
+            consequent index when ``classes`` is omitted.
+        classes: Original labels in classifier encoding order. Use
+            ``np.unique(y_train)`` for the default classifier, or the explicit
+            ``class_names`` order passed to its constructor.
     """
     groups = _as_1d(sensitive, 'sensitive')
+    if classes is not None:
+        labels = _as_1d(classes, 'classes')
+        if pd.isna(labels).any() or len(pd.unique(labels)) != len(labels):
+            raise ValueError('classes must contain unique, non-missing labels')
+        matches = np.flatnonzero(labels == positive_label)
+        if len(matches) != 1:
+            raise ValueError('positive_label must be present in classes')
+        positive_index = int(matches[0])
+    else:
+        if not isinstance(positive_label, (int, np.integer)) or positive_label < 0:
+            raise ValueError('positive_label must be a non-negative consequent index; '
+                             'provide classes to use original labels')
+        positive_index = int(positive_label)
 
     def loss(rule_base, X, y, tolerance, alpha: float = 0.0, beta: float = 0.0,
              precomputed_truth=None) -> float:
         from ex_fuzzy import eval_rules as evr
+        if not np.any(np.asarray(y) == positive_index):
+            raise ValueError('positive_label does not identify a training class')
+        if len(groups) != len(y):
+            raise ValueError('sensitive and training y must have the same length')
         evaluator = evr.evalRuleBase(rule_base, X, y, precomputed_truth=precomputed_truth)
         evaluator.add_rule_weights()
         preds = evaluator.mrule_base.winning_rule_predict(
             evaluator.X, precomputed_truth=evaluator.precomputed_truth)
-        n = len(np.asarray(y))
-        dpd = disparity_metrics(y, preds, groups[:n], positive_label=positive_label)[
+        dpd = disparity_metrics(y, preds, groups, positive_label=positive_index)[
             'demographic_parity_difference'
         ]
         if np.isnan(dpd):
