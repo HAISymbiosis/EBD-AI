@@ -1,0 +1,431 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{tgheros}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{array}
+
+\usefonttheme{professionalfonts}
+\renewcommand{\familydefault}{\sfdefault}
+\setbeamerfont{title}{series=\bfseries,size=\Large}
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamerfont{footline}{size=\scriptsize}
+
+\definecolor{ebdink}{HTML}{1C2834}
+\definecolor{ebdgreen}{HTML}{0F6E56}
+\definecolor{ebdnavy}{HTML}{1E4D7B}
+\definecolor{ebdsage}{HTML}{E7F3EE}
+\definecolor{ebdbluepale}{HTML}{E8F0F8}
+\definecolor{ebdamber}{HTML}{C56A12}
+\definecolor{ebdmuted}{HTML}{5C6B7A}
+\definecolor{ebdline}{HTML}{D5DDE3}
+\definecolor{ebdtrack}{HTML}{E4E8EC}
+\definecolor{ebdwarm}{HTML}{F7F4EC}
+\definecolor{ebdcard}{HTML}{FFFFFF}
+
+\setbeamercolor{normal text}{fg=ebdink,bg=ebdwarm}
+\setbeamercolor{background canvas}{bg=ebdwarm}
+\setbeamercolor{frametitle}{fg=ebdink,bg=ebdwarm}
+\setbeamercolor{title}{fg=ebdink}
+\setbeamercolor{structure}{fg=ebdgreen}
+\setbeamercolor{footline}{fg=ebdmuted,bg=ebdwarm}
+\setbeamercolor{itemize item}{fg=ebdgreen}
+\setbeamercolor{itemize subitem}{fg=ebdgreen}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raisebox{0.4ex}{\color{ebdgreen}\rule{1.5mm}{1.5mm}}}
+\setbeamertemplate{frametitle}{%
+  \vspace{0.35em}%
+  {\color{ebdgreen}\scriptsize\insertsection}%
+  \par\vspace{0.15em}%
+  \insertframetitle\par\vspace{0.15em}%
+}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+    \begin{beamercolorbox}[wd=0.72\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=1.1em]{footline}%
+      \insertdate
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.28\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=1.1em]{footline}%
+      \hfill\insertframenumber\,/\,\inserttotalframenumber
+    \end{beamercolorbox}}%
+}
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+
+\newcommand{\hilite}[1]{\textcolor{ebdnavy}{\textit{#1}}}
+\newcommand{\meter}[2]{%
+  \begin{tikzpicture}[baseline=-0.15ex]
+    \fill[ebdtrack] (0,0) rectangle (4.6,0.18);
+    \fill[#2] (0,0) rectangle ({4.6*(#1)},0.18);
+  \end{tikzpicture}%
+}
+
+\title{Dónde está el sesgo}
+\subtitle{Modelos explicables, reglas borrosas y tres demos de sesgo}
+\author{EBD-AI}
+\date{Demos 9--11}
+\institute{}
+
+\begin{document}
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+  \vspace{0.6em}
+  {\color{ebdgreen}\scriptsize EBD-AI \textperiodcentered\ DEMOS 9--11}
+  \par\vspace{0.7em}
+  {\usebeamerfont{title}\Huge Dónde está el sesgo\par}
+  \vspace{0.7em}
+  {\large Primero, qué es un modelo explicable.\\[0.25em]
+  Después, los cuadernos del Titanic, del corazón y de los préstamos.}
+  \vfill
+  {\color{ebdmuted}\small\texttt{ex\_fuzzy} escribe las reglas.\quad\texttt{ebdai} mide las brechas.}
+\end{frame}
+
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+    \begin{beamercolorbox}[wd=0.72\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=1.1em]{footline}%
+      \insertdate
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.28\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=1.1em]{footline}%
+      \hfill\insertframenumber\,/\,\inserttotalframenumber
+    \end{beamercolorbox}}%
+}
+
+\begin{frame}
+  \vspace{0.35em}
+  {\usebeamerfont{frametitle}Gracias\par}
+  \vspace{0.15em}
+  {\large
+  \textbf{Dr. Raquel Fernández Peralta}\\[0.2em]
+  {\normalsize\color{ebdmuted}UIB, España}
+
+  \vspace{0.85em}
+  \textbf{Dr. Mehrin Kiani}\\[0.2em]
+  {\normalsize\color{ebdmuted}Palo Alto Networks, EE.\,UU.}
+
+  \vspace{0.85em}
+  \textbf{Dr. Parastoo Azizinezhad}\\[0.2em]
+  {\normalsize\color{ebdmuted}Essex, Reino Unido}}
+\end{frame}
+
+\section{Fundamentos}
+
+\begin{frame}{Dos partes}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.92\textwidth}{%
+        {\color{ebdnavy}\large\bfseries 1\quad El modelo}\\[0.45em]
+        Explicable por diseño\\[0.25em]
+        El deber europeo de explicar\\[0.25em]
+        Un clasificador de reglas borrosas}}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.92\textwidth}{%
+        {\color{ebdgreen}\large\bfseries 2\quad El sesgo}\\[0.45em]
+        Titanic\\
+        las etiquetas ya difieren\\[0.3em]
+        Corazón\\
+        las etiquetas casi coinciden\\[0.3em]
+        Préstamos\\
+        dos formas de cambiar la puntuación}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{El modelo \hilite{es} la explicación}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.92\textwidth}{%
+        \raggedright
+        {\color{ebdnavy}\textbf{A posteriori}}\\[0.4em]
+        Se entrena un modelo opaco.\\
+        Después se cuenta otra historia sobre él.\\[0.45em]
+        {\small\color{ebdmuted}Esa historia puede no coincidir con el modelo que decidió.}\par}}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdsage}{\parbox[t]{0.92\textwidth}{%
+        \raggedright
+        {\color{ebdgreen}\textbf{Por diseño}}\\[0.4em]
+        La decisión ya es una frase, más lo bien que encajó con esta persona.\\[0.45em]
+        {\small\texttt{explainable\_predict} devuelve la clase, la regla ganadora y el encaje.}\par}}
+    \end{column}
+  \end{columns}
+  \vspace{0.7em}
+  {\small Legible describe el modelo. Justo describe las decisiones. Una regla puede no escribir «sexo» y aun así seguirlo por la tarifa, el matrimonio o el ingreso.}
+\end{frame}
+
+\begin{frame}{Tres cosas que se pueden leer}
+  \begin{enumerate}
+    \item \textbf{Las palabras.} Si se usa el sexo, la palabra está en la frase.
+    \item \textbf{A quién decide esa frase.} Cuenta cuántas veces gana, dentro de cada grupo.
+    \item \textbf{Qué premió la puntuación.} La demo 11 cambia la puntuación de entrenamiento. Mira si se mueven las frases, las tasas, o las dos.
+  \end{enumerate}
+\end{frame}
+
+\section{El deber de explicar}
+
+\begin{frame}{Qué datos de esta persona, y cómo}
+  El RGPD pide información significativa sobre la lógica de una decisión automática grave, y una vía para impugnarla.
+  \vspace{0.55em}
+
+  El 27 de febrero de 2025, en un caso de denegación de crédito, el Tribunal de Justicia dijo que eso es el procedimiento realmente aplicado: qué datos se usaron, y cómo. Entregar el algoritmo no es esa explicación.
+
+  \vspace{0.55em}
+  \colorbox{ebdsage}{\parbox{0.96\textwidth}{%
+    \vspace{0.35em}
+    Una regla ganadora \emph{es} esa explicación.\\
+    «Denegado, porque el historial crediticio es malo y el ingreso es Bajo.»
+    \vspace{0.35em}}}
+\end{frame}
+
+\begin{frame}{Cuándo se aplican esos deberes}
+  \small
+  \renewcommand{\arraystretch}{1.28}
+  \begin{tabular}{@{}l p{0.72\textwidth}@{}}
+    \textcolor{ebdnavy}{\textbf{Ya}} &
+      Explicación del RGPD, y acceso igual de mujeres y hombres a los servicios, incluida la banca. \\
+    \textcolor{ebdnavy}{\textbf{2 ago.\ 2026}} &
+      Avisar a las personas cuando tratan con un sistema de IA. \\
+    \textcolor{ebdnavy}{\textbf{2 dic.\ 2027}} &
+      Deberes de alto riesgo para la solvencia y otros usos autónomos: salidas interpretables, y una revisión del sesgo en los datos. \\
+    \textcolor{ebdnavy}{\textbf{2 ago.\ 2028}} &
+      Los mismos deberes si la IA forma parte de un producto regulado, como muchos productos sanitarios. \\
+  \end{tabular}
+
+  \vspace{0.35em}
+  {\scriptsize\color{ebdmuted}Ya en vigor: arts.\ 13, 14, 15 y 22 del RGPD, leídos en C-203/22, y la Directiva 2004/113/CE.
+  El 2 de agosto de 2026 es el art.\ 50 del Reglamento de IA, Reglamento (UE) 2024/1689.
+  Las fechas posteriores son el Reglamento (UE) 2026/1744: entonces se aplican los arts.\ 10, 13, 14 y 86. Esto es un mapa, no un asesoramiento jurídico.}
+\end{frame}
+
+\section{Reglas borrosas}
+
+\begin{frame}{Un corte duro salta. Una palabra borrosa se apaga.}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.92\textwidth}{%
+        \raggedright
+        {\color{ebdnavy}\textbf{Nítido}}\\[0.35em]
+        Menos de 30 es joven. Un día después, el encaje pasa de 1 a 0.\par}}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdsage}{\parbox[t]{0.92\textwidth}{%
+        \raggedright
+        {\color{ebdgreen}\textbf{Borroso}}\\[0.35em]
+        La pertenencia va de 0 a 1. Una edad puede ser en parte Baja y en parte Media.\par}}
+    \end{column}
+  \end{columns}
+  \vspace{1.35em}
+  \centering
+  \begin{tikzpicture}[x=1.0cm,y=0.62cm,line cap=round]
+    \draw[ebdnavy,very thick] (0.1,1.5) -- (1.7,1.5) -- (3.2,0);
+    \node[ebdnavy,font=\scriptsize\bfseries] at (1.0,1.75) {Baja};
+    \draw[ebdgreen,very thick] (1.7,0) -- (3.2,1.5) -- (4.7,1.5) -- (6.2,0);
+    \node[ebdgreen,font=\scriptsize\bfseries] at (3.95,1.75) {Media};
+    \draw[ebdamber,very thick] (4.7,0) -- (6.2,1.5) -- (7.6,1.5);
+    \node[ebdamber,font=\scriptsize\bfseries] at (6.9,1.75) {Alta};
+    \draw[ebdmuted,dashed] (2.45,0) -- (2.45,0.75);
+    \fill[ebdink] (2.45,0.75) circle (1.2pt);
+    \node[font=\scriptsize,anchor=north] at (2.45,-0.08) {ambas \(\tfrac12\)};
+  \end{tikzpicture}
+
+  \vspace{0.25em}
+  {\small «Media» es el centro de \emph{esta} tabla. El sexo sigue encajando en 1 o en 0. El cuaderno imprime Low, Medium y High.}
+\end{frame}
+
+\begin{frame}{Gana la frase más fuerte}
+  Varias condiciones se \emph{multiplican}. Si una vale 0, la regla no se dispara.\\
+  Sexo en 1 y edad en un medio se dispara a un medio. Ese producto todavía no es la decisión.
+  \vspace{0.35em}
+
+  {\small Para un pasajero, tres reglas puntúan así. Gana la puntuación más alta.}
+  \vspace{0.4em}
+
+  \renewcommand{\arraystretch}{1.22}
+  \begin{tabular}{@{}p{0.72\textwidth} r@{}}
+    \toprule
+    Regla & Encaje \\
+    \midrule
+    Sexo mujer y edad Media & \textcolor{ebdgreen}{\textbf{0.9 gana}} \\
+    Edad Baja & 0.2 \\
+    Tarifa Alta & 0.4 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.4em}
+  {\small Las demos 9 y 10 fijan cada peso en 1, así que decide el encaje.\\
+  La demo 11 deja que la búsqueda elija un peso. Entonces puede ganar un encaje modesto.}
+\end{frame}
+
+\begin{frame}{Las frases se buscan}
+  \begin{columns}[c]
+    \begin{column}{0.32\textwidth}
+      \centering
+      {\color{ebdnavy}\Huge 12}\\[0.2em]
+      {\small listas candidatas}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \centering
+      {\color{ebdnavy}\Huge 6}\\[0.2em]
+      {\small generaciones como máximo}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \centering
+      {\color{ebdnavy}\Huge MCC}\\[0.2em]
+      {\small la puntuación que se sube}
+    \end{column}
+  \end{columns}
+  \vspace{0.55em}
+  {\small El MCC va de \(-1\) a \(+1\). La exactitud puede parecer buena mientras el modelo es perezoso, porque acertar la clase frecuente puntúa bien en una tabla desigual. La búsqueda también para tras 3 generaciones sin mejora.}
+  \vspace{0.35em}
+
+  {\small \textbf{DS} es cuánto una regla sostiene su propio resultado, y cuán poco se dispara en el otro. \textbf{ACC} es cuántas veces acertó cuando ganó. Una regla rara puede acertar el 100\,\% y aun así apenas importar.}
+\end{frame}
+
+\section{Las demos}
+
+\begin{frame}{Las mismas preguntas. Tres tablas.}
+  \footnotesize
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.9\textwidth}{%
+        \raggedright
+        {\small\color{ebdnavy}\textbf{9\quad Titanic}}\\[0.25em]
+        Las etiquetas ya difieren.\\[0.25em]
+        Sobreviven 195 de 259 mujeres.\\
+        Sobreviven 93 de 453 hombres.\\[0.25em]
+        Prueba: se predice supervivencia para 49 de 86 mujeres, y para ningún hombre.\par}}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.9\textwidth}{%
+        \raggedright
+        {\small\color{ebdgreen}\textbf{10\quad Corazón}}\\[0.25em]
+        Las etiquetas casi coinciden.\\[0.25em]
+        Mueren 34 de 105 mujeres.\\
+        Mueren 62 de 194 hombres.\\[0.25em]
+        La regla que nombra el sexo apenas se dispara.\par}}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \colorbox{ebdcard}{\parbox[t]{0.9\textwidth}{%
+        \raggedright
+        {\small\color{ebdamber}\textbf{11\quad Préstamos}}\\[0.25em]
+        La puntuación puede cambiar.\\[0.25em]
+        Brecha de etiquetas: unos 8 puntos.\\
+        Base: unos 30 puntos.\\[0.25em]
+        Una reparación se pasa. Otra cierra la brecha aprobando a menos gente.\par}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Primero la brecha de las etiquetas, luego la de las predicciones}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdbluepale}{\parbox[t]{0.92\textwidth}{%
+        \raggedright
+        {\color{ebdnavy}\textbf{En la tabla}}\\[0.35em]
+        ¿Con qué frecuencia ocurrió ya el suceso?\\[0.3em]
+        {\small Esto no depende de la búsqueda.}\par}}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \colorbox{ebdsage}{\parbox[t]{0.92\textwidth}{%
+        \raggedright
+        {\color{ebdgreen}\textbf{En las reglas}}\\[0.35em]
+        ¿Con qué frecuencia se predice el suceso, y qué frase ganó?\\[0.3em]
+        {\small Esto es lo que hizo el ajuste.}\par}}
+    \end{column}
+  \end{columns}
+  \vspace{0.55em}
+  «Positivo» es el suceso que se eligió contar. La supervivencia y la aprobación son beneficios. En el cuaderno del corazón el suceso es la \textbf{muerte}.
+  \vspace{0.35em}
+
+  {\small Una brecha impresa de \(0.30\) son 30 puntos porcentuales. Un cociente de 0 suele decir que la tasa de un grupo es cero.}
+\end{frame}
+
+\begin{frame}{Un grupo, leído de cuatro maneras}
+  Mujeres de prueba del Titanic: 86 personas, de las cuales sobrevivieron 64.
+  \vspace{0.35em}
+
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{@{}l l l@{}}
+    \toprule
+    Recuento & Nombre & Significado \\
+    \midrule
+    \textbf{49 de 86} & Tasa de selección & Predichas como supervivientes \\
+    \textbf{33 de 64} & Tasa de verdaderos positivos & Supervivientes que el modelo encontró \\
+    \textbf{16 de 22} & Tasa de falsos positivos & Muertes predichas como supervivencia \\
+    \textbf{0 de 149} & El otro grupo & Hombres predichos como supervivientes \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.35em}
+  {\small Equalized odds usa la \emph{mayor} de las dos brechas de error. Aquí son 73 puntos: a las mujeres que murieron se les predice a menudo la supervivencia, y a los hombres que murieron, nunca.}
+\end{frame}
+
+\begin{frame}{Titanic: la brecha ya está en las etiquetas}
+  \small
+  \begin{tabular}{@{}l c r@{}}
+    Mujeres & \meter{0.753}{ebdgreen} & 195 de 259 \\[0.35em]
+    Hombres & \meter{0.205}{ebdnavy} & 93 de 453 \\
+  \end{tabular}
+
+  \vspace{0.45em}
+  \colorbox{ebdsage}{\parbox{0.96\textwidth}{%
+    \vspace{0.25em}
+    \textbf{La regla más alta.} Si el sexo es mujer y la edad es Media, entonces sobrevivió.\\[0.2em]
+    En los pasajeros de prueba esa regla es la única fuente de supervivencias predichas: 49 mujeres, y ningún hombre. A los 35 hombres que habían sobrevivido se les predice la muerte.
+    \vspace{0.25em}}}
+\end{frame}
+
+\begin{frame}{Corazón: etiquetas parecidas, una regla rara}
+  La muerte es cerca de un paciente de cada tres en los dos grupos.
+  \vspace{0.35em}
+
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{@{}r p{0.82\textwidth}@{}}
+    \textcolor{ebdgreen}{\textbf{0.54}} & Creatinina sérica Baja \quad$\rightarrow$\quad supervivencia \\
+    \textcolor{ebdgreen}{\textbf{0.06}} & Fracción de eyección Baja \quad$\rightarrow$\quad muerte \\
+    \textcolor{ebdnavy}{\textbf{0.006}} & Anemia ausente, sodio sérico Medio,\newline y sexo mujer \quad$\rightarrow$\quad muerte \\
+  \end{tabular}
+
+  \vspace{0.4em}
+  La regla del sexo acierta las pocas veces que gana, y casi nunca gana.
+  \vspace{0.25em}
+
+  {\small Predicciones de muerte en la prueba: 3 de 32 mujeres, 2 de 67 hombres.}
+\end{frame}
+
+\begin{frame}{Préstamos: la puntuación cambia a quién se aprueba}
+  Conjunto de prueba: 22 mujeres y 137 hombres. La brecha de etiquetas en toda la tabla es de unos 8 puntos.
+  \vspace{0.3em}
+
+  \small
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{@{}l c c c c@{}}
+    \toprule
+     & Mujeres & Hombres & Brecha & Aciertos \\
+    \midrule
+    Base & 6 de 22 & 79 de 137 & 30 pts & 94/159 \\
+    Reponderado & 17 de 22 & 45 de 137 & 44 pts, al revés & 83/159 \\
+    Penalización & 4 de 22 & 33 de 137 & 6 pts & 68/159 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.35em}
+  {\small La reponderación hace que cuenten más los pares poco frecuentes de grupo y etiqueta. En esta ejecución corta se pasó de la igualdad.\\
+  La penalización es el MCC menos \(0.2\) veces la brecha. La brecha se cerró porque se aprobó menos a los dos grupos.}
+\end{frame}
+
+\begin{frame}{Cuatro cosas que anotar}
+  \begin{enumerate}
+    \item Los dos recuentos de etiquetas, \textbf{antes} del ajuste.
+    \item Cualquier regla que nombre la columna sensible, y su DS.
+    \item La tasa de selección como \textbf{recuento de personas}.
+    \item La exactitud al lado de cualquier brecha nueva.
+  \end{enumerate}
+  \vfill
+  {\small\color{ebdmuted}Los números son la ejecución guardada: un tercio reservado, \texttt{random\_state=42}, como máximo seis generaciones.}
+\end{frame}
+
+\end{document}

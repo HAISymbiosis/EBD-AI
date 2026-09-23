@@ -1,0 +1,840 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{tgpagella}
+\usepackage[scale=0.92]{tgheros}
+\usepackage[scale=0.88]{tgcursor}
+\usepackage{amsmath}
+\usepackage[italic,defaultmathsizes]{mathastext}
+
+\usepackage[a4paper, margin=16.5mm, top=15mm, bottom=16mm, headheight=15pt]{geometry}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{needspace}
+\usepackage{hyperref}
+\urlstyle{same}
+\def\UrlBreaks{\do\/\do\-}
+
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+
+\definecolor{ebdink}{HTML}{1C2834}
+\definecolor{ebdgreen}{HTML}{0F6E56}
+\definecolor{ebdgreenpale}{HTML}{E6F4EF}
+\definecolor{ebblue}{HTML}{1E4D7B}
+\definecolor{ebbluepale}{HTML}{E7F0F8}
+\definecolor{ebamber}{HTML}{8A4B08}
+\definecolor{ebamberpale}{HTML}{FBF4E6}
+\definecolor{ebdmuted}{HTML}{5C6B7A}
+\definecolor{ebdtrack}{HTML}{E3E8ED}
+\definecolor{ebdrow}{HTML}{F6F8FA}
+\definecolor{ebdwomen}{HTML}{0F6E56}
+\definecolor{ebdmen}{HTML}{C56A12}
+
+\hypersetup{
+  colorlinks = true,
+  linkcolor = ebblue,
+  urlcolor = ebdgreen,
+  pdftitle = {Dónde está el sesgo},
+  pdfauthor = {EBD-AI},
+  pdfsubject = {Reglas borrosas, modelos explicables por diseño y demos de sesgo 9, 10 y 11},
+}
+
+\setlist[itemize]{itemsep=0.28em, topsep=0.35em, leftmargin=1.25em}
+\setlist[enumerate]{itemsep=0.28em, topsep=0.35em, leftmargin=1.35em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.18}
+
+\titleformat{\section}
+  {\sffamily\large\bfseries\color{ebdink}}
+  {\thesection}{0.55em}{}
+  [\vspace{-0.55em}{\color{ebdgreen}\titlerule[1.15pt]}\vspace{0.15em}]
+\titlespacing*{\section}{0pt}{1.15em}{0.55em}
+\titleformat{\subsection}
+  {\sffamily\bfseries\color{ebblue}}
+  {\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{0.85em}{0.3em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\small\color{ebdmuted}EBD-AI}
+\fancyhead[R]{\sffamily\small\color{ebdmuted}Demos de sesgo 9--11}
+\fancyfoot[L]{\sffamily\small\color{ebdmuted}Dónde está el sesgo}
+\fancyfoot[R]{\sffamily\small\color{ebdmuted}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyheadoffset{0pt}
+
+\tcbset{
+  enhanced,
+  breakable,
+  boxrule = 0pt,
+  arc = 2.5pt,
+  boxsep = 1.5pt,
+  left = 8pt,
+  right = 8pt,
+  top = 5pt,
+  bottom = 5pt,
+  before skip = 8pt,
+  after skip = 8pt,
+}
+
+\newtcolorbox{lesson}{
+  colback = ebdgreenpale,
+  colframe = ebdgreenpale,
+  borderline west = {3pt}{0pt}{ebdgreen},
+}
+\newtcolorbox{idea}{
+  colback = ebbluepale,
+  colframe = ebbluepale,
+  borderline west = {3pt}{0pt}{ebblue},
+}
+\newtcolorbox{careful}{
+  colback = ebamberpale,
+  colframe = ebamberpale,
+  borderline west = {3pt}{0pt}{ebamber},
+}
+
+\newcommand{\fn}[1]{\texttt{\small #1}}
+\newcommand{\track}[2]{%
+  \begin{tikzpicture}[baseline=-0.15ex]
+    \fill[ebdtrack] (0,0) rectangle (5.55,0.20);
+    \fill[#2] (0,0) rectangle ({5.55*(#1)},0.20);
+  \end{tikzpicture}%
+}
+\newcommand{\pct}[1]{\mbox{#1\,\%}}
+
+\begin{document}
+\color{ebdink}
+\raggedbottom
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[
+  colback=ebdink, colframe=ebdink, arc=3pt,
+  left=12pt, right=12pt, top=9pt, bottom=9pt,
+  before skip=0pt, after skip=8pt,
+]
+{\color{white}\sffamily\bfseries\fontsize{21}{25}\selectfont Dónde está el sesgo\par}
+\vspace{3pt}
+{\color{white!88}\sffamily Reglas borrosas, modelos explicables por diseño,\par y los cuadernos del Titanic, del corazón y de los préstamos\par}
+\end{tcolorbox}
+
+\noindent
+La guía tiene dos partes. La primera es el fundamento: qué significa que un modelo sea explicable por diseño, por qué las normas europeas piden una explicación que una persona pueda leer, y cómo un clasificador de reglas borrosas produce esa explicación. La segunda parte lee los tres cuadernos de sesgo que usan ese clasificador. El aprendiz de reglas es \fn{ex\_fuzzy}. Las medidas de sesgo viven en \fn{ebdai}. Las tablas vienen de los materiales de WorkshopIgualdad2025 que viajan dentro del paquete.
+
+El cuaderno imprime las reglas en inglés, con las palabras Low, Medium y High. Aquí esas palabras se leen como Baja, Media y Alta, y las frases se traducen. Los nombres de funciones, de columnas y de medidas se dejan como salen en pantalla.
+
+% ---------------------------------------------------------------------
+\section{Explicable por diseño}
+\label{sec:ebd}
+
+BDI es la caja de herramientas Explainable By Design AI. La frase es la definición. Un modelo es explicable por diseño cuando lo que se entrenó ya es una descripción que una persona puede leer. La decisión y la explicación son el mismo objeto.
+
+En estos cuadernos ese objeto es una lista corta de reglas si--entonces. Si se pregunta por qué a un pasajero se le predijo la supervivencia, la respuesta es una frase que se puede señalar, más un número que dice cuánto encajó la frase con ese pasajero. \fn{explainable\_predict} devuelve esa explicación directamente: la clase predicha, el índice de la regla ganadora y el encaje.
+
+\begin{idea}
+\textbf{Dos maneras de explicar un modelo.} Una explicación a posteriori entrena un modelo opaco, como una red neuronal o un conjunto grande, y después construye otra historia sobre él: un mapa de saliencia, una lista de puntuaciones de variables, o un modelo más simple ajustado para copiarlo. Esa segunda historia puede ser útil, y puede no coincidir con el modelo que decidió. Un modelo explicable por diseño mantiene el procedimiento de decisión en una forma que se audita directamente. Aquí se auditan las frases que se disparan.
+\end{idea}
+
+Esa auditoría ve tres cosas que un bloque de pesos no muestra como texto.
+
+\begin{enumerate}
+  \item \textbf{Lo que el modelo puede decir.} Cada regla nombra columnas con palabras corrientes. Cuando se usa el sexo, la palabra sexo está en la frase.
+  \item \textbf{A quién decide cada frase.} El recuento de la regla ganadora dice cuántas veces esa frase es la que se dispara, dentro de cada grupo.
+  \item \textbf{Qué premió la puntuación de entrenamiento.} La demo 11 cambia la puntuación. El modelo sigue siendo una lista de reglas, así que se puede ver si la puntuación nueva cambió las frases, las tasas, o las dos.
+\end{enumerate}
+
+\begin{careful}
+\textbf{Legible describe el modelo. Justo describe las decisiones.} Una regla que dice «el sexo es mujer» es fácil de auditar, y puede seguir siendo una regla sesgada. Una regla que nunca escribe la palabra sexo puede seguir el sexo a través de la tarifa, el matrimonio o el ingreso. Ser explicable por diseño hace posibles esas comprobaciones. Las comprobaciones son las medidas de la sección~\ref{sec:measure} y las tres demos que siguen.
+\end{careful}
+
+\fn{ex\_fuzzy} es la familia de reglas borrosas, la primera familia incluida en la caja de herramientas. \fn{ebdai} es donde viven otras herramientas explicables por diseño. En estos cuadernos eso significa las medidas de sesgo y las dos puntuaciones de entrenamiento alteradas en la demo de préstamos. La misma idea de diseño cubre también otras familias legibles de la biblioteca, incluidos los árboles de reglas borrosas y los conjuntos de predicción conformal. Las demos 9--11 usan solo el clasificador borroso.
+
+% ---------------------------------------------------------------------
+\section{Por qué las normas piden una explicación}
+\label{sec:law}
+
+La explicabilidad importa aquí porque la persona que recibe una decisión grave, y la persona a la que se pide vigilar el sistema, tienen que poder ver cómo se produjo ese resultado. En septiembre de 2026 las normas europeas ya lo exigen para muchas decisiones automáticas sobre personas. Otro conjunto de deberes, escrito expresamente para la IA de alto riesgo, ya está aprobado, con fechas de inicio posteriores. Esta sección es un mapa de esos deberes. No es un asesoramiento jurídico, y un cuaderno de clase no es un sistema introducido en el mercado.
+
+\subsection{La explicación que ya se debe a una persona}
+
+Cuando una decisión se basa únicamente en el tratamiento automatizado de datos personales y produce un efecto jurídico, o un efecto igual de grave, el RGPD la restringe y, cuando se permite, exige garantías: una persona puede intervenir, esa persona puede exponer su punto de vista, y puede impugnar la decisión (artículo~22). Impugnar una decisión depende de conocer el motivo.
+
+Los artículos~13(2)(f), 14(2)(g) y~15(1)(h) exigen «información significativa sobre la lógica aplicada». El 27 de febrero de 2025, en \emph{CK contra Dun \& Bradstreet Austria} (C-203/22), un caso de evaluación crediticia automatizada, el Tribunal de Justicia dijo qué exige esa frase. El responsable del tratamiento debe describir el procedimiento y los principios realmente aplicados, de modo que la persona pueda entender cuáles de sus datos se usaron y cómo. La explicación tiene que ser concisa e inteligible. Comunicar el algoritmo, o un rastro largo de cada paso interno, no cumple ese estándar. Un secreto comercial no es motivo para negar toda explicación.
+
+Una regla borrosa ganadora tiene la forma de respuesta que describe ese estándar. «Esta solicitud se denegó porque la regla que se disparó fue: el historial crediticio es malo y el ingreso es Bajo.» La persona ve los datos que importaron y el principio que los usó. Un archivo de pesos de una red no hace ese trabajo.
+
+\subsection{IA de alto riesgo, con un calendario publicado}
+
+El Reglamento~(UE)~2024/1689, el Reglamento de Inteligencia Artificial, entró en vigor el 1 de agosto de 2024. Sus deberes empiezan por etapas. El Reglamento~(UE)~2026/1744, en vigor desde el 27 de julio de 2026, movió solo el calendario de alto riesgo. Dejó el resto del Reglamento en su sitio.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y@{}}
+\toprule
+Desde & Qué se aplica \\
+\midrule
+2 de febrero de 2025 & Prácticas prohibidas, y el deber de garantizar un nivel suficiente de alfabetización en IA. \\
+\rowcolor{ebdrow}
+2 de agosto de 2025 & Deberes para los modelos de IA de uso general. \\
+2 de agosto de 2026 & Las demás disposiciones del Reglamento, aparte de los deberes de alto riesgo fechados abajo. Se aplica el artículo~50: se informa a las personas cuando interactúan con un sistema de IA, y cierto contenido sintético se etiqueta. \\
+\rowcolor{ebdrow}
+2 de diciembre de 2027 & Deberes de alto riesgo para los sistemas autónomos del anexo~III. La evaluación de la solvencia de una persona física es uno de esos usos. \\
+2 de agosto de 2028 & Deberes de alto riesgo para la IA que es un producto regulado, o que va dentro de uno. Muchos productos sanitarios caen en esta fecha. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Los deberes de diseño de alto riesgo son la razón de que estos cuadernos tengan la forma que tienen.
+
+\begin{itemize}
+  \item \textbf{Artículo~13.} Un sistema de alto riesgo se diseña para que el responsable del despliegue pueda interpretar una salida y usarla de manera adecuada. Las instrucciones cubren cómo el sistema puede aportar información útil para explicar una salida y, cuando proceda, su comportamiento en grupos de personas. También cubren las medidas de vigilancia humana que hacen posible esa interpretación.
+  \item \textbf{Artículo~14.} La vigilancia tiene que ser real. Una persona debe poder entender la salida lo bastante bien como para decidir no usar el sistema, o para anularlo. Una puntuación sin frase deja a esa persona firmando algo que no puede interpretar.
+  \item \textbf{Artículo~10.} Los datos de entrenamiento, validación y prueba se examinan en busca de sesgos que puedan afectar a la salud y la seguridad, a los derechos fundamentales o a una discriminación prohibida por el Derecho de la Unión, y esos sesgos se mitigan. Las demos~9 a~11 empiezan por ese examen: la tasa del suceso por grupo, antes de entrenar ninguna regla.
+  \item \textbf{Artículo~86.} Una persona afectada desfavorablemente por una decisión tomada a partir de la salida de un sistema de alto riesgo del anexo~III puede pedir al responsable del despliegue una explicación clara del papel del sistema en el procedimiento y de los elementos principales de la decisión. El derecho cede cuando el Derecho de la Unión ya ofrece la misma protección. Para muchas decisiones de crédito, esa protección ya existente es el derecho del RGPD de arriba.
+\end{itemize}
+
+El cuaderno de préstamos tiene la forma del uso crediticio del anexo~III: una aprobación o una denegación, una columna de género, y una frase que nombra el género o no lo nombra. No es en sí un sistema de puntuación crediticia ofrecido al público. El cuaderno de insuficiencia cardíaca tiene la forma de una puntuación clínica. Cumpliría la fecha posterior del producto solo si se introdujera en el mercado como producto sanitario, o como parte de uno. La tabla del Titanic son datos históricos de enseñanza. En las tres, lo que los deberes siguen pidiendo es lo mismo: un motivo para esta persona, y una comprobación de cómo caen los motivos entre los grupos.
+
+\subsection{El derecho de igualdad ya está en vigor}
+
+El calendario de alto riesgo no aplaza la prohibición de discriminar por sexo. La Directiva~2004/113/CE ya exige la igualdad de trato entre mujeres y hombres en el acceso a bienes y servicios ofrecidos al público, y la banca está entre esos servicios. Una regla que dice «Gender is Male» es una prueba al lado de esa prohibición. Una lista de reglas que nunca escribe la palabra género no demuestra que las tasas de aprobación sean iguales. Por eso la sección~\ref{sec:loans} lee la brecha y la exactitud una al lado de la otra.
+
+\begin{careful}
+\textbf{Un modelo legible es una manera de atender estos deberes. No es un certificado de que se hayan cumplido.} Los ajustes de seis generaciones no examinan una población representativa, no registran las decisiones, no cubren un puesto de vigilancia ni completan una evaluación de conformidad. Sí producen el objeto que describen los deberes: el procedimiento realmente aplicado a una fila, en una frase, más las tasas de grupo a su alrededor.
+\end{careful}
+
+% ---------------------------------------------------------------------
+\section{Un clasificador de reglas borrosas}
+\label{sec:rules}
+
+Un clasificador de reglas borrosas es una lista de frases si--entonces y una regla para elegir entre ellas. Las frases usan palabras blandas, así que un valor cerca de una frontera encaja con una palabra solo en parte. Estas demos entrenan ese clasificador con \fn{BaseFuzzyRulesClassifier}.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y@{}}
+\toprule
+Pieza & Qué es \\
+\midrule
+Variable lingüística & Una columna, partida en palabras como Baja, Media y Alta, o dejada como categorías. \\
+\rowcolor{ebdrow}
+Regla & SI se cumplen algunas de esas palabras, ENTONCES se predice una clase. El lado SI es el antecedente. La clase es el consecuente. \\
+Base de reglas & La lista completa. El cuaderno la imprime en bloques, un bloque por consecuente. \\
+\rowcolor{ebdrow}
+Inferencia & Para una persona, se puntúa cada regla y decide la regla más fuerte. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\Needspace{12\baselineskip}
+\subsection{Palabras en lugar de un corte duro}
+
+Un corte nítido diría que una edad menor de 30 es joven y que cualquier edad mayor no lo es. Un día movería el encaje de 1 a 0. Una palabra borrosa se mueve poco a poco. Su pertenencia \(\mu\) es un número de 0 a 1:
+
+\[
+\mu_{\mathrm{Baja}}(x) \in [0, 1].
+\]
+
+Cero significa que la palabra no alcanza este valor. Uno significa que la palabra encaja del todo. Un número intermedio significa un encaje parcial. Las palabras vecinas se solapan, así que una edad puede ser en parte Baja y en parte Media.
+
+Una frase de ese tipo, de las que imprime el cuaderno de insuficiencia cardíaca, es:
+
+\begin{center}
+{\sffamily\bfseries SI} la creatinina sérica es Baja \textbf{ENTONCES} predecir supervivencia.
+\end{center}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=0.98cm, y=1.02cm, line cap=round]
+  \draw[ebdmuted, ->] (0,0) -- (10.6,0) node[below right, font=\small] {valor};
+  \draw[ebdmuted, ->] (0,0) -- (0,2.15);
+  \draw[ebblue, very thick] (0.15,2) -- (2.3,2) -- (4.3,0);
+  \node[ebblue, font=\sffamily\small\bfseries, anchor=south] at (1.15,2.06) {Baja};
+  \draw[ebdgreen, very thick] (2.3,0) -- (4.3,2) -- (6.3,2) -- (8.3,0);
+  \node[ebdgreen, font=\sffamily\small\bfseries] at (5.3,2.28) {Media};
+  \draw[ebamber, very thick] (6.3,0) -- (8.3,2) -- (10.15,2);
+  \node[ebamber, font=\sffamily\small\bfseries] at (9.15,2.28) {Alta};
+  \draw[dashed, ebdmuted] (3.3,0) -- (3.3,1.0);
+  \fill[ebdink] (3.3,1.0) circle (1.6pt);
+  \node[ebdink, font=\scriptsize, anchor=north] at (3.3,-0.08) {ambas \(1/2\)};
+\end{tikzpicture}
+\caption{Un esquema de tres etiquetas que se solapan. La búsqueda coloca las fronteras reales en cada columna numérica, así que «edad Media» significa la banda central de \emph{esta} tabla. Una persona cerca de una frontera encaja con dos etiquetas a la vez. Las categorías, como el sexo, encajan en 1 o en 0.}
+\end{figure}
+
+\noindent
+Estos cuadernos piden tres palabras en cada columna numérica (\fn{n\_linguistic\_variables=3}) y conjuntos de tipo~1 (\fn{FUZZY\_SETS.t1}), así que cada encaje es un solo número en \([0,1]\). La biblioteca también puede construir conjuntos de tipo~2, que ponen una banda de incertidumbre alrededor del encaje. Las demos no lo hacen. Las categorías como el sexo, el puerto o la anemia siguen siendo categorías: una condición se lee «Sex is female» o «anaemia is 0», con un encaje de 1 o de 0.
+
+\subsection{Cómo se dispara una frase}
+
+Cuando una regla tiene varias condiciones, los encajes se multiplican. Ese producto es la fuerza de disparo. Si el sexo encaja en 1 y la edad encaja en un medio, la regla se dispara a un medio. Si alguna condición encaja en 0, la regla no se dispara.
+
+\[
+\text{disparo} = \mu_1 \times \mu_2 \times \cdots
+\]
+
+Una regla puede usar como máximo tres condiciones en estas demos (\fn{nAnts=3}). Un hueco de condición puede quedar sin usar, y por eso una regla impresa suele ser más corta que tres. La puntuación de decisión es el disparo multiplicado por el peso de la regla. Las demos 9 y 10 fijan \fn{ds\_mode=1}, que obliga a que cada peso valga 1, así que el disparo solo es la puntuación. La demo 11 fija \fn{ds\_mode=2}: la búsqueda elige también un peso para cada regla, y un disparo modesto puede ganar cuando el peso es alto.
+
+\subsection{La regla ganadora}
+
+Para cada persona el modelo puntúa todas las reglas. Gana la regla con la puntuación más alta, y su cláusula \textbf{entonces} es la predicción. \fn{explainable\_predict} devuelve esa predicción junto con el índice de la regla ganadora. \fn{winning\_rules\_by\_group} cuenta esos índices dentro de cada grupo sensible.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \node[font=\small, anchor=east] at (0,2.15) {Edad Baja};
+  \node[font=\small, anchor=east] at (0,1.15) {Sexo mujer y edad Media};
+  \node[font=\small, anchor=east] at (0,0.15) {Tarifa Alta};
+  \fill[ebdtrack] (0.25,2.0) rectangle (7.6,2.32);
+  \fill[ebdtrack] (0.25,1.0) rectangle (7.6,1.32);
+  \fill[ebdtrack] (0.25,0.0) rectangle (7.6,0.32);
+  \fill[ebdmuted] (0.25,2.0) rectangle (1.7,2.32);
+  \fill[ebdgreen] (0.25,1.0) rectangle (6.55,1.32);
+  \fill[ebamber] (0.25,0.0) rectangle (3.15,0.32);
+  \node[font=\scriptsize, anchor=west] at (1.8,2.16) {0.2};
+  \node[font=\scriptsize\bfseries, anchor=west, ebdgreen] at (6.65,1.16) {0.9 gana};
+  \node[font=\scriptsize, anchor=west] at (3.25,0.16) {0.4};
+\end{tikzpicture}
+\caption{La regla del medio encaja con más fuerza con esta persona, así que el modelo predice el resultado de esa regla. Con todos los pesos iguales a 1, el disparo solo decide la ganadora.}
+\end{figure}
+
+Algunos clasificadores borrosos suman todas las reglas que votan por una clase y comparan esos totales. Estos cuadernos se quedan con una sola ganadora. \fn{predict} devuelve el consecuente de esa regla, y \fn{explainable\_predict} nombra la misma regla. La frase que se lee es la frase que decidió.
+
+Al lado de cada regla impresa hay tres números.
+
+\begin{itemize}
+  \item \textbf{DS}, la puntuación de dominancia, es cuán ampliamente se dispara la regla en su propio resultado, combinado con cuán poco se dispara en el otro resultado. Un DS grande es una regla que el modelo usa de verdad. Un DS cerca de cero es una regla rara.
+  \item \textbf{ACC} es la parte de los casos en los que esta regla ganó \emph{y} acertó. Una regla rara puede tener un ACC del 100\,\% y aun así apenas afectar a nadie.
+  \item \textbf{WGHT} es el peso usado en el momento de decidir. Vale 1.0 en todas las demos 9 y 10.
+\end{itemize}
+
+\subsection{Cómo elige la búsqueda las frases}
+\label{sec:search}
+
+En estos cuadernos las frases no se escriben a mano. Una búsqueda genética mantiene una población de listas candidatas de reglas. Cada candidata elige condiciones, palabras y un consecuente para cada regla, y la búsqueda también puede mover las fronteras de Baja, Media y Alta. En la demo 11 elige además un peso por regla. Cada generación puntúa las candidatas y construye la generación siguiente a partir de las mejores. La puntuación, salvo que un cuaderno la sustituya, es el coeficiente de correlación de Matthews (MCC) sobre las filas de entrenamiento. El MCC es positivo cuando las predicciones y las etiquetas coinciden, cero cuando las predicciones no aportan información sobre las etiquetas, y negativo cuando discrepan. Su recorrido va de \(-1\) a \(+1\).
+
+\[
+\mathrm{MCC}
+=
+\frac{TP \cdot TN - FP \cdot FN}
+{\sqrt{(TP+FP)\,(TP+FN)\,(TN+FP)\,(TN+FN)}}
+\]
+
+\(TP\) y \(TN\) son las predicciones correctas del suceso y del otro resultado. \(FP\) y \(FN\) son las dos clases de error.
+
+Se usa el MCC porque la exactitud halaga a una regla perezosa en una tabla desigual. En los pasajeros de prueba del Titanic, predecir que todos murieron acertaría en 136 de 235 personas, cerca del \pct{58}. Las reglas ajustadas aciertan en 153 de 235, cerca del \pct{65}, y su MCC es solo 0.26. En las solicitudes de prueba de los préstamos, aprobar a todo el mundo acertaría en 112 de 159 personas, cerca del \pct{70}. Las reglas de base aciertan en 94 de 159, cerca del \pct{59}, mientras su MCC se mantiene positivo en 0.17 porque algunas denegaciones son correctas. La exactitud bajó. La correlación no desapareció. La búsqueda sigue la correlación.
+
+\begin{careful}
+\textbf{La búsqueda de estos cuadernos está pensada para una clase.} Cada ajuste prueba 12 conjuntos candidatos de reglas durante como máximo 6 generaciones y para tras 3 generaciones sin mejora (\fn{n\_gen=6}, \fn{pop\_size=12}, \fn{patience=3}). Los valores por defecto de la biblioteca son mucho mayores. Lee las reglas guardadas como una demostración de las medidas. Una búsqueda más larga puede escribir frases distintas. La manera de leer una regla impresa sigue siendo la misma.
+\end{careful}
+
+Hay hasta 8 reglas disponibles en el Titanic y en los préstamos (\fn{nRules=8}), y hasta 6 en la insuficiencia cardíaca. Los huecos vacíos se descartan, y por eso la impresión del Titanic contiene seis reglas y no ocho. El «consequent» impreso es el código 0/1 del resultado.
+
+% ---------------------------------------------------------------------
+\section{Las tres demos de sesgo}
+\label{sec:picture}
+
+Con ese clasificador a la vista, los cuadernos preguntan a qué grupo eligen las frases. Cada número de abajo es la ejecución guardada en los cuadernos: la misma partición de entrenamiento y prueba (\fn{test\_size=0.33}, \fn{random\_state=42}) y la búsqueda corta de la sección~\ref{sec:search}.
+
+\begin{lesson}
+\textbf{Titanic (demo 9).} En la tabla preparada, sobreviven 195 de 259 mujeres y 93 de 453 hombres. En los pasajeros reservados, las reglas predicen la supervivencia para 49 de 86 mujeres y para ninguno de 149 hombres.
+
+\textbf{Insuficiencia cardíaca (demo 10).} La muerte es casi igual de frecuente: 34 de 105 mujeres y 62 de 194 hombres. Las reglas que sostienen el modelo hablan de análisis de sangre. La única regla que nombra el sexo apenas se dispara.
+
+\textbf{Préstamos (demo 11).} La aprobación difiere en unos ocho puntos porcentuales en la tabla. Las reglas de base abren una brecha de unos treinta puntos en el conjunto de prueba. Reponderar las filas de entrenamiento invierte la brecha. Una penalización sobre la brecha acerca las tasas y aprueba a menos personas.
+\end{lesson}
+
+Cada cuaderno recorre las mismas cuatro preguntas.
+
+\begin{enumerate}
+  \item \textbf{Antes de ningún modelo,} ¿con qué frecuencia ocurre ya el suceso en cada grupo?
+  \item \textbf{Qué frases} conservó la búsqueda, y ¿alguna frase nombra la columna sensible?
+  \item \textbf{Después de que el modelo decida,} ¿con qué frecuencia se predice el suceso en cada grupo, y cuántas veces esa predicción es correcta?
+  \item \textbf{Qué frase ganó} para las personas de cada grupo?
+\end{enumerate}
+
+La demo 11 añade una quinta pregunta: si cambiamos la puntuación que la búsqueda intenta subir, ¿se mueven las respuestas a las preguntas 3 y 4?
+
+\begin{idea}
+\textbf{Dos brechas distintas.} La brecha de las etiquetas es una propiedad de la tabla. La brecha de las predicciones es una propiedad de las reglas. Pueden ser grandes a la vez, como en el Titanic. También pueden separarse: las etiquetas de la insuficiencia cardíaca casi coinciden, y las de los préstamos discrepan solo con modestia, mientras las reglas ajustadas discrepan más.
+\end{idea}
+
+La columna sensible sigue disponible para las reglas en los tres ajustes. En el Titanic y en el fichero de préstamos es una columna que el modelo puede usar. El fichero de insuficiencia cardíaca usa el mismo patrón con \fn{sex} codificado numéricamente: 0 es mujer y 1 es hombre.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y c c@{}}
+\toprule
+Demo & Suceso que se cuenta & Columna sensible & Filas conservadas \\
+\midrule
+9 Titanic & Supervivencia, codificada 1 & \fn{Sex} & 712 de 891 \\
+10 Corazón & Muerte durante el seguimiento, codificada 1 & \fn{sex} (0 mujer, 1 hombre) & 299 de 299 \\
+11 Préstamos & Préstamo aprobado, codificado 1 & \fn{Gender} & 480 de 614 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent
+Las filas incompletas del Titanic son las que no tienen edad o puerto de embarque, cerca de un pasajero de cada cinco. Las solicitudes de préstamo incompletas se descartan del mismo modo, y \fn{Y}/\fn{N} se recodifica a 1/0. Las tasas de abajo describen las filas que quedan.
+
+El suceso es lo que el cuaderno pasa como \fn{positive\_label=1}. Las herramientas no saben si ese suceso es un beneficio. La supervivencia y la aprobación son beneficios. La muerte es el suceso clínico, así que una tasa más alta de insuficiencia cardíaca es un resultado peor. La palabra «positive» en las tablas impresas significa «este es el suceso que se eligió contar».
+
+% ---------------------------------------------------------------------
+\section{Cómo se mide una brecha}
+\label{sec:measure}
+
+Usa como ejemplo seguido a las mujeres de prueba del Titanic: 86 mujeres, de las cuales 64 sobrevivieron y 22 murieron. Las reglas predicen la supervivencia para 49 de ellas. De esas 49, 33 habían sobrevivido y 16 habían muerto.
+
+\begin{idea}
+\textbf{Tasa del suceso}: antes del modelo. Entre las personas del grupo, ¿con qué frecuencia ocurrió el suceso?
+
+\[
+\frac{\text{mujeres que sobrevivieron}}{\text{mujeres}} = \frac{195}{259} \approx \pct{75}
+\quad\text{en toda la tabla preparada.}
+\]
+
+\textbf{Tasa de selección}: después del modelo. Entre las personas del grupo, ¿con qué frecuencia se \emph{predice} el suceso?
+
+\[
+\frac{49}{86} \approx \pct{57}
+\quad\text{de las mujeres de prueba se predicen como supervivientes.}
+\]
+
+La llamada de la primera es \fn{outcome\_rates\_by\_group}. La llamada de la segunda, junto con las tasas de error de abajo, es \fn{fairness\_report}.
+\end{idea}
+
+\subsection{Cuando la predicción se equivoca}
+
+Parte el grupo según lo que ocurrió de verdad.
+
+\begin{itemize}
+  \item \textbf{Tasa de verdaderos positivos (TPR).} De las personas que \emph{sí} vivieron el suceso, ¿a cuántas se les predice? Para las mujeres de prueba, 33 de 64 supervivientes, cerca del \pct{52}.
+  \item \textbf{Tasa de falsos positivos (FPR).} De las personas que \emph{no} vivieron el suceso, ¿a cuántas se les predice de todos modos? Para las mujeres de prueba, 16 de 22 que murieron, cerca del \pct{73}.
+  \item La \textbf{tasa de falsos negativos} es el resto del primer grupo: se pierden 31 de 64 supervivientes.
+  \item La \textbf{tasa de verdaderos negativos} es el resto del segundo grupo: a 6 de 22 mujeres que murieron se les predice la muerte.
+\end{itemize}
+
+El TPR y el FPR responden a una pregunta distinta de la tasa de selección. Dos grupos pueden ser seleccionados con la misma frecuencia mientras los errores caen sobre personas distintas. Dos grupos también pueden tener tasas de error parecidas y tasas de selección muy distintas, porque el suceso ya era más frecuente en un grupo.
+
+\subsection{Paridad demográfica y equalized odds}
+
+La paridad demográfica compara tasas de selección. El cuaderno imprime dos resúmenes.
+
+\[
+\begin{aligned}
+\text{diferencia} &= \text{tasa de selección más alta} - \text{tasa de selección más baja} \\
+\text{cociente} &= \text{tasa de selección más baja} \;/\; \text{tasa de selección más alta}
+\end{aligned}
+\]
+
+Una diferencia de 0 y un cociente de 1 significan que los grupos se seleccionan con la misma frecuencia. La diferencia en la prueba del Titanic es \(49/86 - 0/149 \approx 0.57\). Ese \fn{0.57} impreso son \textbf{57 puntos porcentuales}, la brecha entre el \pct{57} y el \pct{0}. Es la proporción \(0.57\), que es fácil de leer mal como «0.57 por ciento».
+
+Equalized odds compara las tasas de error. La diferencia impresa es la \emph{mayor} entre la brecha de TPR y la brecha de FPR. En el conjunto de prueba del Titanic la brecha de FPR es la mayor: a las mujeres que murieron se les predice la supervivencia el \pct{73} de las veces, y a los hombres que murieron se les predice la supervivencia el \pct{0} de las veces.
+
+\begin{careful}
+\textbf{Un cociente de 0 suele significar que una tasa es cero.} El conjunto de prueba de la insuficiencia cardíaca tiene una tasa de falsos positivos de 0 para los hombres, así que \fn{equalized\_odds\_ratio} se imprime como 0 aunque la brecha de TPR sea de 10 puntos y la de FPR de 5 puntos. Lee \fn{tpr\_difference} y \fn{fpr\_difference} antes de leer el cociente. La diferencia es la cantidad que usa la penalización de los préstamos.
+\end{careful}
+
+% ---------------------------------------------------------------------
+\section{Titanic: el desequilibrio ya está en las etiquetas}
+\label{sec:titanic}
+
+La tabla registra pasajeros y si sobrevivieron. Las columnas preparadas son la clase del pasajero, el sexo, la edad, los hermanos o cónyuges a bordo (\fn{SibSp}), los padres o hijos a bordo (\fn{Parch}), la tarifa y el puerto de embarque. \fn{C} en una regla significa Cherburgo.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}l c r@{}}
+\toprule
+ & Proporción que sobrevive & Recuento \\
+\midrule
+Mujeres & \track{0.753}{ebdwomen} & 195 de 259 \\
+Hombres & \track{0.205}{ebdmen} & 93 de 453 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+Este es el estado de la tabla antes del entrenamiento. Una regla a la que se permite decir «el sexo es mujer» tiene una asociación grande y real que copiar. El patrón histórico de estos datos, que las mujeres sobreviven mucho más a menudo que los hombres, se ve sin un modelo.
+
+\subsection{Las seis frases que conservó la búsqueda corta}
+
+El consecuente 1 es la supervivencia. El consecuente 0 es la muerte. Las puntuaciones de dominancia están redondeadas; las dos reglas de muerte más pequeñas quedan por debajo de 0.001.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y c c@{}}
+\toprule
+Entonces & Condiciones & DS & Acierta cuando gana \\
+\midrule
+\rowcolor{ebdrow}
+Sobrevivió & El sexo es mujer y la edad es Media & 0.11 & \pct{83} \\
+Murió & La edad es Baja y los hermanos o cónyuges son Bajos & 0.04 & \pct{65} \\
+Murió & El sexo es mujer y los hermanos o cónyuges son Altos & 0.007 & \pct{80} \\
+\rowcolor{ebdrow}
+Murió & Los padres o hijos son Altos y la tarifa es Baja & 0.007 & \pct{80} \\
+Murió & Edad Baja, padres o hijos Medios, tarifa Media & \(<0.001\) & \pct{79} \\
+\rowcolor{ebdrow}
+Murió & Padres o hijos Medios, tarifa Baja, puerto Cherburgo & \(<0.001\) & \pct{50} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La regla de supervivencia es la frase más alta del conjunto: su puntuación de dominancia es más del doble que la de la regla siguiente. En palabras corrientes dice que una mujer en la banda central de edad de esta tabla sobrevivió. Una regla de muerte más baja también nombra el sexo: a una mujer que viaja con muchos hermanos o con un cónyuge se le predice la muerte. Nombrar la columna sensible es algo que se ve directamente, y esa es la razón de que un modelo de reglas sea útil en este taller.
+
+\subsection{Qué ocurre en los 235 pasajeros reservados}
+
+La partición deja 86 mujeres y 149 hombres en el conjunto de prueba. De esas mujeres, 64 sobrevivieron. De esos hombres, 35 sobrevivieron.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y@{}}
+\toprule
+ & Mujeres (86) & Hombres (149) \\
+\midrule
+Sobrevivieron de verdad & 64 & 35 \\
+Predichos como supervivientes & 49 & 0 \\
+Supervivientes predichos bien & 33 de 64 & 0 de 35 \\
+Muertes predichas como supervivencia & 16 de 22 & 0 de 114 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Esas 49 supervivencias predichas son exactamente las 49 mujeres para las que ganó la regla de supervivencia. No gana para ningún hombre, así que a todos los hombres se les predice la muerte, incluidos los 35 hombres que sobrevivieron. La diferencia de paridad demográfica es 0.57. La brecha de error mayor es la de falsos positivos, 0.73, y esa es la diferencia de equalized odds.
+
+La exactitud en la prueba es 153 de 235, cerca del \pct{65}, frente al \pct{58} de la regla «todos murieron». El MCC de prueba es 0.26. El modelo ha aprendido algo, y lo que ha aprendido se concentra en el sexo.
+
+\begin{lesson}
+En esta tabla la brecha de las etiquetas y la brecha de las predicciones apuntan en la misma dirección. Las mujeres sobreviven mucho más a menudo, la regla más alta dice que una mujer en la banda central de edad sobrevivió, y en los pasajeros de prueba esa regla es la única fuente de supervivencias predichas.
+\end{lesson}
+
+% ---------------------------------------------------------------------
+\section{Insuficiencia cardíaca: etiquetas parecidas, una regla rara}
+\label{sec:heart}
+
+La tabla tiene 299 pacientes. El suceso es la muerte durante el seguimiento. Las columnas son la edad, la anemia, la creatinfosfoquinasa, la diabetes, la fracción de eyección, la hipertensión, las plaquetas, la creatinina sérica, el sodio sérico, el sexo y el tabaquismo. La fracción de eyección es cuánta sangre empuja el corazón en cada latido. La creatinina sérica es una medida de sangre relacionada con la función renal. El sodio sérico es el nivel de sodio en la sangre. La creatinfosfoquinasa es una enzima que puede subir cuando se lesiona el músculo, incluido el músculo cardíaco. Las variables binarias se guardaron como categorías, y por eso una regla puede decir «anaemia is 0» (anemia ausente) y «sex is 0» (mujer).
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}l c r@{}}
+\toprule
+ & Proporción que muere & Recuento \\
+\midrule
+Mujeres & \track{0.324}{ebdwomen} & 34 de 105 \\
+Hombres & \track{0.320}{ebdmen} & 62 de 194 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+Las dos barras son la lección de las etiquetas. Muere cerca de un paciente de cada tres, en los dos grupos. Un modelo puede aun así escribir una frase que nombre el sexo. La puntuación de dominancia dice si esa frase importa.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y c c@{}}
+\toprule
+Entonces & Condiciones & DS & Acierta cuando gana \\
+\midrule
+\rowcolor{ebdrow}
+Sobrevivió & La creatinina sérica es Baja & 0.54 & \pct{79} \\
+Murió & La fracción de eyección es Baja & 0.06 & \pct{82} \\
+Murió & La creatinfosfoquinasa es Baja y las plaquetas son Medias & 0.02 & \pct{71} \\
+\rowcolor{ebdrow}
+Murió & Anemia ausente, sodio sérico Medio y sexo mujer & 0.006 & \pct{100} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La creatinina sérica baja, que predice supervivencia, domina el conjunto de reglas. Su puntuación es cerca de nueve veces la de la regla de la fracción de eyección y cerca de noventa veces la de la regla que nombra el sexo. La regla del sexo es perfectamente exacta en las pocas ocasiones en que gana, y casi nunca gana. Los dos hechos están en la impresión. Leer solo «el modelo usa el sexo» se dejaría la puntuación de 0.006. Leer solo la tabla de etiquetas se dejaría que la frase existe.
+
+\subsection{Predicciones en los 99 pacientes de prueba}
+
+La rebanada de prueba es pequeña y un poco menos pareja que la tabla completa: mueren 12 de 32 mujeres y 30 de 67 hombres. Las reglas ajustadas rara vez predicen la muerte para nadie.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y@{}}
+\toprule
+ & Mujeres (32) & Hombres (67) \\
+\midrule
+Murieron de verdad & 12 & 30 \\
+Predichos como muertos & 3 & 2 \\
+Muertes detectadas & 2 de 12 & 2 de 30 \\
+Falsas alarmas, entre quienes vivieron & 1 de 20 & 0 de 37 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Las tasas de selección son cerca del \pct{9} y del \pct{3}, así que la diferencia de paridad demográfica es 0.06, unos seis puntos porcentuales. La brecha de verdaderos positivos es de diez puntos y la de falsos positivos de cinco, así que la diferencia de equalized odds es 0.10. El \emph{cociente} de equalized odds se imprime como 0 porque la tasa de falsos positivos de los hombres es 0. Ese cero es un recuento pequeño, no una separación profunda: es la diferencia entre una falsa alarma y ninguna, sobre 20 y 37 personas.
+
+La exactitud en la prueba es 60 de 99. Predecir que nadie muere acertaría en 57 de 99. El MCC de prueba es 0.18. Este ajuste corto es un clasificador débil que predice sobre todo la supervivencia, un poco más dispuesto a predecir la muerte para una mujer.
+
+\begin{careful}
+Estas frases son una búsqueda de seis generaciones sobre unos cientos de pacientes. Sirven para practicar la lectura de una regla, y coinciden en dirección con la lectura clínica habitual de la creatinina y de la fracción de eyección. No son una guía clínica.
+\end{careful}
+
+\begin{lesson}
+Una brecha de etiquetas cerca de cero no promete que ninguna regla nombre la columna sensible. Mira la puntuación de dominancia al lado de cualquier regla que lo haga. Aquí la columna la nombra una regla que el modelo casi nunca usa, y la brecha de predicción en los pacientes de prueba es un puñado de personas.
+\end{lesson}
+
+% ---------------------------------------------------------------------
+\section{Préstamos: cambiar la puntuación que la búsqueda maximiza}
+\label{sec:loans}
+
+Cada fila es una solicitud de préstamo. Las columnas preparadas son el género, el estado civil, el número de personas a cargo, la educación, si se trabaja por cuenta propia, los dos ingresos, el importe del préstamo, el plazo, el historial crediticio y la zona de la vivienda. La aprobación es 1 y la denegación es 0.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}l c r@{}}
+\toprule
+ & Proporción aprobada & Recuento \\
+\midrule
+Mujeres & \track{0.628}{ebdwomen} & 54 de 86 \\
+Hombres & \track{0.706}{ebdmen} & 278 de 394 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+La brecha de etiquetas es de unos ocho puntos porcentuales, 278/394 frente a 54/86. Los hombres son además la mayor parte de la tabla: 394 de 480 solicitantes. El conjunto de prueba contiene entonces 22 mujeres y 137 hombres. Que dos mujeres pasen de un lado de un recuento al otro cambia la tasa femenina en unos nueve puntos (\(2/22\)). Lee los porcentajes de los préstamos junto con los recuentos.
+
+El cuaderno ajusta la misma búsqueda corta tres veces. El género sigue siendo una columna en las tres, así que una regla todavía puede decir «Gender is Male». Lo que cambia es la puntuación.
+
+\subsection{Base: maximizar el MCC}
+
+La búsqueda ve las filas de entrenamiento tal como son. En las 159 solicitudes de prueba aprueba a 6 de 22 mujeres y a 79 de 137 hombres.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y@{}}
+\toprule
+Resultado de prueba, base & Mujeres (22) & Hombres (137) \\
+\midrule
+Aprobados de verdad & 15 & 97 \\
+Predichos como aprobados & 6 & 79 \\
+Aprobaciones predichas bien & 5 de 15 & 61 de 97 \\
+Denegaciones predichas como aprobación & 1 de 7 & 18 de 40 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Las tasas de selección son cerca del \pct{27} y del \pct{58}. La diferencia de paridad demográfica es 0.30. Las tasas de verdaderos positivos son 5/15 y 61/97, una brecha de unos 30 puntos. Las tasas de falsos positivos son 1/7 y 18/40, una brecha de unos 31 puntos. La diferencia de equalized odds es la mayor de esas, 0.31.
+
+La exactitud es 94 de 159, cerca del \pct{59}, por debajo del \pct{70} de «aprobar a todo el mundo». El MCC es 0.17. Las reglas están recogiendo una asociación real pero modesta, y aprueban a los hombres mucho más a menudo que a las mujeres.
+
+\subsection{Reponderación: hacer independientes el género y la decisión en los pesos de entrenamiento}
+
+Kamiran y Calders (2012) dan a cada fila de entrenamiento un peso que depende solo de su grupo y de su etiqueta:
+
+\[
+w(a, y)
+=
+\frac{P(Y = y)\; P(A = a)}{P(A = a,\; Y = y)}.
+\]
+
+\(A\) es el grupo sensible e \(Y\) es la etiqueta. Un par grupo--etiqueta más raro de lo que prediría la independencia recibe un peso por encima de 1 y cuenta más. Un par más frecuente recibe un peso por debajo de 1. Tras la reponderación, el grupo y la etiqueta son independientes en la muestra de entrenamiento \emph{ponderada}. \fn{reweigh\_weights} calcula \(w\), y \fn{weighted\_mcc\_loss} hace que la búsqueda maximice el MCC con esos pesos. Las métricas de prueba siguen sin ponderar: describen a las personas originales.
+
+Un pueblo redondo hace evidente la aritmética. Cien solicitantes, 50 mujeres y 50 hombres. Se aprueba a veinte mujeres y a cuarenta hombres.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+ & Solicitantes & Peso & Recuento ponderado \\
+\midrule
+Mujeres aprobadas & 20 & \(0.60 \times 0.50 / 0.20 = 1.50\) & 30 \\
+Hombres aprobados & 40 & \(0.60 \times 0.50 / 0.40 = 0.75\) & 30 \\
+Mujeres denegadas & 30 & \(0.40 \times 0.50 / 0.30 = 0.67\) & 20 \\
+Hombres denegados & 10 & \(0.40 \times 0.50 / 0.10 = 2.00\) & 20 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+Las mujeres aprobadas y los hombres denegados eran los pares poco frecuentes, así que cuentan más. En el pueblo ponderado se aprueba a 30 mujeres y a 30 hombres. El cuaderno de préstamos hace esto con las filas reales de entrenamiento, y después pide a la búsqueda genética reglas que puntúen bien en el MCC ponderado.
+
+En la ejecución guardada el conjunto de prueba se pasa de la igualdad y sale por el otro lado.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y@{}}
+\toprule
+Resultado de prueba, reponderado & Mujeres (22) & Hombres (137) \\
+\midrule
+Predichos como aprobados & 17 de 22 & 45 de 137 \\
+Aprobaciones predichas bien & 12 de 15 & 37 de 97 \\
+Denegaciones predichas como aprobación & 5 de 7 & 8 de 40 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Ahora se aprueba a las mujeres cerca del \pct{77} de las veces y a los hombres cerca del \pct{33}. La diferencia es 0.44, mayor que la brecha de base de 0.30, y apunta en la otra dirección. La exactitud cae a 83 de 159, cerca del \pct{52}. El MCC cae solo un poco, a 0.15.
+
+\begin{idea}
+La reponderación cambia cuánto cuenta cada fila de entrenamiento. No limita directamente la brecha de prueba. Con solo seis generaciones, la búsqueda guardada se pasa: las tasas de prueba se cruzan y la brecha crece. Un paso de reponderación solo se puede comprobar leyendo la tabla de prueba, que es lo que imprime el cuaderno.
+\end{idea}
+
+\subsection{Una penalización: cobrar a la búsqueda las tasas de aprobación desiguales}
+
+La segunda reparación sustituye la puntuación por
+
+\[
+\text{puntuación}
+=
+\mathrm{MCC}
+-
+\lambda
+\times
+(\text{tasa de selección más alta} - \text{tasa de selección más baja}),
+\]
+
+con \(\lambda = 0.2\), el valor usado en el taller y pasado como \fn{lam=0.2}. Las tasas de selección dentro de esta fórmula se calculan sobre las filas de entrenamiento, durante la búsqueda. \fn{fairness\_regularized\_loss} construye esa puntuación.
+
+En la escala de estas demos, el MCC suele estar entre cerca de 0.10 y 0.25. Una brecha de treinta puntos cuesta entonces \(0.2 \times 0.30 = 0.06\), una tajada grande de la puntuación. La búsqueda tiene un motivo concreto para cambiar algo de correlación por tasas más próximas. Puede gastar ese cambio aprobando a menos personas del grupo más alto, aprobando a más personas del grupo más bajo, o de las dos maneras.
+
+El resultado de prueba guardado es la primera de esas, aplicada a los dos grupos.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y@{}}
+\toprule
+Resultado de prueba, penalizado & Mujeres (22) & Hombres (137) \\
+\midrule
+Predichos como aprobados & 4 de 22 & 33 de 137 \\
+Aprobaciones predichas bien & 3 de 15 & 26 de 97 \\
+Denegaciones predichas como aprobación & 1 de 7 & 7 de 40 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Las tasas son cerca del \pct{18} y del \pct{24}. La diferencia es 0.06. La brecha de verdaderos positivos se reduce a unos siete puntos y la de falsos positivos a unos tres. La exactitud es 68 de 159, cerca del \pct{43}, y el MCC es 0.10. A los dos grupos se les aprueba mucho menos a menudo que la tasa de aprobación del \pct{69} de la tabla preparada. Unas tasas de selección iguales y una política de aprobación generosa son objetivos distintos. La exactitud impresa, o el MCC, es lo que muestra el coste.
+
+\subsection{Las tres brechas de prueba, una al lado de la otra}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y c c@{}}
+\toprule
+Ajuste & Mujeres aprobadas & Hombres aprobados & Brecha & Aciertos \\
+\midrule
+MCC de base & 6 de 22 & 79 de 137 & 30 pts & 94/159 \\
+\rowcolor{ebdrow}
+MCC reponderado & 17 de 22 & 45 de 137 & 44 pts, al revés & 83/159 \\
+MCC menos \(0.2\times\)brecha & 4 de 22 & 33 de 137 & 6 pts & 68/159 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent
+«Aprobar a todo el mundo» habría acertado en 112 de estas 159 solicitudes. Los tres ajustes quedan por debajo de esa exactitud. El ajuste con penalización es el más parejo y el menos exacto.
+
+\begin{lesson}
+En esta ejecución corta, la reponderación no aterriza en tasas de prueba iguales: invierte la brecha. La penalización sí aterriza cerca de tasas de prueba iguales, aprobando a 4 de 22 mujeres y a 33 de 137 hombres. Informa de la brecha y de la exactitud juntas. La paridad demográfica no dice si la tasa compartida es alta o baja.
+\end{lesson}
+
+La introducción del cuaderno nombra también una tercera idea del taller: quitar la columna de género antes de entrenar. Las celdas que se ejecutan no lo hacen. Quitar la columna significa que ninguna regla puede decir literalmente «Gender is Male». El estado civil, el ingreso y la zona de la vivienda todavía pueden diferir por género, así que las tasas de selección todavía pueden separarse. Las dos reparaciones que \emph{sí} se ajustan dejan la columna en su sitio y cambian solo la puntuación.
+
+% ---------------------------------------------------------------------
+\section{Leer un cuaderno sin perderse}
+\label{sec:howto}
+
+Abre el cuaderno al lado de esta guía. En Colab, ejecuta la primera celda una vez. Clona el repositorio y lo instala. Si la celda siguiente no puede importar \fn{ebdai}, reinicia el entorno y vuelve a ejecutar todas las celdas.
+
+\begin{enumerate}
+  \item \textbf{Lee la tabla de la tasa del suceso antes del ajuste.} Anota los dos recuentos. Esa es la brecha de las etiquetas, y no depende de la búsqueda genética.
+  \item \textbf{Rodea cualquier regla que nombre la columna sensible.} Después lee su DS. Una regla con DS cerca de cero es una frase que el modelo casi nunca usa. Una regla con el DS más grande es la frase que hace el trabajo.
+  \item \textbf{Lee \fn{selection\_rate} como un recuento.} Multiplica por \(n\). En estas ejecuciones guardadas los productos son números enteros de personas: 49 de 86, 0 de 149, 6 de 22, 79 de 137.
+  \item \textbf{Lee el TPR y el FPR de la misma fila.} La tasa de selección dice quién recibe la predicción. El TPR y el FPR dicen si esa predicción es correcta para las personas que vivieron el suceso y para las que no.
+  \item \textbf{Trata un cociente impreso de 0 como «alguna tasa es cero»} y después mira las diferencias. La sección~\ref{sec:measure} muestra por qué, en el conjunto de prueba de la insuficiencia cardíaca.
+  \item \textbf{Si cambias la puntuación, imprime la exactitud al lado de la brecha nueva.} La tabla de préstamos de la sección~\ref{sec:loans} es el patrón: una reparación se pasa, y la otra compra una brecha menor con una exactitud más baja.
+\end{enumerate}
+
+Las demos 9 y 10 tienen la misma forma. La demo 10 es el caso de control, en el que las tasas de las etiquetas ya coinciden. La demo 11 repite la base y después ajusta las dos puntuaciones alternativas. Los gráficos de barras son los mismos recuentos dibujados como barras: la tasa del suceso por grupo, y la parte de cada grupo para la que ganó una regla dada.
+
+El orden de los grupos en un marco impreso sigue al código, así que las filas de equidad de la insuficiencia cardíaca pueden listar a los hombres (1) antes que a las mujeres (0), mientras la tabla de la tasa del suceso lista 0 y después 1. Los recuentos identifican los grupos: 32 y 67 en el conjunto de prueba de la insuficiencia cardíaca, 22 y 137 en el de los préstamos.
+
+% ---------------------------------------------------------------------
+\Needspace{8\baselineskip}
+\section{Glosario y fuentes}
+\label{sec:glossary}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l Y@{}}
+\toprule
+Término en el cuaderno & Qué significa aquí \\
+\midrule
+Explainable by design & El modelo entrenado ya es legible. La regla ganadora es la explicación. \\
+\rowcolor{ebdrow}
+Meaningful information about the logic & La frase del RGPD para el procedimiento realmente aplicado a esa persona, en lenguaje llano (C-203/22). \\
+High-risk AI system & Una categoría del Reglamento de IA. La puntuación crediticia es el anexo~III, desde el 2 de diciembre de 2027. Muchos productos sanitarios siguen el 2 de agosto de 2028. \\
+\rowcolor{ebdrow}
+Pertenencia \(\mu\) & Cuánto encaja un valor con una palabra, de 0 a 1. \\
+Firing strength & Producto de las pertenencias de una regla. Se multiplica por el peso de la regla para puntuarla. \\
+\rowcolor{ebdrow}
+Antecedent / consequent & El lado SI de una regla, y la clase del lado ENTONCES. \\
+Outcome rate & Parte del grupo para la que el suceso ya ocurrió. \\
+\rowcolor{ebdrow}
+Selection rate & Parte del grupo para la que el modelo predice el suceso. \\
+TPR, FPR & Entre las personas que vivieron el suceso, o que no lo vivieron, la parte a la que se le predice. \\
+\rowcolor{ebdrow}
+Demographic parity & Las tasas de selección son iguales. La diferencia impresa es la más alta menos la más baja. \\
+Equalized odds & Los TPR son iguales y los FPR son iguales. La diferencia impresa es la mayor de esas dos brechas. \\
+\rowcolor{ebdrow}
+Winning rule & La regla con la puntuación más alta para esa persona. Su consecuente es la predicción. \\
+DS & Cuánto se usa una regla en su propio resultado. Grande significa activa. Cerca de cero significa rara. \\
+\rowcolor{ebdrow}
+ACC de una regla & Cuando ganó esta regla, cuántas veces acertó. \\
+MCC & Correlación entre predicciones y etiquetas, de \(-1\) a \(+1\), usada como puntuación de la búsqueda. \\
+\rowcolor{ebdrow}
+\fn{ds\_mode=1} & Todos los pesos de las reglas valen 1. El encaje decide la ganadora. Demos 9 y 10. \\
+\fn{ds\_mode=2} & La búsqueda elige un peso por regla. Demo 11. \\
+\rowcolor{ebdrow}
+Reweighing & Pesos de entrenamiento \(P(Y)P(A)/P(A,Y)\), y después MCC ponderado. \\
+Fairness penalty & Puntuación de entrenamiento \(\mathrm{MCC} - 0.2 \times\) (brecha de las tasas de selección). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+{\small
+\Needspace{14\baselineskip}
+\hyphenation{Fernandez Fumanal Idocin Kamiran Calders}
+\paragraph{Cuadernos.}
+\begin{itemize}[itemsep=0.2em]
+  \item Demo 9, etiquetas y reglas del Titanic:\\
+  {\footnotesize\url{https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/09_bias_titanic.ipynb}}
+  \item Demo 10, muerte por insuficiencia cardíaca:\\
+  {\footnotesize\url{https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/10_bias_heart_failure.ipynb}}
+  \item Demo 11, aprobación de préstamos, reponderación y puntuación penalizada:\\
+  {\footnotesize\url{https://colab.research.google.com/github/HAISymbiosis/EBD-AI/blob/main/Demos/11_bias_loan_fairness.ipynb}}
+\end{itemize}
+
+\paragraph{De dónde vienen las ideas.}
+Las tablas y el taller original son WorkshopIgualdad2025 (Raquel Fernandez Peralta y Javier Fumanal Idocin). La fórmula de reponderación es Kamiran y Calders, «Data preprocessing techniques for classification without discrimination», \emph{Knowledge and Information Systems} 33 (2012). Equalized odds es el criterio de Hardt, Price y Srebro, «Equality of opportunity in supervised learning», NeurIPS 2016; \fn{ebdai} calcula las brechas por su cuenta y no llama a Fairlearn. El MCC es Matthews, «Comparison of the predicted and observed secondary structure of T4 phage lysozyme», \emph{Biochimica et Biophysica Acta} 405 (1975). Las reglas borrosas, la búsqueda genética y la decisión por la regla ganadora son el clasificador \fn{ex\_fuzzy} que usan los cuadernos.
+
+\paragraph{El mapa normativo.}
+El Reglamento~(UE)~2024/1689 es el Reglamento de Inteligencia Artificial; los artículos~10, 13, 14 y~86 y el anexo~III, punto~5(b), son las disposiciones usadas arriba. El Reglamento~(UE)~2026/1744 fija las fechas de alto riesgo en el 2 de diciembre de 2027 y el 2 de agosto de 2028. La explicación que ya se debe en las decisiones automáticas sobre personas está en el RGPD, artículos~13(2)(f), 14(2)(g), 15(1)(h) y~22, según los leyó el Tribunal de Justicia en C-203/22, \emph{CK contra Dun \& Bradstreet Austria}, 27 de febrero de 2025. La igualdad de acceso de mujeres y hombres a bienes y servicios, incluida la banca, es la Directiva~2004/113/CE.
+}
+
+\end{document}
